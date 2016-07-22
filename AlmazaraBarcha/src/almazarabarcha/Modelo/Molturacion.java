@@ -10,13 +10,15 @@ public class Molturacion {
     private float rendimiento;
     private float ingreso_molturacion;
     private float maquila;
+    private float tanto_maquila;
     private Date fecha_moturacion;
     private String observacones;
     private boolean pagado;
     private boolean subecionado;
     private boolean declara;
     private boolean factura;
-
+    
+    
     public Molturacion() {
     }
 
@@ -71,6 +73,10 @@ public class Molturacion {
     public void setFecha_moturacion(Date fecha_moturacion) {
         this.fecha_moturacion = fecha_moturacion;
     }
+    
+    public void setTantoMaquila(float tanto_maquila){
+        this.tanto_maquila = tanto_maquila;
+    }
 
     public void setKg_oliva(float kg_oliva) {
         this.kg_oliva = kg_oliva;
@@ -91,10 +97,10 @@ public class Molturacion {
         }
         
     }
-
+    
      public void CalcularMaquila() {
-        maquila = this.aceite_producido * (float)0.15;
-    }
+        maquila = this.kg_oliva * (float)tanto_maquila; //La maquila es el 4% del los kg molturados
+     }
      
     public void setIngreso_molturacion(float ingreso_molturacion) {
         this.ingreso_molturacion = ingreso_molturacion;
