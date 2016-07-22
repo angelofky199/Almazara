@@ -42,7 +42,7 @@ public class Venta {
      * Vende una cierta cantidad de litros de un tipo de aceite
      * 
      * @param tipo 0 - Lampante, 1 - Extra, 2 - Arberquina, 3 - Bote Flor, 4 - Bote Extra
-     * @param cantidad En litros
+     * @param cantidad En litros, excepto en los botes
      * 
      * @return devuelve si se puede realizar la venta
      */
