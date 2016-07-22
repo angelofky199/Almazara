@@ -51,9 +51,10 @@ public class Venta {
         
         if(cantidad>0 && tipo>=0 && tipo<5){
            
-            precio_total_litros += num_litros_aceite[tipo]*PRECIO_ACEITES[tipo];
+            precio_total_litros += cantidad*PRECIO_ACEITES[tipo];
+            
             if(tipo < 3)
-                 num_litros_aceite[tipo] += cantidad;
+                num_litros_aceite[tipo] += cantidad;
             else
                 num_litros_aceite[tipo] += cantidad*(float)0.75; //los botellines son de 0.75L
         }else
