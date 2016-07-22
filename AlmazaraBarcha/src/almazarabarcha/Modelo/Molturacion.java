@@ -90,7 +90,7 @@ public class Molturacion {
     }
 
     public void CalcularOrujo() {
-        orujo = this.kg_oliva * 0.3;
+        orujo = this.kg_oliva * (float)0.3;
     }
 
     public void CalcularRendimiento() {
@@ -102,7 +102,7 @@ public class Molturacion {
     }
 
      public void CalcularMaquila() {
-        maquila = this.aceite_producido * 0.15;
+        maquila = this.aceite_producido * (float)0.15;
     }
      
     public void setIngreso_molturacion(float ingreso_molturacion) {
