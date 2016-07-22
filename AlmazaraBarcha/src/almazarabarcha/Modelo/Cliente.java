@@ -2,10 +2,6 @@ package almazarabarcha.Modelo;
 
 import java.util.Date;
 
-/**
- *
- * @author Usuario
- */
 public class Cliente {
     
     private String nombre_cliente;  //*

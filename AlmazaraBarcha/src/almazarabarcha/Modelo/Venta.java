@@ -1,10 +1,5 @@
 package almazarabarcha.Modelo;
 
-
-/**
- *
- * @author jose
- */
 public class Venta {
     private static final String[] TIPOS_ACEITES = {"Lampante","Extra","Arberquina", "Bote Flor", "Bote Extra"};
     private static final String[] TIPOS_ENVASES = {"5L","10L","25L"};
