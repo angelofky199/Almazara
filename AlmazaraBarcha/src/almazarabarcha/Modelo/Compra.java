@@ -5,6 +5,8 @@
  */
 package almazarabarcha.Modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author Usuario
@@ -18,6 +20,7 @@ public class Compra {
     //Si el cliente factura se refleja un 15% de maquila (kg oliva * 015)
     //Si el cliente no declara de refleja un 4% de maquila (kg oliva * 0.04)
     private String observacones;
+    private Date fecha_compra;
     private boolean pagado;
     private boolean subecionado;
     private boolean declara;
@@ -42,6 +45,10 @@ public class Compra {
         return total_compras;
     }
 
+    public Date getFecha_compra() {
+        return fecha_compra;
+    }
+
     public String getObservacones() {
         return observacones;
     }
@@ -64,6 +71,10 @@ public class Compra {
 
     public void setKg_oliva(float kg_oliva) {
         this.kg_oliva = kg_oliva;
+    }
+
+    public void setFecha_compra(Date fecha_compra) {
+        this.fecha_compra = fecha_compra;
     }
 
     public void setPrecio_kg_oliva(float precio_kg_oliva) {
