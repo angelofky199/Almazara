@@ -55,7 +55,7 @@ public class Cambio {
     }
 
     public String getObservacones() {
-        return observacones;
+        return observaciones;
     }
 
     public float getTotal_real_pagar() {
@@ -119,7 +119,7 @@ public class Cambio {
     }
 
     public void setObservacones(String observacones) {
-        this.observacones = observacones;
+        this.observaciones = observacones;
     }
 
     public void setTotal_real_pagar(float total_real_pagar) {
