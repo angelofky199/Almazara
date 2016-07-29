@@ -1,10 +1,14 @@
 package almazarabarcha.Modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Cliente {
     
-    
+    Cambio cambio;
+    Compra compra;
+    ArrayList cambios;
+    ArrayList compras;
     private String nombre_cliente;  //*
     private String dni;
     private String direccion;
@@ -78,5 +82,11 @@ public class Cliente {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
- 
+    
+    public void AddCambios(Cambio cambio){
+        cambios.add(cambio);
+    }
+    public void AddCompras(Compra compra){
+        compras.add(compra);
+    }
 }

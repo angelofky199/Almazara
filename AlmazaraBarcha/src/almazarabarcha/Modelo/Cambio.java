@@ -17,7 +17,7 @@ public class Cambio {
     private boolean declara;
     //private boolean factura;
     private float precio_oliva;
-    private String observacones;
+    private String observaciones;
     private float total_real_pagar;
     
     public Cambio() {
@@ -29,7 +29,7 @@ public class Cambio {
         subencionado = false;
         declara = false;
         precio_oliva = (float) 0.26;            //por defecto es 0.26 €
-        observacones = "";
+        observaciones = "";
         total_real_pagar = (float)0.0;
     }
 
