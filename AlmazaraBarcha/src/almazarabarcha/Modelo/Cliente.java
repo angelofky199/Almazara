@@ -5,16 +5,15 @@ import java.util.Date;
 
 public class Cliente {
     
-<<<<<<< HEAD
     Cambio cambio;
     Compra compra;
     ArrayList cambios;
     ArrayList compras;
-=======
+
     ArrayList<Molturacion> molturaciones;
     ArrayList<Venta> ventas;
     
->>>>>>> origin/master
+ 
     private String nombre_cliente;  //*
     private String dni;
     private String direccion;
@@ -89,14 +88,14 @@ public class Cliente {
         this.fecha = fecha;
     }
     
-<<<<<<< HEAD
+ 
     public void AddCambios(Cambio cambio){
         cambios.add(cambio);
     }
     public void AddCompras(Compra compra){
         compras.add(compra);
     }
-=======
+
     /***************Operaciones**************************/
     
     public void addMolturacion(Molturacion molt){//(float kg_oliva, float aceite_producido, String observaciones, boolean pagado, boolean subencionado, boolean declara, boolean factura){
@@ -118,5 +117,5 @@ public class Cliente {
     public void addVenta(Venta venta){
         ventas.add(venta);
     } 
->>>>>>> origin/master
+
 }
