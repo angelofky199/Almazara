@@ -3,25 +3,32 @@ package almazarabarcha.Modelo;
 import java.util.Date;
 
 public class Molturacion {
-    
+    public static float RENDIMIENTO_ORUJO_KG = (float)0.3;
+    public static float RENDIMIENTO_MAQUILA_KG = (float)0.04;
+    public static float RENDIMIENTO_MULTURACION_ECONOMICO = (float)0.15; //€
     private float kg_oliva;
     private float aceite_producido;
-    private float orujo;
-    private float rendimiento;
-    private float ingreso_molturacion;
-    private float maquila;
-    private float tanto_maquila;
     private Date fecha_moturacion;
     private String observacones;
     private boolean pagado;
-    private boolean subecionado;
+    private boolean subencionado;
     private boolean declara;
     private boolean factura;
     
-    
     public Molturacion() {
+        this.kg_oliva = 0;
+        this.aceite_producido = 0;
+        //this.fecha_moturacion = new Date();
+        this.observacones = "";
+        this.pagado = false;
+        this.subencionado = false;
+        this.declara = false;
+        this.factura = false;
     }
 
+   
+    
+/************************Getters************************************/
     public float getKg_oliva() {
         return kg_oliva;
     }
@@ -34,32 +41,18 @@ public class Molturacion {
         return fecha_moturacion;
     }
 
-    public float getOrujo() {
-        return orujo;
-    }
-
-    public float getRendimiento() {
-        return rendimiento;
-    }
-
-    public float getIngreso_molturacion() {
-        return ingreso_molturacion;
-    }
-
-    public float getMaquila() {
-        return maquila;
-    }
-
     public String getObservacones() {
         return observacones;
     }
 
+ /************************IS************************************/
+    
     public boolean isPagado() {
         return pagado;
     }
 
-    public boolean isSubecionado() {
-        return subecionado;
+    public boolean isSubencionado() {
+        return subencionado;
     }
 
     public boolean isDeclara() {
@@ -69,13 +62,9 @@ public class Molturacion {
     public boolean isFactura() {
         return factura;
     }
-    
+/***********************Setters*******************************/
     public void setFecha_moturacion(Date fecha_moturacion) {
         this.fecha_moturacion = fecha_moturacion;
-    }
-    
-    public void setTantoMaquila(float tanto_maquila){
-        this.tanto_maquila = tanto_maquila;
     }
 
     public void setKg_oliva(float kg_oliva) {
@@ -86,26 +75,6 @@ public class Molturacion {
         this.aceite_producido = aceite_producido;
     }
 
-    public void CalcularOrujo() {
-        orujo = this.kg_oliva * (float)0.3;
-    }
-
-    public void CalcularRendimiento() {
-        if(this.kg_oliva > 0)
-        {
-            rendimiento = this.aceite_producido / this.kg_oliva;
-        }
-        
-    }
-    
-     public void CalcularMaquila() {
-        maquila = this.kg_oliva * (float)tanto_maquila; //La maquila es el 4% del los kg molturados
-     }
-     
-    public void setIngreso_molturacion(float ingreso_molturacion) {
-        this.ingreso_molturacion = ingreso_molturacion;
-    }
-
     public void setObservacones(String observacones) {
         this.observacones = observacones;
     }
@@ -114,8 +83,8 @@ public class Molturacion {
         this.pagado = pagado;
     }
 
-    public void setSubecionado(boolean subecionado) {
-        this.subecionado = subecionado;
+    public void setSubecionado(boolean subencionado) {
+        this.subencionado = subencionado;
     }
 
     public void setDeclara(boolean declara) {
@@ -125,6 +94,64 @@ public class Molturacion {
     public void setFactura(boolean factura) {
         this.factura = factura;
     }
+/*********************Cálculos******************************/
+    /**
+     * Calcula el orujo obtenido
+     * @return devuelve el orujo obtenido en kg
+     */
+    public float CalcularOrujo() {     
+        return this.kg_oliva * RENDIMIENTO_ORUJO_KG;
+    }
+
+    /**
+     * Calcula el rendimiento del aceite producido respecto a los kg oliva ingresados
+     * @return devuelve porcentaje del rendimiento
+     */
+    public float CalcularRendimientoAceite() {
+        float rendimiento = 0;
+        
+        if(this.kg_oliva > 0)
+            rendimiento = this.aceite_producido / this.kg_oliva;
+        
+        return rendimiento;
+    }
     
+    /**
+     * Calcula el precio económico en € de la multuración
+     * @return devuelve el dinero en € que cuesta la multuración 
+     */
+    public float CalcularPrecioMulturacion(){
+        return this.kg_oliva * RENDIMIENTO_MULTURACION_ECONOMICO;
+    }
     
+    /**    Puede ser sustituida, y comprobar desde fuera si se ha pagado
+     * Calcula el dinero recibido de la multuración
+     * @return devuelve lo que se ha ingresado
+     */
+    public float CalcularIngresoObtenidoMulturacion(){
+        if(pagado)
+            return CalcularPrecioMulturacion();
+        else
+            return 0;
+    }
+    
+    /**
+     * Calcula una estimación de la maquila obtenida
+     * @return maquila a reflejar expresada en kg
+     */
+    public float CalcularMaquila() {
+        return this.kg_oliva * RENDIMIENTO_MAQUILA_KG; 
+    }
+    
+    /**
+     * Calcula los Kg de Oliva que se reflejan en la declaración, depende
+     * si declaran o no
+     * @return kg_oliva reflejados
+     */
+    public float CalcularKgOlivaReflejados(){
+        if(declara)
+            return kg_oliva;
+        else
+            return 0;
+    }
 }

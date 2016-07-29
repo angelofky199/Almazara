@@ -19,6 +19,15 @@ public class Cliente {
         this.telefono = telefono;
         this.fecha = fecha;
     }
+    
+    public Cliente() {
+        this.nombre_cliente = "";
+        this.dni = "";
+        this.direccion = "";
+        this.poblacion = "";
+        this.telefono = "";
+        //this.fecha = fecha;
+    }
 
     public String getNombre_cliente() {
         return nombre_cliente;
@@ -67,7 +76,4 @@ public class Cliente {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
-    
-    
 }

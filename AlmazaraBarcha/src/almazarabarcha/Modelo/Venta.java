@@ -1,20 +1,30 @@
 package almazarabarcha.Modelo;
 
+import almazarabarcha.Modelo.Inventario.TipoAceite;
+import almazarabarcha.Modelo.Inventario.TipoEnvase;
+
+import java.util.ArrayList;
+
 public class Venta {
     private boolean factura_realizada;
     private String observaciones;
-    
-    private static final String[] TIPOS_ACEITES = {"Lampante","Extra","Arberquina", "Bote Flor", "Bote Extra"};
-    private static final String[] TIPOS_ENVASES = {"0.75L","5L","10L","25L"};
-    private static final float[] PRECIO_ACEITES = {(float)1.25,(float)5.0,(float)6.0,(float)7.0,(float)5.0};
-    private static final float[] PRECIO_ENVASES = {1, 2, 3, 0};
-    
+    private ArrayList<TipoAceite> tiposaceites;
+    private ArrayList<TipoEnvase> tiposenvases;
     private boolean regalar_envases;
-    private int[] num_envases = {0,0,0,0};
-    private float[] num_litros_aceite = {0,0,0,0,0};
-    
-    private float precio_total_envases;
-    private float precio_total_litros;
+
+
+    public Venta() {
+        tiposaceites.add(new TipoAceite("Lampante",(float) 1.25, false));
+        tiposaceites.add(new TipoAceite("Extra",(float) 5.0, false));
+        tiposaceites.add(new TipoAceite("Arberquina",(float) 6.0, false));
+        tiposaceites.add(new TipoAceite("Bote Flor",(float) 7.0, true));
+        tiposaceites.add(new TipoAceite("Bote Extra",(float) 5.0, true));
+        
+        tiposenvases.add(new TipoEnvase((float)5.0,(float)1.0));
+        tiposenvases.add(new TipoEnvase((float)10.0,(float)2.0));
+        tiposenvases.add(new TipoEnvase((float)25.0,(float)3.0));
+    }
+       
     
     /**
      * Realiza una venta de envases de un cierto tamaño
@@ -27,12 +37,9 @@ public class Venta {
     public boolean venderEnvase(int tipo, int cantidad){
         boolean ok = true;
         
-        if(cantidad>0 && tipo>=0 && tipo<4){
-            num_envases[tipo] += cantidad;
-            
-            if(!regalar_envases)
-                precio_total_envases += num_envases[tipo]*PRECIO_ENVASES[tipo];
-        }else
+        if(cantidad>0 && tipo>=0 && tipo<tiposenvases.size())
+            tiposenvases.get(tipo).add(cantidad);
+        else
             ok = false;
         
         return ok;
@@ -49,15 +56,9 @@ public class Venta {
     public boolean venderAceite(int tipo, float cantidad){
         boolean ok = true;
         
-        if(cantidad>0 && tipo>=0 && tipo<5){
-           
-            precio_total_litros += cantidad*PRECIO_ACEITES[tipo];
-            
-            if(tipo < 3)
-                num_litros_aceite[tipo] += cantidad;
-            else
-                num_litros_aceite[tipo] += cantidad*(float)0.75; //los botellines son de 0.75L
-        }else
+        if(cantidad>0 && tipo>=0 && tipo<tiposaceites.size())
+            tiposaceites.get(tipo).addCantidad(cantidad);
+        else
             ok = false;
         
         return ok;
@@ -69,7 +70,7 @@ public class Venta {
      * @return devuelve el total de un tipo de aceite
      */
     public float getTotalLitrosTipoAceite(int tipo){
-        return num_litros_aceite[tipo];
+        return tiposaceites.get(tipo).getLitros();
     }
     
     /**
@@ -80,25 +81,40 @@ public class Venta {
         int i;
         float total = 0;
         
-        for(i = 0; i < num_litros_aceite.length; i++)
+        for(i = 0; i < tiposaceites.size(); i++)
             total += getTotalLitrosTipoAceite(i);
         
         return total;
     }
+    
+
+    public float getPrecioTotal_envases() {
+        float precioTotal = 0;
+        int i;
+        
+        if(!regalar_envases)
+            for(i = 0; i < tiposenvases.size();i++)
+                precioTotal += tiposenvases.get(i).CalcularValor();
+        
+        return precioTotal;
+    }
+
+    public float getPrecioTotal_tipos_aceite() {
+        float precio_total_litros = 0;
+        int i;
+        
+        for(i = 0; i < tiposaceites.size(); i++)
+            precio_total_litros += tiposaceites.get(i).CalcularValor();
+        
+        return precio_total_litros;
+    }
+    
     /**
      * Devuelve el precio total de los litros y de los envases
      * @return 
      */
     public float getTotalPrecio(){
-        return precio_total_envases+precio_total_litros;
-    }
-
-    public float getPrecio_total_envases() {
-        return precio_total_envases;
-    }
-
-    public float getPrecio_total_litros() {
-        return precio_total_litros;
+        return getPrecioTotal_envases()+getPrecioTotal_tipos_aceite();
     }
     
     public boolean isRegalar_envases() {
@@ -124,9 +140,4 @@ public class Venta {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-    
-    
-    
-    
-   
 }
