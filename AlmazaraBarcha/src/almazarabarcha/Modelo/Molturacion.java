@@ -9,7 +9,7 @@ public class Molturacion {
     private float kg_oliva;
     private float aceite_producido;
     private Date fecha_moturacion;
-    private String observacones;
+    private String observaciones;
     private boolean pagado;
     private boolean subencionado;
     private boolean declara;
@@ -19,7 +19,7 @@ public class Molturacion {
         this.kg_oliva = 0;
         this.aceite_producido = 0;
         //this.fecha_moturacion = new Date();
-        this.observacones = "";
+        this.observaciones = "";
         this.pagado = false;
         this.subencionado = false;
         this.declara = false;
@@ -41,8 +41,8 @@ public class Molturacion {
         return fecha_moturacion;
     }
 
-    public String getObservacones() {
-        return observacones;
+    public String getObservaciones() {
+        return observaciones;
     }
 
  /************************IS************************************/
@@ -75,15 +75,15 @@ public class Molturacion {
         this.aceite_producido = aceite_producido;
     }
 
-    public void setObservacones(String observacones) {
-        this.observacones = observacones;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
     public void setPagado(boolean pagado) {
         this.pagado = pagado;
     }
 
-    public void setSubecionado(boolean subencionado) {
+    public void setSubencionado(boolean subencionado) {
         this.subencionado = subencionado;
     }
 

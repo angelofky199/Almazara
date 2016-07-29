@@ -1,9 +1,12 @@
 package almazarabarcha.Modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Cliente {
     
+    ArrayList<Molturacion> molturaciones;
+    ArrayList<Venta> ventas;
     
     private String nombre_cliente;  //*
     private String dni;
@@ -78,5 +81,26 @@ public class Cliente {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
- 
+    
+    /***************Operaciones**************************/
+    
+    public void addMolturacion(Molturacion molt){//(float kg_oliva, float aceite_producido, String observaciones, boolean pagado, boolean subencionado, boolean declara, boolean factura){
+        
+        molturaciones.add(molt);
+        /*Molturacion molt = new Molturacion();
+        
+        molt.setKg_oliva(kg_oliva);
+        molt.setAceite_producido(aceite_producido);
+        molt.setObservaciones(observaciones);
+        molt.setPagado(pagado);
+        molt.setSubencionado(subencionado);
+        molt.setDeclara(declara);
+        molt.setFactura(factura);*/
+        
+        
+    }
+    
+    public void addVenta(Venta venta){
+        ventas.add(venta);
+    } 
 }
