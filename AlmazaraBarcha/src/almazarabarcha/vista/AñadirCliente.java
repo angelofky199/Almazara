@@ -193,7 +193,8 @@ public class AñadirCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-     
+            GestorAlmazara g = new GestorAlmazara();
+            jTextField6.setText(g.mostrar());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
