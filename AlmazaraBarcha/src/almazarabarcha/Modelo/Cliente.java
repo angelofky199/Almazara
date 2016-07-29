@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Cliente {
     
-    private int ALVONDIGA_DEL_MERCADONA;
     
     private String nombre_cliente;  //*
     private String dni;
@@ -79,7 +78,5 @@ public class Cliente {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    public void caca(){
-        
-    }
+ 
 }
