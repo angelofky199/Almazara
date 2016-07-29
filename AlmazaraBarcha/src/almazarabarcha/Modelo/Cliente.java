@@ -79,4 +79,7 @@ public class Cliente {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+    public void caca(){
+        
+    }
 }
