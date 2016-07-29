@@ -1,34 +1,33 @@
 package almazarabarcha.Modelo;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Cliente {
-    
-    Cambio cambio;
-    Compra compra;
-    ArrayList cambios;
-    ArrayList compras;
-
-    ArrayList<Molturacion> molturaciones;
-    ArrayList<Venta> ventas;
-    
- 
     private String nombre_cliente;  //*
     private String dni;
     private String direccion;
     private String poblacion;
     private String telefono;
-    private Date fecha;
+    
+    private ArrayList<Cambio> cambios;
+    private ArrayList<Compra> compras;
+    private ArrayList<Molturacion> molturaciones;
+    private ArrayList<Venta> ventas;
+    
     
 
-    public Cliente(String nombre_cliente, String dni, String direccion, String poblacion, String telefono, Date fecha) {
+    public Cliente(String nombre_cliente, String dni, String direccion, String poblacion, String telefono) {
         this.nombre_cliente = nombre_cliente;
         this.dni = dni;
         this.direccion = direccion;
         this.poblacion = poblacion;
         this.telefono = telefono;
-        this.fecha = fecha;
+        
+        cambios = new ArrayList<>();
+        compras = new ArrayList<>();
+        molturaciones = new ArrayList<>();
+        ventas = new ArrayList<>();
+    
     }
     
     public Cliente() {
@@ -60,10 +59,6 @@ public class Cliente {
         return telefono;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
-
     public void setNombre_cliente(String nombre_cliente) {
         this.nombre_cliente = nombre_cliente;
     }
@@ -82,21 +77,16 @@ public class Cliente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
-    }
+    }    
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
+    /***************Operaciones**************************/
     
- 
     public void AddCambios(Cambio cambio){
         cambios.add(cambio);
     }
     public void AddCompras(Compra compra){
         compras.add(compra);
     }
-
-    /***************Operaciones**************************/
     
     public void addMolturacion(Molturacion molt){//(float kg_oliva, float aceite_producido, String observaciones, boolean pagado, boolean subencionado, boolean declara, boolean factura){
         
@@ -116,6 +106,22 @@ public class Cliente {
     
     public void addVenta(Venta venta){
         ventas.add(venta);
-    } 
+    }
+    
+    public int sizeCambios(){
+        return cambios.size();
+    }
+    
+    public int sizeCompras(){
+        return compras.size();
+    }
+    
+    public int sizeMolturaciones(){
+        return molturaciones.size();
+    }
+    
+    public int sizeVentas(){
+        return ventas.size();
+    }
 
 }

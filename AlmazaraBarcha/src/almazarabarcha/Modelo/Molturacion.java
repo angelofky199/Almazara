@@ -6,6 +6,7 @@ public class Molturacion {
     public static float RENDIMIENTO_ORUJO_KG = (float)0.3;
     public static float RENDIMIENTO_MAQUILA_KG = (float)0.04;
     public static float RENDIMIENTO_MULTURACION_ECONOMICO = (float)0.15; //€
+    int id;
     private float kg_oliva;
     private float aceite_producido;
     private Date fecha_moturacion;
@@ -16,6 +17,7 @@ public class Molturacion {
     private boolean factura;
     
     public Molturacion() {
+        id = 0;
         this.kg_oliva = 0;
         this.aceite_producido = 0;
         //this.fecha_moturacion = new Date();
@@ -44,6 +46,10 @@ public class Molturacion {
     public String getObservacones() {
         return observacones;
     }
+    
+    public int getId() {
+        return id;
+    }
 
  /************************IS************************************/
     
@@ -63,6 +69,11 @@ public class Molturacion {
         return factura;
     }
 /***********************Setters*******************************/
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public void setFecha_moturacion(Date fecha_moturacion) {
         this.fecha_moturacion = fecha_moturacion;
     }
@@ -154,4 +165,6 @@ public class Molturacion {
         else
             return 0;
     }
+    
+    
 }

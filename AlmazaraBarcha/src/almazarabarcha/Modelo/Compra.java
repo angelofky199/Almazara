@@ -3,6 +3,7 @@ package almazarabarcha.Modelo;
 import java.util.Date;
 
 public class Compra {
+    private int id;
     private float kg_oliva;
     private float precio_kg_oliva;
     private String observaciones;
@@ -13,6 +14,7 @@ public class Compra {
     private boolean factura;
 
     public Compra(){
+        int id = 0;
         this.kg_oliva = 0;
         this.precio_kg_oliva = (float) 0.25;    //0.25€/kg por defecto
         this.observaciones = "";
@@ -41,17 +43,11 @@ public class Compra {
         return observaciones;
     }
     
-    public void setKg_oliva(float kg_oliva) {
-        this.kg_oliva = kg_oliva;
+    public int getId() {
+        return id;
     }
-
-    public void setFecha_compra(Date fecha_compra) {
-        this.fecha_compra = fecha_compra;
-    }
-
-    public void setPrecio_kg_oliva(float precio_kg_oliva) {
-        this.precio_kg_oliva = precio_kg_oliva;
-    }
+    
+    
 
     /*******************Is**************************/
     public boolean isPagado() {
@@ -88,6 +84,22 @@ public class Compra {
 
     public void setFactura(boolean factura) {
         this.factura = factura;
+    }
+    
+    public void setKg_oliva(float kg_oliva) {
+        this.kg_oliva = kg_oliva;
+    }
+
+    public void setFecha_compra(Date fecha_compra) {
+        this.fecha_compra = fecha_compra;
+    }
+
+    public void setPrecio_kg_oliva(float precio_kg_oliva) {
+        this.precio_kg_oliva = precio_kg_oliva;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
     
     /*******************Cálculos**************************/

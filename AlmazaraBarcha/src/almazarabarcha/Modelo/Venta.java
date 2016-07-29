@@ -11,9 +11,12 @@ public class Venta {
     private ArrayList<TipoAceite> tiposaceites;
     private ArrayList<TipoEnvase> tiposenvases;
     private boolean regalar_envases;
+    int id;
 
 
     public Venta() {
+        id = 0;
+        
         tiposaceites.add(new TipoAceite("Lampante",(float) 1.25, false));
         tiposaceites.add(new TipoAceite("Extra",(float) 5.0, false));
         tiposaceites.add(new TipoAceite("Arberquina",(float) 6.0, false));
@@ -139,5 +142,13 @@ public class Venta {
 
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

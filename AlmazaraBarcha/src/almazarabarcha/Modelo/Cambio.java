@@ -7,6 +7,7 @@ public class Cambio {
     private static final float RENDIMIENTO_MULTURACION_ECONOMICO = (float)0.15;    //€
     private static final float RENDIMIENTO_MAQUILA_KG = (float)0.04;               //Sirve para calcular la maquila a reflejar          
     
+    private int id;
     private Date fecha;
     private float kg_oliva;
     private boolean paga;
@@ -21,6 +22,7 @@ public class Cambio {
     private float total_real_pagar;
     
     public Cambio() {
+        id = 0;
         kg_oliva = 0;
         paga = false;
         retira = false;
@@ -60,6 +62,10 @@ public class Cambio {
 
     public float getTotal_real_pagar() {
         return total_real_pagar;
+    }
+    
+    public int getId() {
+        return id;
     }
     
     
@@ -125,6 +131,11 @@ public class Cambio {
     public void setTotal_real_pagar(float total_real_pagar) {
         this.total_real_pagar = total_real_pagar;
     }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    
   
     /********************Cálculos***************************/
     /**
