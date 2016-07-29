@@ -8,9 +8,8 @@ public class GestorAlmazara {
     ArrayList compras;
     ArrayList molturaciones;
 
-    public GestorAlmazara(Cliente c, ArrayList clientes) {
-        this.cliente = c;
-        this.clientes = clientes;
+    public GestorAlmazara() {
+      
     }
     public void AnyadirClientes(Cliente c){
         clientes = new ArrayList();
