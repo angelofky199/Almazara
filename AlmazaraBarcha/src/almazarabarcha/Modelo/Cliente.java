@@ -4,12 +4,15 @@ import java.util.Date;
 
 public class Cliente {
     
+    private int ALVONDIGA_DEL_MERCADONA;
+    
     private String nombre_cliente;  //*
     private String dni;
     private String direccion;
     private String poblacion;
     private String telefono;
     private Date fecha;
+    
 
     public Cliente(String nombre_cliente, String dni, String direccion, String poblacion, String telefono, Date fecha) {
         this.nombre_cliente = nombre_cliente;

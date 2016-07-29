@@ -106,7 +106,7 @@ public class Compra {
         {
             maquila_reflejada = (float) (kg_oliva * 0.15);
         }
-        else if(!declara)
+        else if(declara)
         {
             maquila_reflejada = (float) (kg_oliva * 0.04);
         }
