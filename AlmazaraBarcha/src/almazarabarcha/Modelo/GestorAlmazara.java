@@ -34,9 +34,9 @@ public class GestorAlmazara {
      * @param nombre_cliente
      * @return devuelve true si existe el cliente
      */
-    public boolean addVenta(Venta venta, String nombre_cliente){
+   /* public boolean addVenta(Venta venta, String nombre_cliente){
         
-    }
+    }*/
     
     /**
      * Añade una molturación a un cliente
@@ -50,7 +50,7 @@ public class GestorAlmazara {
        
         pos = buscarCliente(nombre_cliente);
         
-        if(pos >= 0)
+        if(pos == -1)
             ok = false;
         else
             clientes.get(pos).addMolturacion(molturacion);
@@ -59,13 +59,19 @@ public class GestorAlmazara {
        
     }
     
+    /**
+     * Añade una compra a un cliente
+     * @param compra
+     * @param nombre_cliente
+     * @return devuelve true si existe el cliente
+     */
     public boolean addCompra(Compra compra, String nombre_cliente){
         boolean ok = true;
         int pos;
        
         pos = buscarCliente(nombre_cliente);
         
-        if(pos >= 0)
+        if(pos == -1)
             ok = false;
         else
             clientes.get(pos).addCompra(compra);
@@ -73,8 +79,24 @@ public class GestorAlmazara {
         return ok;
     }
     
+    /**
+     * Añade un cambio a un cliente
+     * @param cambio
+     * @param nombre_cliente
+     * @return devuelve true si existe el cliente
+     */
     public boolean addCambio(Cambio cambio, String nombre_cliente){
+        boolean ok = true;
+        int pos;
+       
+        pos = buscarCliente(nombre_cliente);
         
+        if(pos == -1)
+            ok = false;
+        else
+            clientes.get(pos).addCambio(cambio);
+        
+        return ok;
     }
     
     
@@ -95,6 +117,10 @@ public class GestorAlmazara {
 
         return pos;
     }
+    /*
+    public int buscarVenta(String nombre, int id){
+        pos
+    }*/
     
     public String mostrar(){
         

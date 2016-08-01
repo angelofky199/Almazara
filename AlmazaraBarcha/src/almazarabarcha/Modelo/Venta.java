@@ -11,7 +11,9 @@ public class Venta {
     private ArrayList<TipoAceite> tiposaceites;
     private ArrayList<TipoEnvase> tiposenvases;
     private boolean regalar_envases;
+    public static int cont_id;  //variable compartida por todas las ventas
     int id;
+    
 
 
     public Venta() {
@@ -148,7 +150,11 @@ public class Venta {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    /**
+     * Increme
+     */
+    public void setId() {
+        cont_id++;
+        id = cont_id;
     }
 }

@@ -80,7 +80,7 @@ public class Cliente {
         this.telefono = telefono;
     }    
 
-    /***************Operaciones**************************/
+    /***************Adders**************************/
     
     public void addCambio(Cambio cambio){
         cambios.add(cambio);
@@ -109,6 +109,7 @@ public class Cliente {
         ventas.add(venta);
     }
     
+    /******************Sizers**********************/
     public int sizeCambios(){
         return cambios.size();
     }
@@ -124,5 +125,23 @@ public class Cliente {
     public int sizeVentas(){
         return ventas.size();
     }
+    
+    /*****************Buscadores*********************/
+    /**
+     * Busca una venta por id
+     * @param id
+     * @return Devuelve un resultado mayor que -1 si exista la venta
+     */
+    public int buscarVenta(int id){
+         int i;
+        int pos = -1;
+        
+        for(i = 0; i < ventas.size() && pos == -1; i++)
+            if (id == ventas.get(i).getId());
+                pos = i;
+
+        return pos;
+    }
+    /*****************Modifiers***********************/
 
 }
