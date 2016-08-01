@@ -29,16 +29,6 @@ public class GestorAlmazara {
     }
     
     /**
-     * Añade un molturación aun cliente
-     * @param venta
-     * @param nombre_cliente
-     * @return devuelve true si existe el cliente
-     */
-    public boolean addVenta(Venta venta, String nombre_cliente){
-        
-    }
-    
-    /**
      * Añade una molturación a un cliente
      * @param molturacion
      * @param nombre_cliente
@@ -59,22 +49,10 @@ public class GestorAlmazara {
        
     }
     
-    public boolean addCompra(Compra compra, String nombre_cliente){
-        boolean ok = true;
-        int pos;
-       
-        pos = buscarCliente(nombre_cliente);
-        
-        if(pos >= 0)
-            ok = false;
-        else
-            clientes.get(pos).addCompra(compra);
-        
-        return ok;
+    public void AnyadirCompras(Compra compra){
+        //compras = new ArrayList();
+        //compras.add(compra);
     }
-    
-    public boolean
-    
     
     
     /*************************Operaciones****************************/

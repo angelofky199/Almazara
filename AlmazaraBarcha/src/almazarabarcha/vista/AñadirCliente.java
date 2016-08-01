@@ -172,7 +172,7 @@ public class AñadirCliente extends javax.swing.JFrame {
         c.setPoblacion(ac.jTextField4.getText());
         c.setTelefono(ac.jTextField5.getText());
         
-        gestor.addCliente(c);
+        gestor.AnyadirClientes(c);
         
         jTextField1.setText(null);
         jTextField2.setText(null);

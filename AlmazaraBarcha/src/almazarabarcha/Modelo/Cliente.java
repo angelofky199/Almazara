@@ -82,10 +82,10 @@ public class Cliente {
 
     /***************Operaciones**************************/
     
-    public void addCambio(Cambio cambio){
+    public void AddCambios(Cambio cambio){
         cambios.add(cambio);
     }
-    public void addCompra(Compra compra){
+    public void AddCompras(Compra compra){
         compras.add(compra);
     }
     
