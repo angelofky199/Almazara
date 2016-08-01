@@ -14,12 +14,13 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class AñadirCliente extends javax.swing.JFrame {
-
+    GestorAlmazara gestor;
     /**
      * Creates new form AñadirCliente
      */
     public AñadirCliente() {
         initComponents();
+        gestor = new GestorAlmazara();
     }
 
     /**
@@ -166,7 +167,6 @@ public class AñadirCliente extends javax.swing.JFrame {
         boolean ok;
         
         Cliente c = new Cliente();
-        GestorAlmazara gestor = new GestorAlmazara();
         c.setDni(ac.jTextField1.getText());
         c.setNombre_cliente(ac.jTextField2.getText());
         c.setDireccion(ac.jTextField3.getText());
@@ -228,6 +228,7 @@ public class AñadirCliente extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AñadirCliente().setVisible(true);
+                
             }
         });
     }
