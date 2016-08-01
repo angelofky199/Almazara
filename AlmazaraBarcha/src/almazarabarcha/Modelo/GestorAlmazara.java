@@ -123,9 +123,14 @@ public class GestorAlmazara {
     }*/
     
     public String mostrar(){
+       
         
        
-         return (clientes.get(0).getNombre_cliente());
+       //System.out.println("Cliente: " + clientes.get(0).getNombre_cliente());
+         return (clientes.get(1).getNombre_cliente());
+      
+         
+         
         
     }
 }
