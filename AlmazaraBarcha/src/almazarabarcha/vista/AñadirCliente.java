@@ -7,6 +7,7 @@ package almazarabarcha.vista;
 
 import almazarabarcha.Modelo.Cliente;
 import almazarabarcha.Modelo.GestorAlmazara;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,7 @@ public class AñadirCliente extends javax.swing.JFrame {
     public AñadirCliente() {
         initComponents();
         gestor = new GestorAlmazara();
+        
     }
 
     /**
