@@ -34,9 +34,22 @@ public class GestorAlmazara {
      * @param nombre_cliente
      * @return devuelve true si existe el cliente
      */
-   /* public boolean addVenta(Venta venta, String nombre_cliente){
+    public boolean addVenta(Venta venta, String nombre_cliente){
+        boolean ok = true;
+        int pos;
+       
+        pos = buscarCliente(nombre_cliente);
         
-    }*/
+        if(pos == -1)
+            ok = false;
+        else{
+            venta.increaseId();
+            clientes.get(pos).addVenta(venta);
+        }
+            
+        
+        return ok;
+    }
     
     /**
      * Añade una molturación a un cliente

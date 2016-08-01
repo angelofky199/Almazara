@@ -20,6 +20,7 @@ public class Cambio {
     private float precio_oliva;
     private String observaciones;
     private float total_real_pagar;
+    private static int cont_id;
     
     public Cambio() {
         id = 0;
@@ -212,5 +213,10 @@ public class Cambio {
      */
     public float CalcularMaquilaReflejar(){
         return CalcularKgMolturadosReflejar()*RENDIMIENTO_MAQUILA_KG;
+    }
+    
+    public void increaseId() {
+        cont_id++;
+        id = cont_id;
     }
 }
