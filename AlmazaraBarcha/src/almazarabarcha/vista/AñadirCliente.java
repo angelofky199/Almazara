@@ -163,6 +163,7 @@ public class AñadirCliente extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         AñadirCliente ac = new AñadirCliente();
+        boolean ok;
         
         Cliente c = new Cliente();
         GestorAlmazara gestor = new GestorAlmazara();
@@ -172,7 +173,9 @@ public class AñadirCliente extends javax.swing.JFrame {
         c.setPoblacion(ac.jTextField4.getText());
         c.setTelefono(ac.jTextField5.getText());
         
-        if(!gestor.addCliente(c))
+        ok = gestor.addCliente(c);
+        
+        if(!ok)
             JOptionPane.showMessageDialog(null,"Ya existe un cliente con ese nombre");
         else 
             JOptionPane.showMessageDialog(null,"El cliente se ha añadido correctamente");
