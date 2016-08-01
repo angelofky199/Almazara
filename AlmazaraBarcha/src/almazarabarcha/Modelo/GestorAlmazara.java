@@ -3,26 +3,75 @@ package almazarabarcha.Modelo;
 import java.util.ArrayList;
 
 public class GestorAlmazara {
-    Cliente cliente = new Cliente(null, null, null, null, null);
-    ArrayList<Cliente> clientes;
+    private ArrayList<Cliente> clientes;
 
 
     public GestorAlmazara() {
-   
+        clientes = new ArrayList<>();
     }
-    public void AnyadirClientes(Cliente c){
-        clientes = new ArrayList();
-        clientes.add(c);
+ 
+    
+    /*************************Adders************************************/
+    /**
+     * Añade un cliente en el caso de que no exista ninguno con el mismo nombre
+     * @param c cliente a añadir
+     * @return devuelve un valor booleano en función si se ha podido añadir o no
+     */
+    public boolean addCliente(Cliente c){
+        boolean ok = true;
+        
+        if(buscarCliente(c.getNombre_cliente()) >= 0)
+            ok = false;
+        else
+            clientes.add(c);
+        
+        return ok;
     }
-    public void AnyadirMolturaciones(Molturacion molturacion){
-        molturacion = new Molturacion();
-       // molturaciones.add(molturacion);
+    
+    /**
+     * Añade una molturación a un cliente
+     * @param molturacion
+     * @param nombre_cliente
+     * @return devuelve true si existe el cliente
+     */
+    public boolean addMolturacion(Molturacion molturacion, String nombre_cliente){
+        boolean ok = true;
+        int pos;
+       
+        pos = buscarCliente(nombre_cliente);
+        
+        if(pos >= 0)
+            ok = false;
+        else
+            clientes.get(pos).addMolturacion(molturacion);
+        
+        return ok;
+       
     }
     
     public void AnyadirCompras(Compra compra){
         //compras = new ArrayList();
         //compras.add(compra);
     }
+    
+    
+    /*************************Operaciones****************************/
+    /**
+     * Busca un cliente en el arraylist clientes
+     * @param nombre nombre del cliente a buscar
+     * @return posición del cliente en el arraylist, devuelve -1 si no existe
+     */
+    public int buscarCliente(String nombre){
+        int i;
+        int pos = -1;
+        
+        for(i = 0; i < clientes.size() && pos == -1; i++)
+            if (nombre.equals(clientes.get(i).getNombre_cliente()))
+                pos = i;
+
+        return pos;
+    }
+    
     public String mostrar(){
         
        

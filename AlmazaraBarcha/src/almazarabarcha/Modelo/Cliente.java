@@ -8,6 +8,7 @@ public class Cliente {
     private String direccion;
     private String poblacion;
     private String telefono;
+    private int repeticiones;
     
     private ArrayList<Cambio> cambios;
     private ArrayList<Compra> compras;
@@ -27,7 +28,7 @@ public class Cliente {
         compras = new ArrayList<>();
         molturaciones = new ArrayList<>();
         ventas = new ArrayList<>();
-    
+        
     }
     
     public Cliente() {
