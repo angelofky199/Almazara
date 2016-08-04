@@ -12,6 +12,7 @@ public class Compra {
     private boolean subencionado;
     private boolean declara;
     private boolean factura;
+    private static int cont_id;
 
     public Compra(){
         int id = 0;
@@ -134,6 +135,11 @@ public class Compra {
      */
     public float TotalCompras(){
         return kg_oliva * precio_kg_oliva;
+    }
+    
+    public void increaseId() {
+        cont_id++;
+        id = cont_id;
     }
     
 }

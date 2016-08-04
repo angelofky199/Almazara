@@ -15,6 +15,7 @@ public class Molturacion {
     private boolean subencionado;
     private boolean declara;
     private boolean factura;
+    private static int cont_id;
     
     public Molturacion() {
         id = 0;
@@ -164,6 +165,11 @@ public class Molturacion {
             return kg_oliva;
         else
             return 0;
+    }
+    
+    public void increaseId() {
+        cont_id++;
+        id = cont_id;
     }
     
     

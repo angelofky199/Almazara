@@ -151,9 +151,9 @@ public class Venta {
     }
 
     /**
-     * Increme
+     * Incrementa el Id a partir del último id insertado
      */
-    public void setId() {
+    public void increaseId() {
         cont_id++;
         id = cont_id;
     }
