@@ -5,17 +5,21 @@
  */
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.GestorAlmazara;
+
 /**
  *
  * @author Usuario
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-
+    GestorAlmazara gestor;
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
+        
         initComponents();
+        gestor = new GestorAlmazara();
         //this.setSize(1000, 700);
     }
 
@@ -177,7 +181,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        SeleccionarCliente sc = new SeleccionarCliente();
+        SeleccionarCliente sc = new SeleccionarCliente(gestor);
         jPanel1.removeAll();
         jPanel1.add(sc.getContentPane());
         jPanel1.repaint();

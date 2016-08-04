@@ -19,10 +19,15 @@ public class SeleccionarCliente extends javax.swing.JFrame {
     /**
      * Creates new form SeleccionarCliente
      */
-    public SeleccionarCliente() {
+    public SeleccionarCliente(GestorAlmazara gestor) {
         Cliente c;
         initComponents();
-        gestor = new GestorAlmazara();
+        this.gestor = gestor;
+        
+    }
+
+    private SeleccionarCliente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
