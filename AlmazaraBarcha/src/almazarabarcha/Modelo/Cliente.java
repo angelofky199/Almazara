@@ -226,6 +226,10 @@ public class Cliente {
 
         return pos;
     }
-    /*****************Modifiers***********************/
-
+/*****************Modifiers***********************/
+    public boolean modifyCompra(){
+        boolean ok = false;
+        
+        return ok;
+    }
 }

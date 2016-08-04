@@ -14,15 +14,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Usuario
  */
-public class SeleccionarCliente extends javax.swing.JFrame {
-    GestorAlmazara gestor;
+public class SeleccionarCliente extends VistaGestor{
+    //GestorAlmazara gestor;
     /**
      * Creates new form SeleccionarCliente
      */
     public SeleccionarCliente(GestorAlmazara gestor) {
         Cliente c;
         initComponents();
-        this.gestor = gestor;
+        //this.gestor = gestor;
         
     }
 

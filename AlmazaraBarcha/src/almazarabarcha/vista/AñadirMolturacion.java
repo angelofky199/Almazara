@@ -9,7 +9,7 @@ package almazarabarcha.vista;
  *
  * @author Usuario
  */
-public class AñadirMolturacion extends javax.swing.JFrame {
+public class AñadirMolturacion extends VistaGestor {
 
     /**
      * Creates new form AñadirMolturacion

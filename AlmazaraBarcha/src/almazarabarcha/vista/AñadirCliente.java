@@ -13,14 +13,14 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-public class AñadirCliente extends javax.swing.JFrame {
-    GestorAlmazara gestor;
+public class AñadirCliente extends VistaGestor {
+    //GestorAlmazara gestor;
     /**
      * Creates new form AñadirCliente
      */
     public AñadirCliente() {
         initComponents();
-        gestor = new GestorAlmazara();
+        //gestor = new GestorAlmazara();
         
     }
 

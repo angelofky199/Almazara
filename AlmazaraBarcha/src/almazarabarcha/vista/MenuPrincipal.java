@@ -11,15 +11,15 @@ import almazarabarcha.Modelo.GestorAlmazara;
  *
  * @author Usuario
  */
-public class MenuPrincipal extends javax.swing.JFrame {
-    GestorAlmazara gestor;
+public class MenuPrincipal extends VistaGestor {
+    //GestorAlmazara gestor;
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         
         initComponents();
-        gestor = new GestorAlmazara();
+        //gestor = new GestorAlmazara();
         //this.setSize(1000, 700);
     }
 
