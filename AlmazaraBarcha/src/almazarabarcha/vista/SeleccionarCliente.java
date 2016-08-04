@@ -8,6 +8,7 @@ package almazarabarcha.vista;
 import almazarabarcha.Modelo.Cliente;
 import almazarabarcha.Modelo.GestorAlmazara;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -115,6 +116,7 @@ public class SeleccionarCliente extends VistaGestor{
         
         Object[] fila = new Object[4];
         DefaultTableModel datos = new DefaultTableModel();
+       
         
         for(int i = 0; i < clientes.size();i++ )
         {
@@ -125,11 +127,10 @@ public class SeleccionarCliente extends VistaGestor{
                 fila[2] = clientes.get(i).getDireccion();
                 fila[3] = clientes.get(i).getTelefono();
                 datos.addRow(fila);
-            
             }
-                
             
         }
+        jTable1.setModel(datos);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
