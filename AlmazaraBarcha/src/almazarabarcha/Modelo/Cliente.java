@@ -212,9 +212,41 @@ public class Cliente {
     
     /*****************Buscadores*********************/
     /**
+     * Busca un cambio por id
+     * @param id
+     * @return Devuelve un resultado mayor que -1 si exite el cambio
+     */
+    public int buscarCambio(int id){
+         int i;
+        int pos = -1;
+        
+        for(i = 0; i < cambios.size() && pos == -1; i++)
+            if (id == cambios.get(i).getId());
+                pos = i;
+
+        return pos;
+    }
+    
+    /**
+     * Busca una compra por id
+     * @param id
+     * @return Devuelve un resultado mayor que -1 si existe la compra
+     */
+    public int buscarCompra(int id){
+         int i;
+        int pos = -1;
+        
+        for(i = 0; i < compras.size() && pos == -1; i++)
+            if (id == compras.get(i).getId());
+                pos = i;
+
+        return pos;
+    }
+    
+    /**
      * Busca una venta por id
      * @param id
-     * @return Devuelve un resultado mayor que -1 si exista la venta
+     * @return Devuelve un resultado mayor que -1 si existe la venta
      */
     public int buscarVenta(int id){
          int i;
@@ -226,10 +258,145 @@ public class Cliente {
 
         return pos;
     }
+    
+    /**
+     * Busca una molturación por id
+     * @param id
+     * @return Devuelve un resultado mayor que -1 si existe la venta
+     */
+    public int buscarMolturacion(int id){
+         int i;
+        int pos = -1;
+        
+        for(i = 0; i < molturaciones.size() && pos == -1; i++)
+            if (id == molturaciones.get(i).getId());
+                pos = i;
+
+        return pos;
+    }
+    
+    
+    
+    
 /*****************Modifiers***********************/
-    public boolean modifyCompra(){
+    public boolean modifyCambio(Cambio cambio){
         boolean ok = false;
+        int i;
+        
+        for(i = 0; i < cambios.get(i).getId() && !ok; i++)
+            if(cambio.getId() == cambios.get(i).getId())
+                if(!cambios.get(i).isFactura()){
+                    cambios.set(i, cambio);
+                    ok = true;
+                }
         
         return ok;
     }
+    
+    public boolean modifyCompra(Compra compra){
+        boolean ok = false;
+        int i;
+        
+        
+        
+        for(i = 0; i < compras.get(i).getId() && !ok; i++)
+            if(compra.getId() == compras.get(i).getId())
+                if(!compras.get(i).isFactura()){
+                    compras.set(i, compra);
+                    ok = true;
+                }
+                
+        return ok;
+    }
+    
+    public boolean modifyMolturacion(Molturacion molturacion){
+        boolean ok = false;
+        int i;
+        
+        for(i = 0; i < molturaciones.get(i).getId() && !ok; i++)
+            if(molturacion.getId() == molturaciones.get(i).getId())
+                if(!molturaciones.get(i).isFactura()){
+                    molturaciones.set(i, molturacion);
+                    ok = true;
+                }
+            
+        return ok;
+    }
+    
+    public boolean modifyVenta(Venta venta){
+        boolean ok = false;     
+        int i;
+        
+        for(i = 0; i < ventas.get(i).getId() && !ok; i++)
+            if(venta.getId() == ventas.get(i).getId())
+                if(!ventas.get(i).isFactura_realizada()){
+                    ventas.set(i, venta);
+                    ok = true;
+                }
+        
+        return ok;
+    }
+    
+/*******************************Removers****************************/
+    public boolean deleteCambio(int id){
+        boolean ok = false;
+        int i;
+        int pos;
+        
+        pos = buscarCambio(id);
+        
+        if(pos > -1){
+            cambios.remove(pos);
+            ok = true;
+        }
+            
+        return ok;
+    }
+    
+    public boolean deleteCompra(int id){
+        boolean ok = false;
+        int i;
+        int pos;
+        
+        pos = buscarCompra(id);
+        
+        if(pos > -1){
+            compras.remove(pos);
+            ok = true;
+        }
+            
+        return ok;
+    }
+    
+    public boolean deleteMolturacion(int id){
+        boolean ok = false;
+        int i;
+        int pos;
+        
+        pos = buscarMolturacion(id);
+        
+        if(pos > -1){
+            molturaciones.remove(pos);
+            ok = true;
+        }
+            
+        return ok;
+    }
+    
+    public boolean deleteVenta(int id){
+        boolean ok = false;
+        int i;
+        int pos;
+        
+        pos = buscarVenta(id);
+        
+        if(pos > -1){
+            ventas.remove(pos);
+            ok = true;
+        }
+            
+        return ok;
+    }
+    
+    
 }
