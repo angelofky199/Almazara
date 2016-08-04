@@ -65,8 +65,11 @@ public class GestorAlmazara {
         
         if(pos == -1)
             ok = false;
-        else
+        else{
+            molturacion.increaseId();
             clientes.get(pos).addMolturacion(molturacion);
+        }
+            
         
         return ok;
        
@@ -86,8 +89,11 @@ public class GestorAlmazara {
         
         if(pos == -1)
             ok = false;
-        else
+        else{
+            compra.increaseId();
             clientes.get(pos).addCompra(compra);
+        }
+            
         
         return ok;
     }
@@ -106,8 +112,11 @@ public class GestorAlmazara {
         
         if(pos == -1)
             ok = false;
-        else
-            clientes.get(pos).addCambio(cambio);
+        else{
+            cambio.increaseId();
+            clientes.get(pos).addCambio(cambio); 
+        }
+            
         
         return ok;
     }
@@ -130,20 +139,27 @@ public class GestorAlmazara {
 
         return pos;
     }
-    /*
-    public int buscarVenta(String nombre, int id){
-        pos
-    }*/
+    
+    public ArrayList<Venta> getVentasActivas(String nombre){
+        ArrayList<Venta> ventas_activas = new ArrayList<>();
+        int i;
+        int pos;
+        
+        pos = buscarCliente(nombre);
+        
+        for(i = 0; i < clientes.get(i).getVentas().size(); i++){
+            
+        }
+        
+        return ventas_activas;
+    }
     
     public String mostrar(){
-       
-        
-       
        //System.out.println("Cliente: " + clientes.get(0).getNombre_cliente());
-         return (clientes.get(1).getNombre_cliente());
-      
-         
-         
-        
+         return (clientes.get(1).getNombre_cliente());   
+    }
+    
+    public ArrayList<Cliente> getClientes(){
+        return clientes;
     }
 }

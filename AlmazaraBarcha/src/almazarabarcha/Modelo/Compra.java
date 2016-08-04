@@ -141,6 +141,5 @@ public class Compra {
         cont_id++;
         id = cont_id;
     }
-    
 }
 
