@@ -30,44 +30,6 @@ public class Venta {
         tiposenvases.add(new TipoEnvase((float)25.0,(float)3.0));
     }
        
-    /**********************VenderProductos*********************/
-    /**
-     * Realiza una venta de envases de un cierto tamaño
-     * 
-     * @param tipo      Es el tipo del envase 0 - 0.75L(Cristal), 1 - 5L, 2 - 10L, 3 - 25L
-     * @param cantidad  Es la cantidad de envases a vender
-     * 
-     * @return devuelve si se puede realizar la venta
-     */
-    public boolean venderEnvase(int tipo, int cantidad){
-        boolean ok = true;
-        
-        if(cantidad>0 && tipo>=0 && tipo<tiposenvases.size())
-            tiposenvases.get(tipo).add(cantidad);
-        else
-            ok = false;
-        
-        return ok;
-    }
-    
-    /**
-     * Vende una cierta cantidad de litros de un tipo de aceite
-     * 
-     * @param tipo 0 - Lampante, 1 - Extra, 2 - Arberquina, 3 - Bote Flor, 4 - Bote Extra
-     * @param cantidad En litros, excepto en los botes
-     * 
-     * @return devuelve si se puede realizar la venta
-     */
-    public boolean venderAceite(int tipo, float cantidad){
-        boolean ok = true;
-        
-        if(cantidad>0 && tipo>=0 && tipo<tiposaceites.size())
-            tiposaceites.get(tipo).addCantidad(cantidad);
-        else
-            ok = false;
-        
-        return ok;
-    }
   
     /****************************Gettters**********************/
     /**
@@ -127,29 +89,76 @@ public class Venta {
         return regalar_envases;
     }
 
-    public void setRegalar_envases(boolean regalar_envases) {
-        this.regalar_envases = regalar_envases;
-    }
+    
 
     public boolean isFactura_realizada() {
         return factura_realizada;
     }
 
-    public void setFactura_realizada(boolean factura_realizada) {
-        this.factura_realizada = factura_realizada;
-    }
+    
     
     public String getObservaciones() {
         return observaciones;
     }
 
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
-
     public int getId() {
         return id;
     }
+    
+    
+/************************Setters***********************/
+    public void setRegalar_envases(boolean regalar_envases) {
+        this.regalar_envases = regalar_envases;
+    }
+    
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+    
+    public void setFactura_realizada(boolean factura_realizada) {
+        this.factura_realizada = factura_realizada;
+    }
+    
+    
+/**********************Operaciones*********************/
+    /**
+     * Realiza una venta de envases de un cierto tamaño
+     * 
+     * @param tipo      Es el tipo del envase 0 - 0.75L(Cristal), 1 - 5L, 2 - 10L, 3 - 25L
+     * @param cantidad  Es la cantidad de envases a vender
+     * 
+     * @return devuelve si se puede realizar la venta
+     */
+    public boolean venderEnvase(int tipo, int cantidad){
+        boolean ok = true;
+        
+        if(cantidad>0 && tipo>=0 && tipo<tiposenvases.size())
+            tiposenvases.get(tipo).add(cantidad);
+        else
+            ok = false;
+        
+        return ok;
+    }
+    
+    /**
+     * Vende una cierta cantidad de litros de un tipo de aceite
+     * 
+     * @param tipo 0 - Lampante, 1 - Extra, 2 - Arberquina, 3 - Bote Flor, 4 - Bote Extra
+     * @param cantidad En litros, excepto en los botes
+     * 
+     * @return devuelve si se puede realizar la venta
+     */
+    public boolean venderAceite(int tipo, float cantidad){
+        boolean ok = true;
+        
+        if(cantidad>0 && tipo>=0 && tipo<tiposaceites.size())
+            tiposaceites.get(tipo).addCantidad(cantidad);
+        else
+            ok = false;
+        
+        return ok;
+    }
+
 
     /**
      * Incrementa el Id a partir del último id insertado
