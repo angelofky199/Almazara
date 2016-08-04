@@ -30,7 +30,7 @@ public class Venta {
         tiposenvases.add(new TipoEnvase((float)25.0,(float)3.0));
     }
        
-    
+    /**********************VenderProductos*********************/
     /**
      * Realiza una venta de envases de un cierto tamaño
      * 
@@ -69,6 +69,7 @@ public class Venta {
         return ok;
     }
   
+    /****************************Gettters**********************/
     /**
      * Total de litros de un tipo de aceite
      * @param tipo 0 - Lampante, 1 - Extra, 2 - Arberquina, 3 - Bote Flor, 4 - Bote Extra

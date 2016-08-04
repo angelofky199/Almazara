@@ -39,7 +39,7 @@ public class Cliente {
         this.telefono = "";
         //this.fecha = fecha;
     }
-
+/************************Getters************************/
     public String getNombre_cliente() {
         return nombre_cliente;
     }
@@ -60,6 +60,25 @@ public class Cliente {
         return telefono;
     }
 
+    public ArrayList<Cambio> getCambios() {
+        return cambios;
+    }
+
+    public ArrayList<Compra> getCompras() {
+        return compras;
+    }
+
+    public ArrayList<Molturacion> getMolturaciones() {
+        return molturaciones;
+    }
+
+    public ArrayList<Venta> getVentas() {
+        return ventas;
+    }
+    
+    
+
+/************************Setters************************/
     public void setNombre_cliente(String nombre_cliente) {
         this.nombre_cliente = nombre_cliente;
     }
