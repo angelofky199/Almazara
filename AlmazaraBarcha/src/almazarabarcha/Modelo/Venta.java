@@ -120,6 +120,7 @@ public class Venta {
     }
     
     
+    
 /**********************Operaciones*********************/
     /**
      * Realiza una venta de envases de un cierto tamaño
