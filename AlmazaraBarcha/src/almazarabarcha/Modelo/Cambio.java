@@ -20,6 +20,7 @@ public class Cambio {
     private float precio_oliva;
     private String observaciones;
     private float total_real_pagar;
+    private boolean factura;
     private static int cont_id;
     
     public Cambio() {
@@ -34,6 +35,7 @@ public class Cambio {
         precio_oliva = (float) 0.26;            //por defecto es 0.26 €
         observaciones = "";
         total_real_pagar = (float)0.0;
+        factura = false;
     }
 
     /********************Getters***************************/
@@ -69,6 +71,9 @@ public class Cambio {
         return id;
     }
     
+    public String getObservaciones() {
+        return observaciones;
+    }   
     
     /********************IS***************************/
     public boolean isPaga() {
@@ -86,7 +91,12 @@ public class Cambio {
     public boolean isDeclara() {
         return declara;
     }
+
     
+    public boolean isFactura() {
+        return factura;
+    }
+
     /********************Setters***************************/
 
     public void setFecha(Date fecha) {
@@ -136,7 +146,14 @@ public class Cambio {
     public void setId(int id) {
         this.id = id;
     }
-    
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public void setFactura(boolean factura) {
+        this.factura = factura;
+    }    
   
     /********************Cálculos***************************/
     /**

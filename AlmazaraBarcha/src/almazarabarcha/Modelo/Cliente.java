@@ -76,9 +76,74 @@ public class Cliente {
         return ventas;
     }
     
+    /**
+     * Devuelve las ventas no facturadas como ventas activas
+     * @return ventas activas
+     */
+    public ArrayList<Venta> getVentasActivas(){
+        int i;
+        ArrayList<Venta> ventas_activas = new ArrayList<>();
+                
+        for(i = 0; i < ventas.size(); i++)
+            if(!ventas.get(i).isFactura_realizada()) //Selecciona las ventas no facturadas
+                ventas_activas.add(ventas.get(i));
+            
+        return ventas_activas;
+    }
+    
+    /**
+     * Devuelve las molturaciones no facturadas como molturaciones activas
+     * @return molturaciones activas
+     */
+    public ArrayList<Molturacion> getMolturacionesActivas(){
+        int i;
+        ArrayList<Molturacion> molturaciones_activas = new ArrayList<>();
+                
+        for(i = 0; i < molturaciones.size(); i++)
+            if(!molturaciones.get(i).isFactura()) //Selecciona las molturaciones no facturadas
+                molturaciones_activas.add(molturaciones.get(i));
+            
+        return molturaciones_activas;
+    }
+    
+    /**
+     * Devuelve las compras no facturadas como compras activas
+     * @return molturaciones activas
+     */
+    public ArrayList<Compra> getComprasActivas(){
+        int i;
+        ArrayList<Compra> compras_activas = new ArrayList<>();
+                
+        for(i = 0; i < compras.size(); i++)
+            if(!compras.get(i).isFactura()) //Selecciona las compras no facturadas
+                compras_activas.add(compras.get(i));
+            
+        return compras_activas;
+    }
+    
+    /**
+     * Devuelve los cambios no facturados como cambios activos
+     * @return molturaciones activas
+     */
+    public ArrayList<Cambio> getCambiosActivos(){
+        int i;
+        ArrayList<Cambio> cambios_activos = new ArrayList<>();
+                
+        for(i = 0; i < cambios.size(); i++)
+            if(!cambios.get(i).isFactura()) //Selecciona los cambios no facturados
+                cambios_activos.add(cambios.get(i));
+            
+        return cambios_activos;
+    }
+    
     
 
 /************************Setters************************/
+
+    /**
+     * Setters
+     * @param nombre_cliente
+     */
     public void setNombre_cliente(String nombre_cliente) {
         this.nombre_cliente = nombre_cliente;
     }

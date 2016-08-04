@@ -121,6 +121,51 @@ public class GestorAlmazara {
         return ok;
     }
     
+    /****************************Getters****************************/
+     public ArrayList<Cambio> getCambiosActivosCliente(String nombre){
+        int pos;
+        
+        pos = buscarCliente(nombre);
+        
+        if(pos >  0)
+            return clientes.get(pos).getCambiosActivos();
+        else
+            return new ArrayList<>();
+    }
+    
+    public ArrayList<Compra> getComprasActivasCliente(String nombre){
+        int pos;
+        
+        pos = buscarCliente(nombre);
+        
+        if(pos >  0)
+            return clientes.get(pos).getComprasActivas();
+        else
+            return new ArrayList<>();
+    }
+    
+    public ArrayList<Molturacion> getMolturacionesActivasCliente(String nombre){
+        int pos;
+        
+        pos = buscarCliente(nombre);
+        
+        if(pos >  0)
+            return clientes.get(pos).getMolturacionesActivas();
+        else
+            return new ArrayList<>();
+    }
+    
+    public ArrayList<Venta> getVentasActivasCliente(String nombre){
+        int pos;
+        
+        pos = buscarCliente(nombre);
+        
+        if(pos >  0)
+            return clientes.get(pos).getVentasActivas();
+        else
+            return new ArrayList<>();
+    }
+    
     
     
     /*************************Operaciones****************************/
@@ -140,19 +185,7 @@ public class GestorAlmazara {
         return pos;
     }
     
-    public ArrayList<Venta> getVentasActivas(String nombre){
-        ArrayList<Venta> ventas_activas = new ArrayList<>();
-        int i;
-        int pos;
-        
-        pos = buscarCliente(nombre);
-        
-        for(i = 0; i < clientes.get(i).getVentas().size(); i++){
-            
-        }
-        
-        return ventas_activas;
-    }
+    
     
     public String mostrar(){
        //System.out.println("Cliente: " + clientes.get(0).getNombre_cliente());
