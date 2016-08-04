@@ -5,8 +5,6 @@
  */
 package almazarabarcha.vista;
 
-import java.awt.Color;
-
 /**
  *
  * @author Usuario
