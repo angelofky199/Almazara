@@ -177,7 +177,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        SeleccionarCliente sc = new SeleccionarCliente();
+        jPanel1.removeAll();
+        jPanel1.add(sc.getContentPane());
+        jPanel1.repaint();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**

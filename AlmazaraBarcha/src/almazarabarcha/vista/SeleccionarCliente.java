@@ -6,19 +6,23 @@
 package almazarabarcha.vista;
 
 import almazarabarcha.Modelo.Cliente;
+import almazarabarcha.Modelo.GestorAlmazara;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Usuario
  */
 public class SeleccionarCliente extends javax.swing.JFrame {
-
+    GestorAlmazara gestor;
     /**
      * Creates new form SeleccionarCliente
      */
     public SeleccionarCliente() {
         Cliente c;
         initComponents();
+        gestor = new GestorAlmazara();
     }
 
     /**
@@ -45,11 +49,11 @@ public class SeleccionarCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "DNI", "Direccion", "Telefono", "Subencionado"
+                "Nombre", "DNI", "Direccion", "Telefono"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -98,12 +102,31 @@ public class SeleccionarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Cliente c;
-        Gestor g;
+       
         String text_nombre;
+       
         String text_DNI;
+        ArrayList<Cliente> clientes;
         
-        //for(int i = 0; i<= )
+        clientes = gestor.getClientes();
+        
+        Object[] fila = new Object[4];
+        DefaultTableModel datos = new DefaultTableModel();
+        
+        for(int i = 0; i<= clientes.size();i++ )
+        {
+            if(clientes.get(i).getNombre_cliente() == jTextField1.getText())
+            {
+                fila[0] = clientes.get(i).getNombre_cliente();
+                fila[2] = clientes.get(i).getDni();
+                fila[3] = clientes.get(i).getDireccion();
+                fila[4] = clientes.get(i).getTelefono();
+                datos.addRow(fila);
+            
+            }
+                
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
