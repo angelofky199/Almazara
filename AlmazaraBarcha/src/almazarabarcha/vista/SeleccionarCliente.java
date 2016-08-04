@@ -108,9 +108,7 @@ public class SeleccionarCliente extends VistaGestor{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-        String text_nombre;
        
-        String text_DNI;
         ArrayList<Cliente> clientes;
         
         clientes = gestor.getClientes();
@@ -118,14 +116,14 @@ public class SeleccionarCliente extends VistaGestor{
         Object[] fila = new Object[4];
         DefaultTableModel datos = new DefaultTableModel();
         
-        for(int i = 0; i<= clientes.size();i++ )
+        for(int i = 0; i < clientes.size();i++ )
         {
-            if(clientes.get(i).getNombre_cliente() == jTextField1.getText())
+            if(clientes.get(i).getNombre_cliente()==(jTextField1.getText()))
             {
                 fila[0] = clientes.get(i).getNombre_cliente();
-                fila[2] = clientes.get(i).getDni();
-                fila[3] = clientes.get(i).getDireccion();
-                fila[4] = clientes.get(i).getTelefono();
+                fila[1] = clientes.get(i).getDni();
+                fila[2] = clientes.get(i).getDireccion();
+                fila[3] = clientes.get(i).getTelefono();
                 datos.addRow(fila);
             
             }
