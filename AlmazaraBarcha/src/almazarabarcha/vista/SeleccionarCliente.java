@@ -8,7 +8,6 @@ package almazarabarcha.vista;
 import almazarabarcha.Modelo.Cliente;
 import almazarabarcha.Modelo.GestorAlmazara;
 import java.util.ArrayList;
-import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,12 +22,69 @@ public class SeleccionarCliente extends VistaGestor{
     public SeleccionarCliente(GestorAlmazara gestor) {
         Cliente c;
         initComponents();
+        this.filtro("");
         //this.gestor = gestor;
         
     }
+   
 
     private SeleccionarCliente() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private void filtro(String nombre_buscar){
+        int i;        
+        Object[] fila = new Object[4];
+        DefaultTableModel modelo = (DefaultTableModel) tabla_filtro.getModel();
+        ArrayList<Cliente> seleccionados = new ArrayList<>();
+        
+        
+        int num_filas = modelo.getRowCount();
+        for(i = 0; i < num_filas; i++)
+                modelo.removeRow(0);
+        
+        if(nombre_buscar.isEmpty()){
+            for(i = 0; i < gestor.getClientes().size();i++ )
+            {
+                    fila[0] = gestor.getClientes().get(i).getNombre_cliente();
+                    fila[1] = gestor.getClientes().get(i).getDni();
+                    fila[2] = gestor.getClientes().get(i).getDireccion();
+                    fila[3] = gestor.getClientes().get(i).getTelefono();
+                    modelo.addRow(fila);
+            }
+        }
+        else{
+            seleccionados = contenidoEn(nombre_buscar);
+            
+            for(i = 0; i < seleccionados.size();i++ )
+            {
+                fila[0] = seleccionados.get(i).getNombre_cliente();
+                fila[1] = seleccionados.get(i).getDni();
+                fila[2] = seleccionados.get(i).getDireccion();
+                fila[3] = seleccionados.get(i).getTelefono();
+                modelo.addRow(fila);
+            }
+        }
+        
+        
+        
+        tabla_filtro.setModel(modelo);
+    }
+    
+    public ArrayList<Cliente> contenidoEn(String nombre_buscar){
+        int i, j;
+        String nombre;
+        ArrayList<Cliente> seleccionados;
+        seleccionados = new ArrayList<>();
+        
+        for(i = 0; i < gestor.getClientes().size(); i++){
+            nombre = gestor.getClientes().get(i).getNombre_cliente();
+            if(nombre.length() >= nombre_buscar.length())
+                if(nombre.contains(nombre_buscar))
+                    seleccionados.add(gestor.getClientes().get(i));
+        }
+        
+        return seleccionados;
     }
 
     /**
@@ -41,16 +97,18 @@ public class SeleccionarCliente extends VistaGestor{
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        textfield_buscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tabla_filtro = new javax.swing.JTable();
+        button_buscar = new javax.swing.JButton();
+        javax.swing.JButton button_seleccionar = new javax.swing.JButton();
+        button_cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Buscar Cliente");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_filtro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -66,14 +124,23 @@ public class SeleccionarCliente extends VistaGestor{
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla_filtro);
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        button_buscar.setText("Buscar");
+        button_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                button_buscarActionPerformed(evt);
             }
         });
+
+        button_seleccionar.setText("Seleccionar");
+        button_seleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_seleccionarActionPerformed(evt);
+            }
+        });
+
+        button_cancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,14 +148,19 @@ public class SeleccionarCliente extends VistaGestor{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button_cancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(button_seleccionar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(textfield_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(button_buscar))))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,42 +169,41 @@ public class SeleccionarCliente extends VistaGestor{
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(textfield_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_buscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(button_seleccionar)
+                    .addComponent(button_cancelar))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-       
-        ArrayList<Cliente> clientes;
-        
-        clientes = gestor.getClientes();
-        
-        Object[] fila = new Object[4];
-        DefaultTableModel datos = new DefaultTableModel();
-       
-        
-        for(int i = 0; i < clientes.size();i++ )
-        {
-            if(clientes.get(i).getNombre_cliente()==(jTextField1.getText()))
-            {
-                fila[0] = clientes.get(i).getNombre_cliente();
-                fila[1] = clientes.get(i).getDni();
-                fila[2] = clientes.get(i).getDireccion();
-                fila[3] = clientes.get(i).getTelefono();
-                datos.addRow(fila);
-            }
-            
-        }
-        jTable1.setModel(datos);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void button_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_buscarActionPerformed
+        filtro(textfield_buscar.getText());
+    }//GEN-LAST:event_button_buscarActionPerformed
 
+    private void button_seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seleccionarActionPerformed
+        int fila = tabla_filtro.getSelectedRow();
+        String mostrar = "";
+        if(fila > -1){
+            mostrar += tabla_filtro.getValueAt(fila, 0) + "\n";
+            mostrar += tabla_filtro.getValueAt(fila, 1) + "\n";
+            mostrar += tabla_filtro.getValueAt(fila, 2) + "\n";
+            mostrar += tabla_filtro.getValueAt(fila, 3) + "\n";
+            mostrar += "............................" + "\n";
+            System.out.println(mostrar);
+        }else{
+            System.err.println("No se ha seleccionado ningún elemento");
+        }
+    }//GEN-LAST:event_button_seleccionarActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -169,10 +240,11 @@ public class SeleccionarCliente extends VistaGestor{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton button_buscar;
+    private javax.swing.JButton button_cancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabla_filtro;
+    private javax.swing.JTextField textfield_buscar;
     // End of variables declaration//GEN-END:variables
 }
