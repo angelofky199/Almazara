@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package almazarabarcha.vista;
 
 import almazarabarcha.Modelo.Cliente;
@@ -11,21 +6,15 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Usuario
- */
+
 public class SeleccionarCliente extends VistaGestor{
-    //GestorAlmazara gestor;
     /**
      * Creates new form SeleccionarCliente
      */
     public SeleccionarCliente(GestorAlmazara gestor) {
         Cliente c;
         initComponents();
-        this.filtro("");
-        //this.gestor = gestor;
-        
+        this.filtro("");        
     }
    
 
@@ -198,6 +187,8 @@ public class SeleccionarCliente extends VistaGestor{
             mostrar += tabla_filtro.getValueAt(fila, 3) + "\n";
             mostrar += "............................" + "\n";
             JOptionPane.showMessageDialog(null,"Se ha seleccionado el cliente correctamente");
+            
+            pos = gestor.buscarCliente((String) tabla_filtro.getValueAt(fila, 0));
         }else{
             JOptionPane.showMessageDialog(null,"No se ha seleccionado ningún elemento");
         }
@@ -209,6 +200,7 @@ public class SeleccionarCliente extends VistaGestor{
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

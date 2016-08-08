@@ -1,27 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package almazarabarcha.vista;
 
 import almazarabarcha.Modelo.Cliente;
-import almazarabarcha.Modelo.GestorAlmazara;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Usuario
- */
 public class AñadirCliente extends VistaGestor {
-    //GestorAlmazara gestor;
     /**
      * Creates new form AñadirCliente
      */
     public AñadirCliente() {
         initComponents();
-        //gestor = new GestorAlmazara();
-        
     }
 
     /**
