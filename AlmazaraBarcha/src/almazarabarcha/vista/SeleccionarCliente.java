@@ -8,6 +8,7 @@ package almazarabarcha.vista;
 import almazarabarcha.Modelo.Cliente;
 import almazarabarcha.Modelo.GestorAlmazara;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -196,10 +197,11 @@ public class SeleccionarCliente extends VistaGestor{
             mostrar += tabla_filtro.getValueAt(fila, 2) + "\n";
             mostrar += tabla_filtro.getValueAt(fila, 3) + "\n";
             mostrar += "............................" + "\n";
-            System.out.println(mostrar);
+            JOptionPane.showMessageDialog(null,"Se ha seleccionado el cliente correctamente");
         }else{
-            System.err.println("No se ha seleccionado ningún elemento");
+            JOptionPane.showMessageDialog(null,"No se ha seleccionado ningún elemento");
         }
+        
     }//GEN-LAST:event_button_seleccionarActionPerformed
 
     
