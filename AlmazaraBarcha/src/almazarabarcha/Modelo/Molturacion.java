@@ -171,6 +171,11 @@ public class Molturacion {
         cont_id++;
         id = cont_id;
     }
+
+    @Override
+    public String toString() {
+        return "Molturacion{" + "id=" + id + ", kg_oliva=" + kg_oliva + ", aceite_producido=" + aceite_producido + ", fecha_moturacion=" + fecha_moturacion + ", observacones=" + observacones + ", pagado=" + pagado + ", subencionado=" + subencionado + ", declara=" + declara + ", factura=" + factura + '}';
+    }
     
     
 }

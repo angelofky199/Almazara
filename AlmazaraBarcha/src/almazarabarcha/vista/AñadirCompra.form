@@ -41,9 +41,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="check_subencionado" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="check_declara" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                               <Component id="check_factura" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="check_pagado" min="-2" max="-2" attributes="0"/>
@@ -58,7 +56,11 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txt" min="-2" pref="61" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="btn_añadir" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -93,7 +95,6 @@
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="check_subencionado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="check_declara" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="check_factura" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -108,7 +109,11 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="text_observaciones" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btn_añadir" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btn_añadir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -139,11 +144,6 @@
         <Property name="text" type="java.lang.String" value="Subencionado"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="check_declara">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Declara"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JCheckBox" name="check_factura">
       <Properties>
         <Property name="text" type="java.lang.String" value="Factura"/>
@@ -165,6 +165,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="A&#xf1;adir Compra"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_a&#xf1;adirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -172,6 +175,16 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="text_total">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txt">
     </Component>
   </SubComponents>
 </Form>

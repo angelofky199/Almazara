@@ -5,6 +5,10 @@
  */
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.Molturacion;
+import java.sql.Date;
+import java.time.LocalDate;
+
 /**
  *
  * @author Usuario
@@ -34,12 +38,13 @@ public class AñadirMolturacion extends VistaGestor {
         jLabel4 = new javax.swing.JLabel();
         text_aceite_prod = new javax.swing.JTextField();
         check_subencionado = new javax.swing.JCheckBox();
-        check_declara = new javax.swing.JCheckBox();
         check_factura = new javax.swing.JCheckBox();
         check_pagado = new javax.swing.JCheckBox();
         btn_molturacion = new javax.swing.JButton();
         text_observaciones = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,8 +55,6 @@ public class AñadirMolturacion extends VistaGestor {
         jLabel4.setText("Aceite producido");
 
         check_subencionado.setText("Subencionado");
-
-        check_declara.setText("Declara");
 
         check_factura.setText("Factura");
 
@@ -66,6 +69,13 @@ public class AñadirMolturacion extends VistaGestor {
 
         jLabel2.setText("Observaciones");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,11 +86,6 @@ public class AñadirMolturacion extends VistaGestor {
                 .addGap(274, 274, 274))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(text_observaciones)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,11 +102,21 @@ public class AñadirMolturacion extends VistaGestor {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(check_subencionado)
-                                .addGap(34, 34, 34)
-                                .addComponent(check_declara)
-                                .addGap(28, 28, 28)
+                                .addGap(123, 123, 123)
                                 .addComponent(check_factura))
-                            .addComponent(check_pagado))))
+                            .addComponent(check_pagado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(text_observaciones)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(txt, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(41, 41, 41))
             .addGroup(layout.createSequentialGroup()
                 .addGap(310, 310, 310)
@@ -118,7 +133,6 @@ public class AñadirMolturacion extends VistaGestor {
                     .addComponent(jLabel3)
                     .addComponent(text_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(check_subencionado)
-                    .addComponent(check_declara)
                     .addComponent(check_factura))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -128,7 +142,11 @@ public class AñadirMolturacion extends VistaGestor {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btn_molturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -138,8 +156,27 @@ public class AñadirMolturacion extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_molturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_molturacionActionPerformed
-        // TODO add your handling code here:
+        Molturacion m = new Molturacion();
+        
+        float kilos = Float.parseFloat(text_kg_oliva.getText());
+        m.setKg_oliva(kilos);
+        float aceite_producido = Float.parseFloat(text_aceite_prod.getText());
+        m.setAceite_producido(aceite_producido);
+        m.setPagado(check_pagado.isSelected());
+        m.setFactura(check_factura.isSelected());
+        m.setObservacones(text_observaciones.getText());
+        m.setFecha_moturacion(Date.valueOf(LocalDate.now()));
+        
+        
+        String nombre = gestor.getClientes().get(pos).getNombre_cliente();
+        gestor.addMolturacion(m, nombre);
+       
     }//GEN-LAST:event_btn_molturacionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String kg = String.valueOf(gestor.getClientes().get(pos).getMolturaciones().get(0).getKg_oliva()) ;
+        txt.setText(kg);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,10 +217,10 @@ public class AñadirMolturacion extends VistaGestor {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_molturacion;
-    private javax.swing.JCheckBox check_declara;
     private javax.swing.JCheckBox check_factura;
     private javax.swing.JCheckBox check_pagado;
     private javax.swing.JCheckBox check_subencionado;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -191,5 +228,6 @@ public class AñadirMolturacion extends VistaGestor {
     private javax.swing.JTextField text_aceite_prod;
     private javax.swing.JTextField text_kg_oliva;
     private javax.swing.JTextField text_observaciones;
+    private javax.swing.JTextField txt;
     // End of variables declaration//GEN-END:variables
 }

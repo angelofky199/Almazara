@@ -62,12 +62,13 @@ public class GestorAlmazara {
         int pos;
        
         pos = buscarCliente(nombre_cliente);
-        
+    
         if(pos == -1)
             ok = false;
         else{
             molturacion.increaseId();
             clientes.get(pos).addMolturacion(molturacion);
+            System.out.println(clientes.get(pos).getNombre_cliente());
         }
             
         

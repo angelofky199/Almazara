@@ -29,6 +29,7 @@ public class Cliente {
         molturaciones = new ArrayList<>();
         ventas = new ArrayList<>();
         
+        
     }
     
     public Cliente() {
@@ -38,6 +39,11 @@ public class Cliente {
         this.poblacion = "";
         this.telefono = "";
         //this.fecha = fecha;
+        
+        cambios = new ArrayList<>();
+        compras = new ArrayList<>();
+        molturaciones = new ArrayList<>();
+        ventas = new ArrayList<>();
     }
 /************************Getters************************/
     public String getNombre_cliente() {
@@ -174,7 +180,7 @@ public class Cliente {
     }
     
     public void addMolturacion(Molturacion molt){//(float kg_oliva, float aceite_producido, String observaciones, boolean pagado, boolean subencionado, boolean declara, boolean factura){
-        
+       
         molturaciones.add(molt);
         /*Molturacion molt = new Molturacion();
         
