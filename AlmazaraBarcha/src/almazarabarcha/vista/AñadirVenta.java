@@ -5,11 +5,13 @@
  */
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.Venta;
+
 /**
  *
  * @author Usuario
  */
-public class AñadirVenta extends javax.swing.JFrame {
+public class AñadirVenta extends VistaGestor {
 
     /**
      * Creates new form AñadirVenta
@@ -30,9 +32,9 @@ public class AñadirVenta extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         check_factura = new javax.swing.JCheckBox();
         check_pagado = new javax.swing.JCheckBox();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        text_observaciones = new javax.swing.JTextField();
+        label_observaciones = new javax.swing.JLabel();
+        label_titulo = new javax.swing.JLabel();
         btn_venta = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         text_5l = new javax.swing.JTextField();
@@ -47,9 +49,14 @@ public class AñadirVenta extends javax.swing.JFrame {
         text_lampante = new javax.swing.JTextField();
         text_10l = new javax.swing.JTextField();
         text_25l = new javax.swing.JTextField();
-        text_observaciones = new javax.swing.JTextField();
+        a1 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         text_extra = new javax.swing.JTextField();
+        check_regalar = new javax.swing.JCheckBox();
+        label_bote_flor = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        text_bote_flor = new javax.swing.JTextField();
+        text_bote_extra = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,11 +66,16 @@ public class AñadirVenta extends javax.swing.JFrame {
 
         check_pagado.setText("Pagado");
 
-        jLabel2.setText("Observaciones");
+        label_observaciones.setText("Observaciones");
 
-        jLabel1.setText("Venta");
+        label_titulo.setText("Venta");
 
         btn_venta.setText("Añadir Venta");
+        btn_venta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ventaActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Lampante");
 
@@ -83,6 +95,17 @@ public class AñadirVenta extends javax.swing.JFrame {
 
         jLabel12.setText("Total");
 
+        check_regalar.setText("Regalar Envases");
+        check_regalar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check_regalarActionPerformed(evt);
+            }
+        });
+
+        label_bote_flor.setText("Bote Flor");
+
+        jLabel2.setText("Bote Extra");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,60 +118,71 @@ public class AñadirVenta extends javax.swing.JFrame {
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(22, 22, 22)
-                        .addComponent(text_lampante, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_observaciones)
+                                    .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(307, 307, 307)
+                                .addComponent(label_titulo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(text_bote_extra, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel12)
+                                .addGap(18, 18, 18)
+                                .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(label_bote_flor)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(22, 22, 22)
+                                .addComponent(text_lampante, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(text_alberquina, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                                    .addComponent(text_extra, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                                    .addComponent(text_bote_flor))))
+                        .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(text_alberquina, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(text_extra, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8))
-                .addGap(90, 90, 90)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(text_25l, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(text_10l, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                        .addComponent(text_5l)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(check_pagado, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(check_factura, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(67, 67, 67))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(307, 307, 307)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
-                        .addComponent(jLabel12)
-                        .addGap(18, 18, 18)
-                        .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel11))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(text_25l, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(text_10l, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                                .addComponent(text_5l)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(check_pagado, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(check_factura, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(check_regalar))
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel1)
+                .addComponent(label_titulo)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -157,39 +191,47 @@ public class AñadirVenta extends javax.swing.JFrame {
                             .addComponent(text_5l, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                             .addComponent(jLabel6)
                             .addComponent(jLabel10)
-                            .addComponent(text_lampante, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                            .addComponent(text_lampante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(text_alberquina, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel9)
-                            .addComponent(text_10l, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                            .addComponent(text_10l, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(text_alberquina, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel11)
+                            .addComponent(text_25l, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(text_extra))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel11)
-                                    .addComponent(text_25l, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(text_extra))
-                                .addGap(27, 27, 27)
+                                    .addComponent(label_bote_flor)
+                                    .addComponent(text_bote_flor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(2, 2, 2)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel12)
-                                    .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE))
+                                    .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(text_bote_extra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(label_observaciones)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(check_regalar)
+                        .addGap(18, 18, 18)
                         .addComponent(check_factura)
                         .addGap(18, 18, 18)
                         .addComponent(check_pagado)
                         .addGap(79, 79, 79)))
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(btn_venta)
                 .addContainerGap())
@@ -197,6 +239,33 @@ public class AñadirVenta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ventaActionPerformed
+        Venta venta = new Venta();
+        
+        venta.setRegalar_envases(check_regalar.isSelected());
+        venta.setObservaciones(text_observaciones.getText());
+        venta.setFactura_realizada(check_factura.isSelected());
+        
+        //Aceites
+        venta.venderAceite("Lampante", Float.parseFloat(text_lampante.getText()));
+        venta.venderAceite("Extra", Float.parseFloat(text_extra.getText()));
+        venta.venderAceite("Arberquina", Float.parseFloat(text_alberquina.getText()));
+        venta.venderAceite("Bote Flor", Float.parseFloat(text_bote_flor.getText()));
+        venta.venderAceite("Bote Extra", Float.parseFloat(text_bote_extra.getText()));
+        //Envases
+        venta.venderEnvase((float) 5, Integer.parseInt(text_5l.getText()));
+        venta.venderEnvase((float) 10, Integer.parseInt(text_10l.getText()));
+        venta.venderEnvase((float) 25, Integer.parseInt(text_25l.getText()));
+        
+        gestor.getClientes().get(pos).addVenta(venta);
+        
+        System.out.println(gestor.getClientes().get(pos).getVentas().get(0).toString());
+    }//GEN-LAST:event_btn_ventaActionPerformed
+
+    private void check_regalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_regalarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_check_regalarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,10 +303,11 @@ public class AñadirVenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField a1;
     private javax.swing.JButton btn_venta;
     private javax.swing.JCheckBox check_factura;
     private javax.swing.JCheckBox check_pagado;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JCheckBox check_regalar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -249,11 +319,15 @@ public class AñadirVenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel label_bote_flor;
+    private javax.swing.JLabel label_observaciones;
+    private javax.swing.JLabel label_titulo;
     private javax.swing.JTextField text_10l;
     private javax.swing.JTextField text_25l;
     private javax.swing.JTextField text_5l;
     private javax.swing.JTextField text_alberquina;
+    private javax.swing.JTextField text_bote_extra;
+    private javax.swing.JTextField text_bote_flor;
     private javax.swing.JTextField text_extra;
     private javax.swing.JTextField text_lampante;
     private javax.swing.JTextField text_observaciones;

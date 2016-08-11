@@ -19,6 +19,9 @@ public class Venta {
     public Venta() {
         id = 0;
         
+        tiposaceites = new ArrayList<>();
+        tiposenvases = new ArrayList<>();
+        
         tiposaceites.add(new TipoAceite("Lampante",(float) 1.25, false));
         tiposaceites.add(new TipoAceite("Extra",(float) 5.0, false));
         tiposaceites.add(new TipoAceite("Arberquina",(float) 6.0, false));
@@ -125,18 +128,25 @@ public class Venta {
     /**
      * Realiza una venta de envases de un cierto tamaño
      * 
-     * @param tipo      Es el tipo del envase 0 - 0.75L(Cristal), 1 - 5L, 2 - 10L, 3 - 25L
+     * @param tipo_envase Es el tipo del envase  5L, 10L, 25L   
      * @param cantidad  Es la cantidad de envases a vender
      * 
      * @return devuelve si se puede realizar la venta
      */
-    public boolean venderEnvase(int tipo, int cantidad){
-        boolean ok = true;
-        
-        if(cantidad>0 && tipo>=0 && tipo<tiposenvases.size())
-            tiposenvases.get(tipo).add(cantidad);
-        else
-            ok = false;
+    public boolean venderEnvase(Float tipo_envase, int cantidad){
+        boolean ok = false;
+        int tipo = -1;
+               
+        if(cantidad > 0){
+            for(int i = 0; i < tiposenvases.size(); i++)
+                if(tipo_envase == tiposenvases.get(i).getCapacidad())
+                    tipo = i;
+            
+            if(tipo>=0 && tipo<tiposenvases.size()){
+                 tiposenvases.get(tipo).add(cantidad);
+                 ok = true;
+            }
+        }
         
         return ok;
     }
@@ -144,18 +154,25 @@ public class Venta {
     /**
      * Vende una cierta cantidad de litros de un tipo de aceite
      * 
-     * @param tipo 0 - Lampante, 1 - Extra, 2 - Arberquina, 3 - Bote Flor, 4 - Bote Extra
+     * @param tipo_aceite 0 - Lampante, 1 - Extra, 2 - Arberquina, 3 - Bote Flor, 4 - Bote Extra
      * @param cantidad En litros, excepto en los botes
      * 
      * @return devuelve si se puede realizar la venta
      */
-    public boolean venderAceite(int tipo, float cantidad){
-        boolean ok = true;
-        
-        if(cantidad>0 && tipo>=0 && tipo<tiposaceites.size())
-            tiposaceites.get(tipo).addCantidad(cantidad);
-        else
-            ok = false;
+    public boolean venderAceite(String tipo_aceite, float cantidad){
+        boolean ok = false;
+        int tipo = -1;
+               
+        if(cantidad > 0){
+            for(int i = 0; i < tiposaceites.size(); i++)
+                if(tipo_aceite.equals(tiposaceites.get(i).getNombre()))
+                    tipo = i;
+            
+            if(tipo>=0 && tipo<tiposaceites.size()){
+                 tiposaceites.get(tipo).addCantidad(cantidad);
+                 ok = true;
+            }
+        }
         
         return ok;
     }
@@ -168,4 +185,30 @@ public class Venta {
         cont_id++;
         id = cont_id;
     }
+
+    @Override
+    @SuppressWarnings("empty-statement")
+    public String toString(){
+            int i;
+        
+                
+        String saco = new String();
+        
+        saco += "Tipos Aceite\n...................\n";
+        for(i = 0; i < tiposaceites.size(); i++){
+            saco += tiposaceites.get(i).getNombre() + tiposaceites.get(i).getLitros();
+        }
+        
+        saco += "Tipos Envases\n..................\n";
+        for(i = 0; i < tiposenvases.size(); i++){
+            saco += tiposenvases.get(i).getCapacidad() + tiposenvases.get(i).getCantidad();
+        }
+        
+        
+        
+        
+        return "Venta{" + "factura_realizada=" + factura_realizada + ", observaciones=" + observaciones  + ", regalar_envases=" + regalar_envases + ", id=" + id + '}' + "\n" + saco;
+    }
+    
+    
 }
