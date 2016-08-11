@@ -168,7 +168,7 @@ public class AñadirCompra extends javax.swing.JFrame {
         float precio_kg_oliva;
         
         kilos = Float.parseFloat(text_kg_oliva.getText());
-        precio_kg_oliva = Float.parseFloat(text_kg_oliva.getText());
+        precio_kg_oliva = Float.parseFloat(text_precio_kg.getText());
         
         c.setKg_oliva(kilos);
         c.setPrecio_kg_oliva(precio_kg_oliva);
