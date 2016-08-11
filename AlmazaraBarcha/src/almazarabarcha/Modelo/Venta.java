@@ -196,12 +196,12 @@ public class Venta {
         
         saco += "Tipos Aceite\n...................\n";
         for(i = 0; i < tiposaceites.size(); i++){
-            saco += tiposaceites.get(i).getNombre() + tiposaceites.get(i).getLitros();
+            saco += "\t" + tiposaceites.get(i).getNombre()+ "->" + tiposaceites.get(i).getLitros() + "\n";
         }
         
         saco += "Tipos Envases\n..................\n";
         for(i = 0; i < tiposenvases.size(); i++){
-            saco += tiposenvases.get(i).getCapacidad() + tiposenvases.get(i).getCantidad();
+            saco += "\t" + tiposenvases.get(i).getCapacidad()+ "->" + tiposenvases.get(i).getCantidad() + "\n";
         }
         
         
