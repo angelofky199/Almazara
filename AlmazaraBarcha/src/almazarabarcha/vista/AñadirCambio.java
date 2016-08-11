@@ -5,6 +5,10 @@
  */
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.Cambio;
+import static almazarabarcha.vista.VistaGestor.gestor;
+import static almazarabarcha.vista.VistaGestor.pos;
+
 /**
  *
  * @author Usuario
@@ -27,19 +31,25 @@ public class AñadirCambio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        text_observaciones = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_añadir_cambio = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        text_rendimiento = new javax.swing.JTextField();
+        text_kg_oliva = new javax.swing.JTextField();
+        check_factura = new javax.swing.JCheckBox();
+        check_pagado = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
+        check_paga = new javax.swing.JCheckBox();
+        check_retira = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
+        text_litros_cambio = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        text_litros_retirado = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        text_maquila = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,21 +57,32 @@ public class AñadirCambio extends javax.swing.JFrame {
 
         jLabel1.setText("Cambio");
 
-        jButton1.setText("Añadir Cambio");
+        btn_añadir_cambio.setText("Añadir Cambio");
+        btn_añadir_cambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_añadir_cambioActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("KG oliva");
 
         jLabel4.setText("Rendimiento");
 
-        jCheckBox3.setText("Factura");
+        check_factura.setText("Factura");
 
-        jCheckBox4.setText("Pagado");
+        check_pagado.setText("Pagado");
 
         jCheckBox5.setText("Subencionado");
 
-        jCheckBox6.setText("Paga");
+        check_paga.setText("Paga");
 
-        jCheckBox7.setText("Retira");
+        check_retira.setText("Retira");
+
+        jLabel5.setText("Litros para cambio ");
+
+        jLabel6.setText("Litros aceite retirado");
+
+        jLabel7.setText("Maquila");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,71 +94,123 @@ public class AñadirCambio extends javax.swing.JFrame {
                         .addGap(82, 82, 82)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(293, 293, 293)
-                        .addComponent(jButton1))
+                        .addComponent(btn_añadir_cambio))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(307, 307, 307)
                         .addComponent(jLabel1)))
-                .addContainerGap(13, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBox3)
-                .addGap(65, 65, 65))
+                .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCheckBox6)
+                            .addComponent(check_paga)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jCheckBox7))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField5)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(text_maquila, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                                .addGap(237, 237, 237)
+                                .addComponent(check_retira))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(text_kg_oliva)
+                                    .addComponent(text_rendimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(text_litros_retirado)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(text_litros_cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel7))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox4)
+                    .addComponent(check_pagado)
                     .addComponent(jCheckBox5))
                 .addGap(33, 33, 33))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(check_factura)
+                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(34, 34, 34)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jCheckBox3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                    .addComponent(text_kg_oliva, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(check_factura)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(text_litros_cambio, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jCheckBox4))
-                .addGap(9, 9, 9)
+                    .addComponent(text_rendimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(check_pagado)
+                    .addComponent(jLabel6)
+                    .addComponent(text_litros_retirado, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox6)
-                    .addComponent(jCheckBox7))
-                .addGap(18, 18, 18)
+                    .addComponent(check_retira)
+                    .addComponent(jLabel7)
+                    .addComponent(text_maquila, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(check_paga)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_añadir_cambio)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_añadir_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadir_cambioActionPerformed
+            Cambio ca = new Cambio();
+            
+            float kilos = Float.parseFloat(text_kg_oliva.getText());
+            ca.setKg_oliva(kilos);
+            
+            float rend = Float.parseFloat(text_rendimiento.getText());
+            ca.setRendimiento(rend);
+
+            float maquila = Float.parseFloat(text_maquila.getText());
+            ca.setRentabilidad_maquila(maquila/100);
+            
+            float litros_retira = ca.CalcularLitrosParaRetirar();
+            text_litros_retirado.setText(String.valueOf(litros_retira));
+            
+            float litros_cambio = ca.CalcularLitrosAceiteParaCambio();
+            text_litros_cambio.setText(String.valueOf(litros_cambio));
+           
+            ca.setFactura(check_factura.isSelected());
+            ca.setPaga(check_paga.isSelected());
+            ca.setObservaciones(text_observaciones.getText());
+            
+            
+            String nombre = gestor.getClientes().get(pos).getNombre_cliente();
+            gestor.addCambio(ca, nombre);
+            
+            
+    }//GEN-LAST:event_btn_añadir_cambioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,18 +249,24 @@ public class AñadirCambio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JButton btn_añadir_cambio;
+    private javax.swing.JCheckBox check_factura;
+    private javax.swing.JCheckBox check_paga;
+    private javax.swing.JCheckBox check_pagado;
+    private javax.swing.JCheckBox check_retira;
     private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField text_kg_oliva;
+    private javax.swing.JTextField text_litros_cambio;
+    private javax.swing.JTextField text_litros_retirado;
+    private javax.swing.JTextField text_maquila;
+    private javax.swing.JTextField text_observaciones;
+    private javax.swing.JTextField text_rendimiento;
     // End of variables declaration//GEN-END:variables
 }
