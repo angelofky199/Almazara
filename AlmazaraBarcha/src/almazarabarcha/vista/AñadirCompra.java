@@ -164,15 +164,19 @@ public class AñadirCompra extends javax.swing.JFrame {
 
     private void btn_añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadirActionPerformed
         Compra c = new Compra();
+        float kilos;
+        float precio_kg_oliva;
         
-        float kilos = Float.parseFloat(text_kg_oliva.getText());
+        kilos = Float.parseFloat(text_kg_oliva.getText());
+        precio_kg_oliva = Float.parseFloat(text_kg_oliva.getText());
+        
         c.setKg_oliva(kilos);
-        float precio_kg_oliva = Float.parseFloat(text_kg_oliva.getText());
         c.setPrecio_kg_oliva(precio_kg_oliva);
         c.setPagado(check_pagado.isSelected());
         c.setFactura(check_factura.isSelected());
         c.setObservaciones(text_observaciones.getText());
         c.setFecha_compra(Date.valueOf(LocalDate.now()));
+        
         text_total.setText(String.valueOf(c.TotalCompras()));
         
         String nombre = gestor.getClientes().get(pos).getNombre_cliente();
