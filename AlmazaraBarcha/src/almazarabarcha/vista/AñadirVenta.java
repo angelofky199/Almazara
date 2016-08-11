@@ -248,23 +248,15 @@ public class AñadirVenta extends VistaGestor {
         venta.setFactura_realizada(check_factura.isSelected());
         
         //Aceites
-        if(!text_lampante.getText().isEmpty())
-            venta.venderAceite("Lampante", Float.parseFloat(text_lampante.getText()));
-        if(!text_extra.getText().isEmpty())
-            venta.venderAceite("Extra", Float.parseFloat(text_extra.getText()));
-        if(!text_alberquina.getText().isEmpty())
-            venta.venderAceite("Arberquina", Float.parseFloat(text_alberquina.getText()));
-        if(!text_bote_flor.getText().isEmpty())
-            venta.venderAceite("Bote Flor", Float.parseFloat(text_bote_flor.getText()));
-        if(!text_bote_extra.getText().isEmpty())
-            venta.venderAceite("Bote Extra", Float.parseFloat(text_bote_extra.getText()));
+        venta.venderAceite("Lampante", Float.parseFloat(text_lampante.getText()));
+        venta.venderAceite("Extra", Float.parseFloat(text_extra.getText()));
+        venta.venderAceite("Arberquina", Float.parseFloat(text_alberquina.getText()));
+        venta.venderAceite("Bote Flor", Float.parseFloat(text_bote_flor.getText()));
+        venta.venderAceite("Bote Extra", Float.parseFloat(text_bote_extra.getText()));
         //Envases
-        if(!text_5l.getText().isEmpty())
-            venta.venderEnvase((float) 5, Integer.parseInt(text_5l.getText()));
-        if(!text_10l.getText().isEmpty())
-            venta.venderEnvase((float) 10, Integer.parseInt(text_10l.getText()));
-        if(!text_25l.getText().isEmpty())
-            venta.venderEnvase((float) 25, Integer.parseInt(text_25l.getText()));
+        venta.venderEnvase((float) 5, Integer.parseInt(text_5l.getText()));
+        venta.venderEnvase((float) 10, Integer.parseInt(text_10l.getText()));
+        venta.venderEnvase((float) 25, Integer.parseInt(text_25l.getText()));
         
         gestor.getClientes().get(pos).addVenta(venta);
         
