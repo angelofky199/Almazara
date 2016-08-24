@@ -2,6 +2,7 @@ package almazarabarcha.vista;
 
 import almazarabarcha.Modelo.Cliente;
 import almazarabarcha.Modelo.GestorAlmazara;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -192,6 +193,8 @@ public class SeleccionarCliente extends VistaGestor{
         }else{
             JOptionPane.showMessageDialog(null,"No se ha seleccionado ningún elemento");
         }
+        
+        
         
     }//GEN-LAST:event_button_seleccionarActionPerformed
 
