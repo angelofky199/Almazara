@@ -194,7 +194,8 @@ public class SeleccionarCliente extends VistaGestor{
             JOptionPane.showMessageDialog(null,"No se ha seleccionado ningún elemento");
         }
         
-        
+        GestorOperaciones g = new GestorOperaciones();
+        g.setVisible(true);
         
     }//GEN-LAST:event_button_seleccionarActionPerformed
 

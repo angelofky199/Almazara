@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 public class VistaGestor extends javax.swing.JFrame{
    
     public static GestorAlmazara gestor = new GestorAlmazara();
+    public static MenuPrincipal menu = new MenuPrincipal();
+          
     public static int pos = -1;
 
 }
