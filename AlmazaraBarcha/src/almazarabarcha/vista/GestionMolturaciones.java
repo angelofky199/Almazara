@@ -63,6 +63,11 @@ public class GestionMolturaciones extends javax.swing.JFrame {
             }
         });
         tabla_pagados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabla_pagados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_pagadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla_pagados);
 
         label_pagados.setText("Pagados");
@@ -89,6 +94,11 @@ public class GestionMolturaciones extends javax.swing.JFrame {
         });
         tabla_no_pagados.setToolTipText("");
         tabla_no_pagados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabla_no_pagados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_no_pagadosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabla_no_pagados);
 
         label_no_pagados.setText("No pagados");
@@ -127,6 +137,14 @@ public class GestionMolturaciones extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tabla_pagadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_pagadosMouseClicked
+        System.out.println("Pagados fila -->" + tabla_pagados.getSelectedRow());
+    }//GEN-LAST:event_tabla_pagadosMouseClicked
+
+    private void tabla_no_pagadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_no_pagadosMouseClicked
+        System.out.println("No pagados fila -->" + tabla_no_pagados.getSelectedRow());
+    }//GEN-LAST:event_tabla_no_pagadosMouseClicked
 
     /**
      * @param args the command line arguments
