@@ -189,13 +189,16 @@ public class SeleccionarCliente extends VistaGestor{
             mostrar += "............................" + "\n";
             JOptionPane.showMessageDialog(null,"Se ha seleccionado el cliente correctamente");
             
+            GestorOperaciones g = new GestorOperaciones();
+            g.setVisible(true);
+            
             pos = gestor.buscarCliente((String) tabla_filtro.getValueAt(fila, 0));
+            
         }else{
             JOptionPane.showMessageDialog(null,"No se ha seleccionado ningún elemento");
         }
         
-        GestorOperaciones g = new GestorOperaciones();
-        g.setVisible(true);
+        
         
     }//GEN-LAST:event_button_seleccionarActionPerformed
 

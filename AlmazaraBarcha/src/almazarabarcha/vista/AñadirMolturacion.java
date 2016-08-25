@@ -71,6 +71,12 @@ public class AñadirMolturacion extends VistaGestor {
 
         jLabel5.setText("Total ingresos");
 
+        text_total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_totalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,6 +174,10 @@ public class AñadirMolturacion extends VistaGestor {
         gestor.addMolturacion(m, nombre);
        
     }//GEN-LAST:event_btn_molturacionActionPerformed
+
+    private void text_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_totalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_totalActionPerformed
 
     /**
      * @param args the command line arguments
