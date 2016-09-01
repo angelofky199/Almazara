@@ -1,15 +1,37 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.estilos.Estilos;
+import java.awt.Color;
+
 
 public class MenuPrincipal extends VistaGestor {
-    /**
-     * Creates new form MenuPrincipal
-     */
+    
     public MenuPrincipal() {
+
         
         initComponents();
         //gestor = new GestorAlmazara();
         //this.setSize(1000, 700);
+        label_titulo.setOpaque(true);
+        label_titulo.setForeground(estilos.getColorFuenteTítulo());
+        label_titulo.setBackground(estilos.getColorTítulo());
+        label_titulo.setFont(estilos.getFuenteTitulo());
+        
+        boton_addClientes.setFont(estilos.getFuenteBotones());
+        boton_seleccionar_cliente.setFont(estilos.getFuenteBotones());
+        boton_mostrar_totales.setFont(estilos.getFuenteBotones());
+        boton_addClientes.setBackground(estilos.getColorBotones());
+        boton_seleccionar_cliente.setBackground(estilos.getColorBotones());
+        boton_mostrar_totales.setBackground(estilos.getColorBotones());
+        btn_salir.setBackground(estilos.getColorDanger());
+        btn_salir.setForeground(Color.white);
+        btn_salir.setFont(estilos.getFuenteBotones());
+        
+        this.getContentPane().setBackground(estilos.getColorExterior());
+        jPanel1.setBackground(estilos.getColorInterior());
+    
+        this.setIconImage(estilos.getImagenIcono());
+        this.setTitle("Almazara Barcha");
         this.setExtendedState(MAXIMIZED_BOTH);
 
     }
@@ -26,14 +48,12 @@ public class MenuPrincipal extends VistaGestor {
         jMenu1 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        label_titulo = new javax.swing.JLabel();
+        boton_addClientes = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        label_actual = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btn_salir = new javax.swing.JButton();
+        boton_seleccionar_cliente = new javax.swing.JButton();
+        boton_mostrar_totales = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -49,12 +69,15 @@ public class MenuPrincipal extends VistaGestor {
             }
         });
 
-        jLabel1.setText("ALMAZARA BARCHA");
+        label_titulo.setFont(new java.awt.Font("Tahoma", 1, 72)); // NOI18N
+        label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_titulo.setText("ALMAZARA BARCHA");
+        label_titulo.setName(""); // NOI18N
 
-        jButton1.setText("Añadir Clientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        boton_addClientes.setText("Añadir Clientes");
+        boton_addClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                boton_addClientesActionPerformed(evt);
             }
         });
 
@@ -72,28 +95,24 @@ public class MenuPrincipal extends VistaGestor {
             .addGap(0, 617, Short.MAX_VALUE)
         );
 
-        jButton6.setText("Salir");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btn_salir.setText("Salir");
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btn_salirActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Seleccionar Cliente");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        boton_seleccionar_cliente.setText("Seleccionar Cliente");
+        boton_seleccionar_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                boton_seleccionar_clienteActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Cliente Actual:");
-
-        label_actual.setText("No se ha seleccionado");
-
-        jButton2.setText("Mostrar totales");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        boton_mostrar_totales.setText("Mostrar totales");
+        boton_mostrar_totales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                boton_mostrar_totalesActionPerformed(evt);
             }
         });
 
@@ -102,81 +121,67 @@ public class MenuPrincipal extends VistaGestor {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(334, 334, 334)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(boton_addClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(boton_seleccionar_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                    .addComponent(boton_mostrar_totales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_actual, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(176, 176, 176))
+            .addComponent(label_titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(label_actual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(label_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boton_addClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boton_seleccionar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boton_mostrar_totales, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void boton_addClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_addClientesActionPerformed
         AñadirCliente c = new AñadirCliente();
         jPanel1.removeAll();
+        c.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(c.getContentPane());
         jPanel1.repaint();
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_boton_addClientesActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btn_salirActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void boton_seleccionar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_seleccionar_clienteActionPerformed
         SeleccionarCliente sc = new SeleccionarCliente(gestor);
         jPanel1.removeAll();
+        sc.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(sc.getContentPane());
         jPanel1.repaint();
-        
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_boton_seleccionar_clienteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void boton_mostrar_totalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_mostrar_totalesActionPerformed
         MostrarTotales mt = new MostrarTotales();
         //mt.setVisible(true);
         jPanel1.removeAll();
+        mt.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(mt.getContentPane());
         jPanel1.repaint();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_boton_mostrar_totalesActionPerformed
 
     private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
         // TODO add your handling code here:
@@ -188,9 +193,6 @@ public class MenuPrincipal extends VistaGestor {
         jPanel1.add(g.getContentPane());
         jPanel1.repaint();
         
-    }
-    public void Refrescar(){
-        label_actual.setText(gestor.getClientes().get(pos).getNombre_cliente());
     }
     
     /**
@@ -232,16 +234,14 @@ public class MenuPrincipal extends VistaGestor {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton boton_addClientes;
+    private javax.swing.JButton boton_mostrar_totales;
+    private javax.swing.JButton boton_seleccionar_cliente;
+    private javax.swing.JButton btn_salir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JLabel label_actual;
+    private javax.swing.JLabel label_titulo;
     // End of variables declaration//GEN-END:variables
 }

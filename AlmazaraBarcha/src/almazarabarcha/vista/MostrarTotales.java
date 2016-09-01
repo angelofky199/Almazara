@@ -9,13 +9,14 @@ package almazarabarcha.vista;
  *
  * @author Usuario
  */
-public class MostrarTotales extends javax.swing.JFrame {
+public class MostrarTotales extends VistaGestor {
 
     /**
      * Creates new form MostrarTotales
      */
     public MostrarTotales() {
         initComponents();
+        this.setBackground(estilos.getColorInterior());
     }
 
     /**

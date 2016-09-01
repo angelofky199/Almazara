@@ -15,7 +15,8 @@ public class GestorClientes extends VistaGestor{
     public GestorClientes(GestorAlmazara gestor) {
         Cliente c;
         initComponents();
-        this.filtro("");   
+        this.filtro("");
+        this.setBackground(estilos.getColorInterior());
     }
    
 
