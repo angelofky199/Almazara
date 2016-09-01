@@ -5,6 +5,8 @@
  */
 package almazarabarcha.vista;
 
+import java.awt.Color;
+
 /**
  *
  * @author Usuario
@@ -16,6 +18,7 @@ public class GestorOperaciones extends javax.swing.JFrame {
      */
     public GestorOperaciones() {
         initComponents();
+        this.setLocation(250, 150);
     }
 
     /**
@@ -27,25 +30,27 @@ public class GestorOperaciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_molt = new javax.swing.JButton();
+        btn_comp = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btn_vent = new javax.swing.JButton();
+        btn_camb = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
 
-        jButton2.setText("Molturacion");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_molt.setText("Molturacion");
+        btn_molt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_moltActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Compra");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_comp.setText("Compra");
+        btn_comp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_compActionPerformed(evt);
             }
         });
 
@@ -57,20 +62,20 @@ public class GestorOperaciones extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
+            .addGap(0, 384, Short.MAX_VALUE)
         );
 
-        jButton4.setText("Venta");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btn_vent.setText("Venta");
+        btn_vent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btn_ventActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Cambio");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btn_camb.setText("Cambio");
+        btn_camb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btn_cambActionPerformed(evt);
             }
         });
 
@@ -80,14 +85,14 @@ public class GestorOperaciones extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addComponent(btn_molt, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btn_comp, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(btn_vent, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(btn_camb, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -97,11 +102,12 @@ public class GestorOperaciones extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_camb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_molt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_comp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_vent, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -110,34 +116,50 @@ public class GestorOperaciones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_moltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_moltActionPerformed
         AñadirMolturacion m = new AñadirMolturacion();
         jPanel1.removeAll();
         jPanel1.add(m.getContentPane());
         jPanel1.repaint();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        btn_molt.setBackground(Color.YELLOW);
+        btn_camb.setBackground(Color.LIGHT_GRAY);
+        btn_comp.setBackground(Color.LIGHT_GRAY);
+        btn_vent.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_btn_moltActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_compActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_compActionPerformed
         AñadirCompra c = new AñadirCompra();
         jPanel1.removeAll();
         jPanel1.add(c.getContentPane());
         jPanel1.repaint();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        btn_comp.setBackground(Color.YELLOW);
+        btn_molt.setBackground(Color.LIGHT_GRAY);
+        btn_camb.setBackground(Color.LIGHT_GRAY);
+        btn_vent.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_btn_compActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btn_ventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ventActionPerformed
         AñadirVenta v = new AñadirVenta();
         jPanel1.removeAll();
         jPanel1.add(v.getContentPane());
         jPanel1.repaint();
-    }//GEN-LAST:event_jButton4ActionPerformed
+        btn_vent.setBackground(Color.YELLOW);
+        btn_molt.setBackground(Color.LIGHT_GRAY);
+        btn_comp.setBackground(Color.LIGHT_GRAY);
+        btn_camb.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_btn_ventActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btn_cambActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cambActionPerformed
         AñadirCambio c = new AñadirCambio();
         jPanel1.removeAll();
         jPanel1.add(c.getContentPane());
         jPanel1.repaint();
-    }//GEN-LAST:event_jButton6ActionPerformed
-
+        btn_camb.setBackground(Color.YELLOW);
+        btn_molt.setBackground(Color.LIGHT_GRAY);
+        btn_comp.setBackground(Color.LIGHT_GRAY);
+        btn_vent.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_btn_cambActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -174,10 +196,10 @@ public class GestorOperaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btn_camb;
+    private javax.swing.JButton btn_comp;
+    private javax.swing.JButton btn_molt;
+    private javax.swing.JButton btn_vent;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

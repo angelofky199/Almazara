@@ -1,29 +1,17 @@
 package almazarabarcha.vista;
 
-import almazarabarcha.estilos.Estilos;
-import java.awt.Color;
-
 
 public class MenuPrincipal extends VistaGestor {
-    Estilos estilos;
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         
         initComponents();
-        estilos = new Estilos();
-        jLabel1.setFont(estilos.getFuenteTitulo());
-        jLabel2.setFont(estilos.getFuenteEtiquetas());
-        boton_addClientes.setFont(estilos.getFuenteBotones());
-        boton_seleccionar_cliente.setFont(estilos.getFuenteBotones());
-        boton_mostrar_totales.setFont(estilos.getFuenteBotones());
-        this.getContentPane().setBackground(Color.red);
-    
-        this.setIconImage(estilos.getImagenIcono());
-        this.setTitle("Almazara Barcha");
         //gestor = new GestorAlmazara();
         //this.setSize(1000, 700);
+        this.setExtendedState(MAXIMIZED_BOTH);
+
     }
 
     /**
@@ -39,13 +27,13 @@ public class MenuPrincipal extends VistaGestor {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        boton_addClientes = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
-        boton_seleccionar_cliente = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         label_actual = new javax.swing.JLabel();
-        boton_mostrar_totales = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -54,25 +42,34 @@ public class MenuPrincipal extends VistaGestor {
         jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        addWindowStateListener(new java.awt.event.WindowStateListener() {
+            public void windowStateChanged(java.awt.event.WindowEvent evt) {
+                formWindowStateChanged(evt);
+            }
+        });
 
         jLabel1.setText("ALMAZARA BARCHA");
 
-        boton_addClientes.setText("Añadir Clientes");
-        boton_addClientes.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Añadir Clientes");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_addClientesActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jPanel1.setAutoscrolls(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 696, Short.MAX_VALUE)
+            .addGap(0, 1134, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGap(0, 617, Short.MAX_VALUE)
         );
 
         jButton6.setText("Salir");
@@ -82,10 +79,10 @@ public class MenuPrincipal extends VistaGestor {
             }
         });
 
-        boton_seleccionar_cliente.setText("Seleccionar Cliente");
-        boton_seleccionar_cliente.addActionListener(new java.awt.event.ActionListener() {
+        jButton7.setText("Seleccionar Cliente");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_seleccionar_clienteActionPerformed(evt);
+                jButton7ActionPerformed(evt);
             }
         });
 
@@ -93,10 +90,10 @@ public class MenuPrincipal extends VistaGestor {
 
         label_actual.setText("No se ha seleccionado");
 
-        boton_mostrar_totales.setText("Mostrar totales");
-        boton_mostrar_totales.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Mostrar totales");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_mostrar_totalesActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -111,14 +108,14 @@ public class MenuPrincipal extends VistaGestor {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(boton_addClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(boton_seleccionar_cliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(boton_mostrar_totales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20))
+                .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
@@ -136,48 +133,54 @@ public class MenuPrincipal extends VistaGestor {
                         .addComponent(label_actual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(boton_addClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(boton_seleccionar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(boton_mostrar_totales, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void boton_addClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_addClientesActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         AñadirCliente c = new AñadirCliente();
         jPanel1.removeAll();
         jPanel1.add(c.getContentPane());
         jPanel1.repaint();
         
-    }//GEN-LAST:event_boton_addClientesActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void boton_seleccionar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_seleccionar_clienteActionPerformed
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         SeleccionarCliente sc = new SeleccionarCliente(gestor);
         jPanel1.removeAll();
         jPanel1.add(sc.getContentPane());
         jPanel1.repaint();
         
-    }//GEN-LAST:event_boton_seleccionar_clienteActionPerformed
+    }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void boton_mostrar_totalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_mostrar_totalesActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         MostrarTotales mt = new MostrarTotales();
-        mt.setVisible(true);
-    }//GEN-LAST:event_boton_mostrar_totalesActionPerformed
+        //mt.setVisible(true);
+        jPanel1.removeAll();
+        jPanel1.add(mt.getContentPane());
+        jPanel1.repaint();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowStateChanged
     public void CambiarVista(){
         
         GestorOperaciones g = new GestorOperaciones();
@@ -221,17 +224,18 @@ public class MenuPrincipal extends VistaGestor {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuPrincipal().setVisible(true);
-                new MenuPrincipal().setSize(1000, 600);
+                //new MenuPrincipal().setSize(1000, 600);
+                
             }
         });
     }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton_addClientes;
-    private javax.swing.JButton boton_mostrar_totales;
-    private javax.swing.JButton boton_seleccionar_cliente;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
