@@ -9,6 +9,7 @@ public class AñadirCliente extends VistaGestor {
      */
     public AñadirCliente() {
         initComponents();
+        this.setBackground(estilos.getColorInterior());
     }
 
     /**

@@ -15,13 +15,12 @@ import java.time.LocalDate;
  *
  * @author Usuario
  */
-public class AñadirCompra extends javax.swing.JFrame {
+public class AñadirCompra extends VistaGestor {
 
-    /**
-     * Creates new form AñadirCompra
-     */
+
     public AñadirCompra() {
         initComponents();
+        this.setBackground(estilos.getColorInterior());
     }
 
     /**

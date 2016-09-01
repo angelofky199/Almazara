@@ -9,17 +9,12 @@ import almazarabarcha.Modelo.Cambio;
 import static almazarabarcha.vista.VistaGestor.gestor;
 import static almazarabarcha.vista.VistaGestor.pos;
 
-/**
- *
- * @author Usuario
- */
-public class AñadirCambio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AñadirCabio
-     */
+public class AñadirCambio extends VistaGestor {
+
     public AñadirCambio() {
         initComponents();
+        this.setBackground(estilos.getColorInterior());
     }
 
     /**

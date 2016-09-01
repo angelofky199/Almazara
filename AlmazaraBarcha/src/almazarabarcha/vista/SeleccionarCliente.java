@@ -9,13 +9,12 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class SeleccionarCliente extends VistaGestor{
-    /**
-     * Creates new form SeleccionarCliente
-     */
+
     public SeleccionarCliente(GestorAlmazara gestor) {
         Cliente c;
         initComponents();
-        this.filtro("");        
+        this.filtro("");
+        this.setBackground(estilos.getColorInterior());
     }
    
 
@@ -95,7 +94,7 @@ public class SeleccionarCliente extends VistaGestor{
         javax.swing.JButton button_seleccionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Buscar Cliente");
 
@@ -185,6 +184,7 @@ public class SeleccionarCliente extends VistaGestor{
             JOptionPane.showMessageDialog(null,"Se ha seleccionado el cliente correctamente");
             
             GestorOperaciones g = new GestorOperaciones();
+            g.getContentPane().setBackground(estilos.getColorInterior());
             g.setVisible(true);
             
             pos = gestor.buscarCliente((String) tabla_filtro.getValueAt(fila, 0));
