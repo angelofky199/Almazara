@@ -11,8 +11,6 @@ public class Estilos{
     public Estilos() {
     }
     
-    
-    
     public Font getFuenteEtiquetas(){
         CustomFont cf = new CustomFont();
         return cf.MyFont(0, (float)14);
