@@ -1,15 +1,15 @@
 package almazarabarcha.vista;
 
-public class VerMoDelCliente extends javax.swing.JFrame {
+public class modificarCliente extends javax.swing.JFrame {
     
     int opcion;
     
-    public VerMoDelCliente() {
+    public modificarCliente() {
         initComponents();
     }
     
     
-    public VerMoDelCliente(int opt) {
+    public modificarCliente(int opt) {
         initComponents();
         
         opcion=opt;
@@ -172,23 +172,25 @@ public class VerMoDelCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VerMoDelCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VerMoDelCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VerMoDelCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VerMoDelCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VerMoDelCliente(0).setVisible(true);
-                new VerMoDelCliente(1).setVisible(true);
-                new VerMoDelCliente(2).setVisible(true);
+                new modificarCliente(0).setVisible(true);
+                new modificarCliente(1).setVisible(true);
+                new modificarCliente(2).setVisible(true);
             }
         });
     }

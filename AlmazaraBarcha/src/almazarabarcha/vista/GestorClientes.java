@@ -198,7 +198,7 @@ public class GestorClientes extends VistaGestor{
     }//GEN-LAST:event_button_atrasActionPerformed
 
     private void boton_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_modificarActionPerformed
-        new VerMoDelCliente().setVisible(true);
+        new modificarCliente().setVisible(true);
     }//GEN-LAST:event_boton_modificarActionPerformed
 
     private void boton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_eliminarActionPerformed
