@@ -67,7 +67,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/almazarabarcha/estilos/almazara logo_bien.jpg"))); // NOI18N
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(-60, -10, 730, 680);
+        jLabel3.setBounds(-60, 0, 730, 680);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

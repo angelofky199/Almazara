@@ -185,7 +185,20 @@ public class GestorAlmazara {
 
         return pos;
     }
-    
+    public boolean eliminarCliente(String nombre){
+        int i;
+        int pos = -1;
+        boolean ok = false;
+        
+        for(i = 0; i < clientes.size() && pos == -1; i++)
+            if (nombre.equals(clientes.get(i).getNombre_cliente()))
+            {
+                clientes.remove(i);
+                ok = true;
+            }
+                
+        return ok;
+    }
     
     
     public String mostrar(){
