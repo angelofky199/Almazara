@@ -23,6 +23,11 @@ public class Estilos{
         return cf.MyFont(1, (float)50);
     }
     
+    public Font getFuenteTitulo2(){
+        CustomFont cf = new CustomFont();
+        return cf.MyFont(1, (float)30);
+    }
+    
     public Font getFuenteBotones(){
         CustomFont cf = new CustomFont();
         return cf.MyFont(0, (float)16);

@@ -26,18 +26,15 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jScrollPane6" alignment="0" pref="527" max="32767" attributes="0"/>
                       <Component id="jScrollPane5" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" alignment="0" min="-2" pref="525" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" alignment="0" min="-2" pref="527" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="label_total_cambio" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -46,6 +43,9 @@
                       </Group>
                   </Group>
                   <Component id="jScrollPane7" alignment="0" min="-2" pref="527" max="-2" attributes="0"/>
+                  <Component id="label_total_molturacion" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                  <Component id="label_total_compra" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                  <Component id="label_total_ventas" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
@@ -55,7 +55,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="label_total_molturacion" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jScrollPane1" pref="82" max="32767" attributes="0"/>
@@ -67,15 +67,15 @@
                   <Component id="jScrollPane3" alignment="1" min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <Component id="label_total_cambio" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane5" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <Component id="label_total_compra" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane6" min="-2" pref="65" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+              <Component id="label_total_ventas" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane7" min="-2" pref="113" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -136,7 +136,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="label_total_molturacion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Total Molturacion"/>
       </Properties>
@@ -231,7 +231,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="label_total_cambio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Total Cambio"/>
       </Properties>
@@ -278,7 +278,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="label_total_compra">
       <Properties>
         <Property name="text" type="java.lang.String" value="Total Compra "/>
       </Properties>
@@ -323,7 +323,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="label_total_ventas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Total Ventas"/>
       </Properties>

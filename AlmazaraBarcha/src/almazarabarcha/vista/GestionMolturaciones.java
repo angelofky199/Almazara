@@ -29,10 +29,10 @@ public class GestionMolturaciones extends VistaGestor {
 
         label_titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_pagados = new javax.swing.JTable();
+        tabla_no_pagados = new javax.swing.JTable();
         label_pagados = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabla_no_pagados = new javax.swing.JTable();
+        tabla_pagados = new javax.swing.JTable();
         label_no_pagados = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,37 +42,7 @@ public class GestionMolturaciones extends VistaGestor {
         label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_titulo.setText("Gestión Molturaciones");
 
-        tabla_pagados.setBackground(new java.awt.Color(255, 153, 153));
-        tabla_pagados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Fecha", "ID"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabla_pagados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tabla_pagados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabla_pagadosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tabla_pagados);
-
-        label_pagados.setText("Pagados");
-
-        tabla_no_pagados.setBackground(new java.awt.Color(102, 255, 102));
+        tabla_no_pagados.setBackground(new java.awt.Color(255, 153, 153));
         tabla_no_pagados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -92,14 +62,44 @@ public class GestionMolturaciones extends VistaGestor {
                 return canEdit [columnIndex];
             }
         });
-        tabla_no_pagados.setToolTipText("");
         tabla_no_pagados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tabla_no_pagados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabla_no_pagadosMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tabla_no_pagados);
+        jScrollPane1.setViewportView(tabla_no_pagados);
+
+        label_pagados.setText("Pagados");
+
+        tabla_pagados.setBackground(new java.awt.Color(102, 255, 102));
+        tabla_pagados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Fecha", "ID"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabla_pagados.setToolTipText("");
+        tabla_pagados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabla_pagados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_pagadosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tabla_pagados);
 
         label_no_pagados.setText("No pagados");
 
@@ -110,14 +110,14 @@ public class GestionMolturaciones extends VistaGestor {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label_pagados)
                             .addComponent(label_no_pagados))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(label_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(label_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,24 +127,24 @@ public class GestionMolturaciones extends VistaGestor {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label_pagados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(label_no_pagados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tabla_pagadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_pagadosMouseClicked
-        System.out.println("Pagados fila -->" + tabla_pagados.getSelectedRow());
-    }//GEN-LAST:event_tabla_pagadosMouseClicked
-
     private void tabla_no_pagadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_no_pagadosMouseClicked
-        System.out.println("No pagados fila -->" + tabla_no_pagados.getSelectedRow());
+        System.out.println("Pagados fila -->" + tabla_no_pagados.getSelectedRow());
     }//GEN-LAST:event_tabla_no_pagadosMouseClicked
+
+    private void tabla_pagadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_pagadosMouseClicked
+        System.out.println("No pagados fila -->" + tabla_pagados.getSelectedRow());
+    }//GEN-LAST:event_tabla_pagadosMouseClicked
 
     /**
      * @param args the command line arguments

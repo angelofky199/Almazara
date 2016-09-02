@@ -8,6 +8,11 @@ public class GestorOperaciones extends VistaGestor {
         initComponents();
         this.setLocation(250, 150);
         this.setBackground(estilos.getColorInterior());
+        jPanel1.setBackground(estilos.getColorInterior());
+        btn_camb.setFont(estilos.getFuenteBotones());
+        btn_comp.setFont(estilos.getFuenteBotones());
+        btn_molt.setFont(estilos.getFuenteBotones());
+        btn_vent.setFont(estilos.getFuenteBotones());
     }
 
     @SuppressWarnings("unchecked")

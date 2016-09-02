@@ -25,23 +25,30 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="label_rendimiento" pref="100" max="32767" attributes="0"/>
+                  <Component id="label_kg_oliva" alignment="1" max="32767" attributes="0"/>
+                  <Component id="label_maquila" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="text_kg_oliva" pref="133" max="32767" attributes="0"/>
-                  <Component id="text_rendimiento" max="32767" attributes="0"/>
-                  <Component id="text_maquila" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="text_kg_oliva" min="-2" pref="133" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="text_rendimiento" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                          <Component id="text_maquila" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="label_aceite_retirado" pref="163" max="32767" attributes="0"/>
+                  <Component id="label_litros_cambio" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="text_litros_cambio" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
                   <Component id="text_litros_retirado" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
@@ -63,23 +70,23 @@
               </Group>
               <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="75" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="1056" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="text_observaciones" min="-2" pref="873" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="449" max="-2" attributes="0"/>
               <Component id="btn_añadir_cambio" min="-2" pref="141" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="75" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="text_observaciones" min="-2" pref="873" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="label_observaciones" min="-2" pref="117" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1010" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,17 +96,17 @@
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="text_litros_cambio" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="3" max="32767" attributes="0"/>
+                  <Component id="label_litros_cambio" alignment="3" max="32767" attributes="0"/>
                   <Component id="text_kg_oliva" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_kg_oliva" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="check_retira" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="check_factura" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="text_litros_retirado" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_aceite_retirado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_rendimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="text_rendimiento" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="check_pagado" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -107,11 +114,11 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="text_maquila" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_maquila" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="check_paga" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="42" max="32767" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <Component id="label_observaciones" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="text_observaciones" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -124,7 +131,7 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="text_observaciones">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="label_observaciones">
       <Properties>
         <Property name="text" type="java.lang.String" value="Observaciones"/>
       </Properties>
@@ -137,12 +144,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_a&#xf1;adir_cambioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="label_kg_oliva">
       <Properties>
         <Property name="text" type="java.lang.String" value="KG oliva"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="label_rendimiento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Rendimiento"/>
       </Properties>
@@ -176,21 +183,21 @@
         <Property name="text" type="java.lang.String" value="Retira"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="label_litros_cambio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Litros para cambio "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="text_litros_cambio">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="label_aceite_retirado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Litros aceite retirado"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="text_litros_retirado">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="label_maquila">
       <Properties>
         <Property name="text" type="java.lang.String" value="Maquila"/>
       </Properties>
