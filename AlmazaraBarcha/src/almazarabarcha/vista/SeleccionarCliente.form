@@ -34,6 +34,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btn_modificar" min="-2" pref="241" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="button_mostrar_operaciones" min="-2" pref="241" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="button_seleccionar" min="-2" pref="241" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -63,10 +65,13 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="352" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btn_modificar" alignment="1" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="button_seleccionar" alignment="1" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="btn_eliminar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="button_seleccionar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="button_mostrar_operaciones" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btn_eliminar" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
@@ -164,6 +169,18 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modificarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="button_mostrar_operaciones">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mostrar Operaciones"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_mostrar_operacionesActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

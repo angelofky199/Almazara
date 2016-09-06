@@ -9,12 +9,12 @@ package almazarabarcha.vista;
  *
  * @author jose
  */
-public class GestionMolturaciones extends VistaGestor {
+public class GestionCambio extends VistaGestor {
 
     /**
      * Creates new form GestionMolturaciones
      */
-    public GestionMolturaciones() {
+    public GestionCambio() {
         initComponents();
     }
 
@@ -40,7 +40,7 @@ public class GestionMolturaciones extends VistaGestor {
 
         label_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_titulo.setText("Gestión Molturaciones");
+        label_titulo.setText("Gestión Cambio");
 
         tabla_no_pagados.setBackground(new java.awt.Color(255, 153, 153));
         tabla_no_pagados.setModel(new javax.swing.table.DefaultTableModel(
@@ -163,20 +163,23 @@ public class GestionMolturaciones extends VistaGestor {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionMolturaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionCambio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionMolturaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionCambio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionMolturaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionCambio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionMolturaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionCambio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionMolturaciones().setVisible(true);
+                new GestionCambio().setVisible(true);
             }
         });
     }

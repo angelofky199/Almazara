@@ -2,9 +2,9 @@ package almazarabarcha.vista;
 
 import java.awt.Color;
 
-public class GestorOperaciones extends VistaGestor {
+public class MostrarOperaciones extends VistaGestor {
 
-    public GestorOperaciones() {
+    public MostrarOperaciones() {
         initComponents();
         this.setLocation(250, 150);
         this.setBackground(estilos.getColorInterior());
@@ -51,7 +51,7 @@ public class GestorOperaciones extends VistaGestor {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
+            .addGap(0, 369, Short.MAX_VALUE)
         );
 
         btn_vent.setText("Venta");
@@ -91,13 +91,13 @@ public class GestorOperaciones extends VistaGestor {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_camb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btn_vent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_molt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_comp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_vent, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(btn_comp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_camb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 33, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -106,10 +106,10 @@ public class GestorOperaciones extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_moltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_moltActionPerformed
-        AñadirMolturacion m = new AñadirMolturacion();
+        GestionMolturaciones gm = new GestionMolturaciones();
         jPanel1.removeAll();
-        m.getContentPane().setBackground(estilos.getColorInterior());
-        jPanel1.add(m.getContentPane());
+        gm.getContentPane().setBackground(estilos.getColorInterior());
+        jPanel1.add(gm.getContentPane());
         jPanel1.repaint();
         btn_molt.setBackground(Color.YELLOW);
         btn_camb.setBackground(Color.LIGHT_GRAY);
@@ -118,10 +118,10 @@ public class GestorOperaciones extends VistaGestor {
     }//GEN-LAST:event_btn_moltActionPerformed
 
     private void btn_compActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_compActionPerformed
-        AñadirCompra c = new AñadirCompra();
+        GestionCompra gc = new GestionCompra();
         jPanel1.removeAll();
-        c.getContentPane().setBackground(estilos.getColorInterior());
-        jPanel1.add(c.getContentPane());
+        gc.getContentPane().setBackground(estilos.getColorInterior());
+        jPanel1.add(gc.getContentPane());
         jPanel1.repaint();
         btn_comp.setBackground(Color.YELLOW);
         btn_molt.setBackground(Color.LIGHT_GRAY);
@@ -130,10 +130,10 @@ public class GestorOperaciones extends VistaGestor {
     }//GEN-LAST:event_btn_compActionPerformed
 
     private void btn_ventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ventActionPerformed
-        AñadirVenta v = new AñadirVenta();
+        GestionVenta gv = new GestionVenta();
         jPanel1.removeAll();
-        v.getContentPane().setBackground(estilos.getColorInterior());
-        jPanel1.add(v.getContentPane());
+        gv.getContentPane().setBackground(estilos.getColorInterior());
+        jPanel1.add(gv.getContentPane());
         jPanel1.repaint();
         btn_vent.setBackground(Color.YELLOW);
         btn_molt.setBackground(Color.LIGHT_GRAY);
@@ -142,10 +142,10 @@ public class GestorOperaciones extends VistaGestor {
     }//GEN-LAST:event_btn_ventActionPerformed
 
     private void btn_cambActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cambActionPerformed
-        AñadirCambio c = new AñadirCambio();
+        GestionCambio gb = new GestionCambio();
         jPanel1.removeAll();
-        c.getContentPane().setBackground(estilos.getColorInterior());
-        jPanel1.add(c.getContentPane());
+        gb.getContentPane().setBackground(estilos.getColorInterior());
+        jPanel1.add(gb.getContentPane());
         jPanel1.repaint();
         btn_camb.setBackground(Color.YELLOW);
         btn_molt.setBackground(Color.LIGHT_GRAY);
@@ -170,20 +170,21 @@ public class GestorOperaciones extends VistaGestor {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestorOperaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarOperaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestorOperaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarOperaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestorOperaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarOperaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestorOperaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarOperaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestorOperaciones().setVisible(true);
+                new MostrarOperaciones().setVisible(true);
             }
         });
     }
