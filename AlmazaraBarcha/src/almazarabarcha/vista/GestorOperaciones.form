@@ -51,11 +51,9 @@
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btn_camb" max="32767" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="btn_molt" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="btn_comp" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="btn_vent" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btn_comp" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="btn_vent" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="btn_molt" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>

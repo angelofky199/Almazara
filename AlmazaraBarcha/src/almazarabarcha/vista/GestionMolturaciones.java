@@ -5,6 +5,10 @@
  */
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.Molturacion;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jose
@@ -14,8 +18,22 @@ public class GestionMolturaciones extends VistaGestor {
     /**
      * Creates new form GestionMolturaciones
      */
-    public GestionMolturaciones() {
+    String nombre_cliente;
+    public GestionMolturaciones(String nombre) {
         initComponents();
+        nombre_cliente = nombre;
+        
+        ArrayList<Molturacion> molturaciones = gestor.getMolturacionesActivasCliente(nombre_cliente);
+        String fecha = null;
+        
+        for(int i = 0; i < molturaciones.size(); i++)
+        {   
+            fecha = molturaciones.get(i).getFecha_moturacion().toString();
+            if(molturaciones.get(i).isPagado())
+                tabla_pagados.setValueAt(fecha, i, pos);
+            else
+                tabla_no_pagados.setValueAt(fecha, i, pos);
+        }
     }
 
     /**
@@ -40,7 +58,7 @@ public class GestionMolturaciones extends VistaGestor {
 
         label_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_titulo.setText("Gestión Molturaciones");
+        label_titulo.setText("Gestión Molturación");
 
         tabla_no_pagados.setBackground(new java.awt.Color(255, 153, 153));
         tabla_no_pagados.setModel(new javax.swing.table.DefaultTableModel(
@@ -139,6 +157,7 @@ public class GestionMolturaciones extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabla_no_pagadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_no_pagadosMouseClicked
+
         System.out.println("Pagados fila -->" + tabla_no_pagados.getSelectedRow());
     }//GEN-LAST:event_tabla_no_pagadosMouseClicked
 
@@ -176,7 +195,7 @@ public class GestionMolturaciones extends VistaGestor {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionMolturaciones().setVisible(true);
+                //new GestionMolturaciones().setVisible(true);
             }
         });
     }

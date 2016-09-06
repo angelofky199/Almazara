@@ -1,6 +1,10 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.Molturacion;
+import static almazarabarcha.vista.VistaGestor.gestor;
+import static almazarabarcha.vista.VistaGestor.pos;
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class GestorOperaciones extends VistaGestor {
 
@@ -93,10 +97,9 @@ public class GestorOperaciones extends VistaGestor {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_camb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_molt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_comp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_vent, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_comp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_vent, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_molt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -115,6 +118,7 @@ public class GestorOperaciones extends VistaGestor {
         btn_camb.setBackground(Color.LIGHT_GRAY);
         btn_comp.setBackground(Color.LIGHT_GRAY);
         btn_vent.setBackground(Color.LIGHT_GRAY);
+        
     }//GEN-LAST:event_btn_moltActionPerformed
 
     private void btn_compActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_compActionPerformed

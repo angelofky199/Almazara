@@ -254,11 +254,14 @@ public class SeleccionarCliente extends VistaGestor{
 
     private void button_mostrar_operacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_mostrar_operacionesActionPerformed
         int fila = tabla_filtro.getSelectedRow();
+        String nombre_cliente;
         
         if (fila != -1)
         {
-            MostrarOperaciones go = new MostrarOperaciones();
+            nombre_cliente = (String) tabla_filtro.getValueAt(fila, 0); 
+            MostrarOperaciones go = new MostrarOperaciones(nombre_cliente);
             go.setVisible(true);
+      
         }
         else    
             JOptionPane.showMessageDialog(null,"No se ha seleccionado ningún elemento");

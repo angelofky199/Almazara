@@ -1,10 +1,15 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.Molturacion;
+import static almazarabarcha.vista.VistaGestor.gestor;
+import static almazarabarcha.vista.VistaGestor.pos;
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class MostrarOperaciones extends VistaGestor {
-
-    public MostrarOperaciones() {
+        
+        String nombre_cliente;
+    public MostrarOperaciones(String nombre) {
         initComponents();
         this.setLocation(250, 150);
         this.setBackground(estilos.getColorInterior());
@@ -13,6 +18,7 @@ public class MostrarOperaciones extends VistaGestor {
         btn_comp.setFont(estilos.getFuenteBotones());
         btn_molt.setFont(estilos.getFuenteBotones());
         btn_vent.setFont(estilos.getFuenteBotones());
+        nombre_cliente = nombre;
     }
 
     @SuppressWarnings("unchecked")
@@ -106,7 +112,7 @@ public class MostrarOperaciones extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_moltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_moltActionPerformed
-        GestionMolturaciones gm = new GestionMolturaciones();
+        GestionMolturaciones gm = new GestionMolturaciones(nombre_cliente);
         jPanel1.removeAll();
         gm.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(gm.getContentPane());
@@ -115,6 +121,8 @@ public class MostrarOperaciones extends VistaGestor {
         btn_camb.setBackground(Color.LIGHT_GRAY);
         btn_comp.setBackground(Color.LIGHT_GRAY);
         btn_vent.setBackground(Color.LIGHT_GRAY);
+        
+        
     }//GEN-LAST:event_btn_moltActionPerformed
 
     private void btn_compActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_compActionPerformed
@@ -184,7 +192,7 @@ public class MostrarOperaciones extends VistaGestor {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MostrarOperaciones().setVisible(true);
+                //new MostrarOperaciones(String nombre).setVisible(true);
             }
         });
     }

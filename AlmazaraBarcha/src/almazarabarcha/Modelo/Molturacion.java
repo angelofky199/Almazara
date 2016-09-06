@@ -1,5 +1,6 @@
 package almazarabarcha.Modelo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Molturacion {
@@ -27,6 +28,7 @@ public class Molturacion {
         this.subencionado = false;
         this.declara = false;
         this.factura = false;
+        
     }
 
    
