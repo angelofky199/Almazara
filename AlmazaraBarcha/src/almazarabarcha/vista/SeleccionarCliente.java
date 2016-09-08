@@ -6,12 +6,15 @@ import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 
 public class SeleccionarCliente extends VistaGestor{
-
-    public SeleccionarCliente(GestorAlmazara gestor) {
+    
+    JPanel jpanel1;
+    public SeleccionarCliente(GestorAlmazara gestor, JPanel jpanel1) {
+        this.jpanel1 = jpanel1;
         Cliente c;
         initComponents();
         this.filtro("");
@@ -219,8 +222,12 @@ public class SeleccionarCliente extends VistaGestor{
             JOptionPane.showMessageDialog(null,"Se ha seleccionado el cliente correctamente");
             
             GestorOperaciones g = new GestorOperaciones();
+            jpanel1.removeAll();
             g.getContentPane().setBackground(estilos.getColorInterior());
-            g.setVisible(true);
+            jpanel1.add(g.getContentPane());
+            jpanel1.repaint();
+            
+           
             
             pos = gestor.buscarCliente((String) tabla_filtro.getValueAt(fila, 0));
             
@@ -260,8 +267,12 @@ public class SeleccionarCliente extends VistaGestor{
         {
             nombre_cliente = (String) tabla_filtro.getValueAt(fila, 0); 
             MostrarOperaciones go = new MostrarOperaciones(nombre_cliente);
-            go.setVisible(true);
-      
+            
+            jpanel1.removeAll();
+            go.getContentPane().setBackground(estilos.getColorInterior());
+            jpanel1.add(go.getContentPane());
+            jpanel1.repaint();
+            
         }
         else    
             JOptionPane.showMessageDialog(null,"No se ha seleccionado ningún elemento");

@@ -166,7 +166,7 @@ public class MenuPrincipal extends VistaGestor {
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void boton_seleccionar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_seleccionar_clienteActionPerformed
-        SeleccionarCliente sc = new SeleccionarCliente(gestor);
+        SeleccionarCliente sc = new SeleccionarCliente(gestor,jPanel1);
         jPanel1.removeAll();
         sc.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(sc.getContentPane());

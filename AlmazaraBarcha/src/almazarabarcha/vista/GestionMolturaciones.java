@@ -7,7 +7,7 @@ package almazarabarcha.vista;
 
 import almazarabarcha.Modelo.Molturacion;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,16 +24,21 @@ public class GestionMolturaciones extends VistaGestor {
         nombre_cliente = nombre;
         
         ArrayList<Molturacion> molturaciones = gestor.getMolturacionesActivasCliente(nombre_cliente);
-        String fecha = null;
+        Object[] fila = new Object[2];
+        DefaultTableModel modelo_pagados = (DefaultTableModel) tabla_pagados.getModel();
         
-        for(int i = 0; i < molturaciones.size(); i++)
-        {   
-            fecha = molturaciones.get(i).getFecha_moturacion().toString();
-            if(molturaciones.get(i).isPagado())
-                tabla_pagados.setValueAt(fecha, i, pos);
-            else
-                tabla_no_pagados.setValueAt(fecha, i, pos);
-        }
+        //for(int i = 0; i < molturaciones.size(); i++)
+        //{   
+            fila[0] = 1;
+            fila[1] = 2;
+            //if(!molturaciones.get(i).isPagado())
+                modelo_pagados.addRow(fila);
+            //else
+                //tabla_no_pagados.setValueAt(fecha, i, -2);
+        //}
+        
+        tabla_pagados.setModel(modelo_pagados);
+        
     }
 
     /**
@@ -93,10 +98,7 @@ public class GestionMolturaciones extends VistaGestor {
         tabla_pagados.setBackground(new java.awt.Color(102, 255, 102));
         tabla_pagados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Fecha", "ID"
