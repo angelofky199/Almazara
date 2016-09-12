@@ -3,6 +3,7 @@ package almazarabarcha.vista;
 import almazarabarcha.Modelo.Molturacion;
 import java.sql.Date;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 public class AñadirMolturacion extends VistaGestor {
 
@@ -130,24 +131,42 @@ public class AñadirMolturacion extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_molturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_molturacionActionPerformed
-        Molturacion m = new Molturacion();
         
-        float kilos = Float.parseFloat(text_kg_oliva.getText());
-        m.setKg_oliva(kilos);
-        float aceite_producido = Float.parseFloat(text_aceite_prod.getText());
-        m.setAceite_producido(aceite_producido);
-        m.setPagado(check_pagado.isSelected());
-        m.setFactura(check_factura.isSelected());
-        m.setObservacones(text_observaciones.getText());
-        m.setFecha_moturacion(Date.valueOf(LocalDate.now()));
-        
-        float total = m.CalcularIngresoObtenidoMulturacion();
-        text_total.setText(String.valueOf(total));
+        if(text_kg_oliva.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Faltan campos por completar");
+        if(text_observaciones.getText().equals(""))
+            text_observaciones.setText("");
+        if(text_aceite_prod.getText().equals(""))
+            text_aceite_prod.setText(null);
         
         
-        String nombre = gestor.getClientes().get(pos).getNombre_cliente();
-        gestor.addMolturacion(m, nombre);
-       
+            Molturacion m = new Molturacion();
+        
+            float kilos = Float.parseFloat(text_kg_oliva.getText());
+            m.setKg_oliva(kilos);
+            float aceite_producido = Float.parseFloat(text_aceite_prod.getText());
+            m.setAceite_producido(aceite_producido);
+            m.setPagado(check_pagado.isSelected());
+            m.setFactura(check_factura.isSelected());
+            m.setObservacones(text_observaciones.getText());
+            m.setFecha_moturacion(Date.valueOf(LocalDate.now()));
+            
+            if(text_total.getText().equals(""))
+                text_total.setText(null);
+            else
+            {
+                float total = m.CalcularIngresoObtenidoMulturacion();
+                text_total.setText(String.valueOf(total));
+            }
+            
+
+            String nombre = gestor.getClientes().get(pos).getNombre_cliente();
+            gestor.addMolturacion(m, nombre);
+
+            JOptionPane.showMessageDialog(null,"Se ha añadido la molturacion correctamente al cliente: " + nombre);
+        
+        
+        
     }//GEN-LAST:event_btn_molturacionActionPerformed
 
     private void text_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_totalActionPerformed

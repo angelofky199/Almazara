@@ -189,6 +189,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="text_litros_cambio">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_litros_cambioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="label_aceite_retirado">
       <Properties>

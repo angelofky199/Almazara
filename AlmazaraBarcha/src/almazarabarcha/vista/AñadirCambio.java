@@ -3,6 +3,7 @@ package almazarabarcha.vista;
 import almazarabarcha.Modelo.Cambio;
 import static almazarabarcha.vista.VistaGestor.gestor;
 import static almazarabarcha.vista.VistaGestor.pos;
+import javax.swing.JOptionPane;
 
 
 public class AñadirCambio extends VistaGestor {
@@ -68,6 +69,12 @@ public class AñadirCambio extends VistaGestor {
         check_retira.setText("Retira");
 
         label_litros_cambio.setText("Litros para cambio ");
+
+        text_litros_cambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_litros_cambioActionPerformed(evt);
+            }
+        });
 
         label_aceite_retirado.setText("Litros aceite retirado");
 
@@ -163,33 +170,49 @@ public class AñadirCambio extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_añadir_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadir_cambioActionPerformed
-            Cambio ca = new Cambio();
             
-            float kilos = Float.parseFloat(text_kg_oliva.getText());
-            ca.setKg_oliva(kilos);
-            
-            float rend = Float.parseFloat(text_rendimiento.getText());
-            ca.setRendimiento(rend);
+        if(text_kg_oliva.getText().equals("") || text_rendimiento.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Faltan campos por completar");
+        if(text_observaciones.getText().equals(""))
+            text_observaciones.setText("");
+        
+        
+        Cambio ca = new Cambio();
 
+        float kilos = Float.parseFloat(text_kg_oliva.getText());
+        ca.setKg_oliva(kilos);
+
+        float rend = Float.parseFloat(text_rendimiento.getText());
+        ca.setRendimiento(rend);
+        
+        if(text_maquila.getText().equals(""))
+            text_maquila.setText(null);
+        else
+        {
             float maquila = Float.parseFloat(text_maquila.getText());
             ca.setRentabilidad_maquila(maquila/100);
+        }
+
+        float litros_retira = ca.CalcularLitrosParaRetirar();
+        text_litros_retirado.setText(String.valueOf(litros_retira));
+
+        float litros_cambio = ca.CalcularLitrosAceiteParaCambio();
+        text_litros_cambio.setText(String.valueOf(litros_cambio));
+
+        ca.setFactura(check_factura.isSelected());
+        ca.setPaga(check_paga.isSelected());
+        ca.setObservaciones(text_observaciones.getText());
+
+
+        String nombre = gestor.getClientes().get(pos).getNombre_cliente();
+        gestor.addCambio(ca, nombre);
             
-            float litros_retira = ca.CalcularLitrosParaRetirar();
-            text_litros_retirado.setText(String.valueOf(litros_retira));
-            
-            float litros_cambio = ca.CalcularLitrosAceiteParaCambio();
-            text_litros_cambio.setText(String.valueOf(litros_cambio));
-           
-            ca.setFactura(check_factura.isSelected());
-            ca.setPaga(check_paga.isSelected());
-            ca.setObservaciones(text_observaciones.getText());
-            
-            
-            String nombre = gestor.getClientes().get(pos).getNombre_cliente();
-            gestor.addCambio(ca, nombre);
-            
-            
+        JOptionPane.showMessageDialog(null,"Se ha añadido la molturacion correctamente al cliente: " + nombre);
     }//GEN-LAST:event_btn_añadir_cambioActionPerformed
+
+    private void text_litros_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_litros_cambioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_litros_cambioActionPerformed
 
     /**
      * @param args the command line arguments
