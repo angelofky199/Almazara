@@ -1,7 +1,13 @@
 package almazarabarcha.vista;
 
-import almazarabarcha.Modelo.Cliente;
+
+import capaDAO.DaoCliente;
+import excepciones.BusinessException;
+import hibernate.UtilesHibernate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import pojos.Cliente;
 
 public class AñadirCliente extends VistaGestor {
 
@@ -140,17 +146,24 @@ public class AñadirCliente extends VistaGestor {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void btn_añadirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadirClienteActionPerformed
-        
-        boolean ok;
+        UtilesHibernate.inicio();
+        boolean ok = false;
         
         Cliente c = new Cliente();
         c.setDni(this.jTextField1.getText());
-        c.setNombre_cliente(this.jTextField2.getText());
+        c.setNombre(this.jTextField2.getText());
         c.setDireccion(this.jTextField3.getText());
         c.setPoblacion(this.jTextField4.getText());
         c.setTelefono(this.jTextField5.getText());
         
-        ok = gestor.addCliente(c);
+        try {
+            ok = DaoCliente.insertar(c);
+        } catch (BusinessException ex) {
+            Logger.getLogger(AñadirCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        UtilesHibernate.commit();
+	UtilesHibernate.inicio();
         
         if(!ok)
             JOptionPane.showMessageDialog(null,"Ya existe un cliente con ese nombre");
