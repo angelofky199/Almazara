@@ -1,6 +1,6 @@
 package almazarabarcha.vista;
 
-import almazarabarcha.estilos.Estilos;
+import hibernate.UtilesHibernate;
 import java.awt.Color;
 
 
@@ -33,7 +33,6 @@ public class MenuPrincipal extends VistaGestor {
         this.setIconImage(estilos.getImagenIcono());
         this.setTitle("Almazara Barcha");
         this.setExtendedState(MAXIMIZED_BOTH);
-
     }
 
     /**

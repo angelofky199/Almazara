@@ -1,10 +1,12 @@
 package pojos;
-// Generated 13-sep-2016 20:37:20 by Hibernate Tools 4.3.1
+// Generated 15-sep-2016 21:42:28 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +22,7 @@ import javax.persistence.Table;
 public class Cambio  implements java.io.Serializable {
 
 
-     private int idCambio;
+     private Integer idCambio;
      private Cliente cliente;
      private Usuario usuario;
      private float kgOliva;
@@ -43,8 +45,7 @@ public class Cambio  implements java.io.Serializable {
     }
 
 	
-    public Cambio(int idCambio, Cliente cliente, Usuario usuario, float kgOliva, boolean paga, boolean retira, float rendimiento, float litrosCambio, float litrosRetirados, float porcentajeMaquila, float maquila, float precioMolturacion, float aceiteRetirado, float totalPagar, float maquilaReflejada, float kgOlivaReflejados) {
-        this.idCambio = idCambio;
+    public Cambio(Cliente cliente, Usuario usuario, float kgOliva, boolean paga, boolean retira, float rendimiento, float litrosCambio, float litrosRetirados, float porcentajeMaquila, float maquila, float precioMolturacion, float aceiteRetirado, float totalPagar, float maquilaReflejada, float kgOlivaReflejados) {
         this.cliente = cliente;
         this.usuario = usuario;
         this.kgOliva = kgOliva;
@@ -61,8 +62,7 @@ public class Cambio  implements java.io.Serializable {
         this.maquilaReflejada = maquilaReflejada;
         this.kgOlivaReflejados = kgOlivaReflejados;
     }
-    public Cambio(int idCambio, Cliente cliente, Usuario usuario, float kgOliva, boolean paga, boolean retira, float rendimiento, float litrosCambio, float litrosRetirados, float porcentajeMaquila, float maquila, float precioMolturacion, float aceiteRetirado, float totalPagar, float maquilaReflejada, float kgOlivaReflejados, String poblacionOliva, String observaciones) {
-       this.idCambio = idCambio;
+    public Cambio(Cliente cliente, Usuario usuario, float kgOliva, boolean paga, boolean retira, float rendimiento, float litrosCambio, float litrosRetirados, float porcentajeMaquila, float maquila, float precioMolturacion, float aceiteRetirado, float totalPagar, float maquilaReflejada, float kgOlivaReflejados, String poblacionOliva, String observaciones) {
        this.cliente = cliente;
        this.usuario = usuario;
        this.kgOliva = kgOliva;
@@ -82,15 +82,15 @@ public class Cambio  implements java.io.Serializable {
        this.observaciones = observaciones;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="idCambio", unique=true, nullable=false)
-    public int getIdCambio() {
+    public Integer getIdCambio() {
         return this.idCambio;
     }
     
-    public void setIdCambio(int idCambio) {
+    public void setIdCambio(Integer idCambio) {
         this.idCambio = idCambio;
     }
 

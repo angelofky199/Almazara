@@ -1,5 +1,5 @@
 package pojos;
-// Generated 13-sep-2016 20:37:20 by Hibernate Tools 4.3.1
+// Generated 15-sep-2016 21:42:28 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,7 +23,7 @@ import javax.persistence.Table;
 public class Producto  implements java.io.Serializable {
 
 
-     private int idProducto;
+     private Integer idProducto;
      private String nombre;
      private float cantidad;
      private Set ventaHasProductos = new HashSet(0);
@@ -30,27 +32,25 @@ public class Producto  implements java.io.Serializable {
     }
 
 	
-    public Producto(int idProducto, String nombre, float cantidad) {
-        this.idProducto = idProducto;
+    public Producto(String nombre, float cantidad) {
         this.nombre = nombre;
         this.cantidad = cantidad;
     }
-    public Producto(int idProducto, String nombre, float cantidad, Set ventaHasProductos) {
-       this.idProducto = idProducto;
+    public Producto(String nombre, float cantidad, Set ventaHasProductos) {
        this.nombre = nombre;
        this.cantidad = cantidad;
        this.ventaHasProductos = ventaHasProductos;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="idProducto", unique=true, nullable=false)
-    public int getIdProducto() {
+    public Integer getIdProducto() {
         return this.idProducto;
     }
     
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
     }
 

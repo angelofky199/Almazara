@@ -1,5 +1,5 @@
 package pojos;
-// Generated 13-sep-2016 20:37:20 by Hibernate Tools 4.3.1
+// Generated 15-sep-2016 21:42:28 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,12 +20,12 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="cliente"
     ,catalog="almazaradb"
-    , uniqueConstraints = {@UniqueConstraint(columnNames="dni"), @UniqueConstraint(columnNames="nombre")} 
+    , uniqueConstraints = @UniqueConstraint(columnNames="nombre") 
 )
 public class Cliente  implements java.io.Serializable {
 
 
-     private int idCliente;
+     private Integer idCliente;
      private String nombre;
      private String dni;
      private String direccion;
@@ -39,13 +41,11 @@ public class Cliente  implements java.io.Serializable {
     }
 
 	
-    public Cliente(int idCliente, String nombre, boolean subvencionado) {
-        this.idCliente = idCliente;
+    public Cliente(String nombre, boolean subvencionado) {
         this.nombre = nombre;
         this.subvencionado = subvencionado;
     }
-    public Cliente(int idCliente, String nombre, String dni, String direccion, String telefono, String poblacion, boolean subvencionado, Set ventas, Set compras, Set molturacions, Set cambios) {
-       this.idCliente = idCliente;
+    public Cliente(String nombre, String dni, String direccion, String telefono, String poblacion, boolean subvencionado, Set ventas, Set compras, Set molturacions, Set cambios) {
        this.nombre = nombre;
        this.dni = dni;
        this.direccion = direccion;
@@ -58,15 +58,15 @@ public class Cliente  implements java.io.Serializable {
        this.cambios = cambios;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="idCliente", unique=true, nullable=false)
-    public int getIdCliente() {
+    public Integer getIdCliente() {
         return this.idCliente;
     }
     
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -81,7 +81,7 @@ public class Cliente  implements java.io.Serializable {
     }
 
     
-    @Column(name="dni", unique=true, length=9)
+    @Column(name="dni", length=9)
     public String getDni() {
         return this.dni;
     }

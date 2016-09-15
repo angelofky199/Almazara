@@ -1,6 +1,5 @@
 package almazarabarcha.vista;
 
-
 import capaDAO.DaoCliente;
 import excepciones.BusinessException;
 import hibernate.UtilesHibernate;
@@ -146,36 +145,37 @@ public class AñadirCliente extends VistaGestor {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void btn_añadirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadirClienteActionPerformed
-        UtilesHibernate.inicio();
-        boolean ok = false;
-        
-        Cliente c = new Cliente();
-        c.setDni(this.jTextField1.getText());
-        c.setNombre(this.jTextField2.getText());
-        c.setDireccion(this.jTextField3.getText());
-        c.setPoblacion(this.jTextField4.getText());
-        c.setTelefono(this.jTextField5.getText());
-        
+
         try {
+            boolean ok = false;
+            
+            Cliente c = new Cliente();
+            c.setDni(this.jTextField1.getText());
+            c.setNombre(this.jTextField2.getText());
+            c.setDireccion(this.jTextField3.getText());
+            c.setPoblacion(this.jTextField4.getText());
+            c.setTelefono(this.jTextField5.getText());
+            
+            
             ok = DaoCliente.insertar(c);
+            
+            
+            
+            if (!ok) {
+                JOptionPane.showMessageDialog(null, "Ya existe un cliente con ese nombre");
+            } else {
+                JOptionPane.showMessageDialog(null, "El cliente se ha añadido correctamente");
+            }
+            
+            jTextField1.setText(null);
+            jTextField2.setText(null);
+            jTextField3.setText(null);
+            jTextField4.setText(null);
+            jTextField5.setText(null);
         } catch (BusinessException ex) {
             Logger.getLogger(AñadirCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        UtilesHibernate.commit();
-	UtilesHibernate.inicio();
-        
-        if(!ok)
-            JOptionPane.showMessageDialog(null,"Ya existe un cliente con ese nombre");
-        else 
-            JOptionPane.showMessageDialog(null,"El cliente se ha añadido correctamente");
-        
-        jTextField1.setText(null);
-        jTextField2.setText(null);
-        jTextField3.setText(null);
-        jTextField4.setText(null);
-        jTextField5.setText(null);
-        
+
     }//GEN-LAST:event_btn_añadirClienteActionPerformed
 
     /**
@@ -209,7 +209,7 @@ public class AñadirCliente extends VistaGestor {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AñadirCliente().setVisible(true);
-                
+
             }
         });
     }

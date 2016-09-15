@@ -1,5 +1,5 @@
 package pojos;
-// Generated 13-sep-2016 20:37:20 by Hibernate Tools 4.3.1
+// Generated 15-sep-2016 21:42:28 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;
@@ -25,19 +25,19 @@ public class VentaHasProducto  implements java.io.Serializable {
      private VentaHasProductoId id;
      private Producto producto;
      private Venta venta;
-     private float precio;
      private int cantidad;
+     private float precio;
      private float precioTotal;
 
     public VentaHasProducto() {
     }
 
-    public VentaHasProducto(VentaHasProductoId id, Producto producto, Venta venta, float precio, int cantidad, float precioTotal) {
+    public VentaHasProducto(VentaHasProductoId id, Producto producto, Venta venta, int cantidad, float precio, float precioTotal) {
        this.id = id;
        this.producto = producto;
        this.venta = venta;
-       this.precio = precio;
        this.cantidad = cantidad;
+       this.precio = precio;
        this.precioTotal = precioTotal;
     }
    
@@ -76,16 +76,6 @@ public class VentaHasProducto  implements java.io.Serializable {
     }
 
     
-    @Column(name="precio", nullable=false, precision=12, scale=0)
-    public float getPrecio() {
-        return this.precio;
-    }
-    
-    public void setPrecio(float precio) {
-        this.precio = precio;
-    }
-
-    
     @Column(name="cantidad", nullable=false)
     public int getCantidad() {
         return this.cantidad;
@@ -93,6 +83,16 @@ public class VentaHasProducto  implements java.io.Serializable {
     
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    
+    @Column(name="precio", nullable=false, precision=12, scale=0)
+    public float getPrecio() {
+        return this.precio;
+    }
+    
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
     

@@ -10,125 +10,125 @@ import hibernate.UtilesHibernate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.hibernate.Query;
 
 import org.hibernate.Session;
-import org.hibernate.query.Query;
+import org.hibernate.Transaction;
 import pojos.Cliente;
-
 
 /**
  *
  * @author Usuario
  */
 public class DaoCliente {
+    
     /**
-	 * M�todo que, dado un Cliente, lo inserte.
-	 * 
-	 * @param c
-	 * @throws BusinessException
-	 */
-	public static boolean insertar(Cliente c) throws BusinessException {
-		boolean result = false;
-		Session s = UtilesHibernate.getSession();
-		
-		try {
-			s.save(c);
-			result = true;
-			
+     * M�todo que, dado un Cliente, lo inserte.
+     *
+     * @param c
+     * @throws BusinessException
+     */
+    public static boolean insertar(Cliente c) throws BusinessException {
+        boolean result = false;
+        Session s = UtilesHibernate.getSessionFactory().openSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            s.save(c);
+            result = true;
 
-		} catch (Exception e) {
-			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
-					"Error al insertar cliente", e);
-			throw new BusinessException("Error al insertar cliente");
-		}
-		
-		return result;
-	}
-        
-        public static List<Cliente> getClientes() throws BusinessException {
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+            Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
+                    "Error al insertar cliente", e);
+            throw new BusinessException("Error al insertar cliente");
+        }
 
-		String hql = "SELECT c FROM Cliente c";
+        UtilesHibernate.inicio();
+        return result;
+    }
 
-		try {
-			List<Cliente> lista = (List<Cliente>) UtilesHibernate.getSession()
-					.createQuery(hql).list();
+    public static List<Cliente> getClientes() throws BusinessException {
 
-			return lista;
-		} catch (Exception e) {
-			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
-					"Error al consultar la lista de los clientes", e);
-			throw new BusinessException("Error al consultar lista de clientes");
-                }
-        }   
-        
-        public static Cliente getCliente(String nombre) throws BusinessException {
+        String hql = "SELECT c FROM Cliente c";
+
+        try {
+            List<Cliente> lista = (List<Cliente>) UtilesHibernate.getSession()
+                    .createQuery(hql).list();
+
+            return lista;
+        } catch (Exception e) {
+            Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
+                    "Error al consultar la lista de los clientes", e);
+            throw new BusinessException("Error al consultar lista de clientes");
+        }
+    }
+
+    public static Cliente getCliente(String nombre) throws BusinessException {
         Session s = UtilesHibernate.getSession();
         Cliente c;
-        
+
         try {
-                String sql = "SELECT c FROM Cliente c WHERE c.nombre LIKE :nombre";
-                Query q = s.createQuery(sql).setParameter("nombre", nombre);
+            String sql = "SELECT c FROM Cliente c WHERE c.nombre LIKE :nombre";
+            Query q = s.createQuery(sql).setParameter("nombre", nombre);
 
-                if (nombre != null)
-                {
-                        q.setString("nombre", nombre);
-                }
-
-                c = (Cliente) q.uniqueResult();
-
-                return c;
-            } catch (Exception e) {
-                    Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
-                                    "Error al consultar los cliente", e);
-                    throw new BusinessException(
-                                    "Error al consultar usuarios por cliente");
+            if (nombre != null) {
+                q.setString("nombre", nombre);
             }
-	}
-        
-        public static boolean borrarCliente(int id_cliente) throws BusinessException {
-		boolean result = false;
-		Session s = UtilesHibernate.getSession();
 
-		try {
+            c = (Cliente) q.uniqueResult();
 
-			String borrarCliente = "DELETE FROM Cliente WHERE idCli = :id";
+            return c;
+        } catch (Exception e) {
+            Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
+                    "Error al consultar los cliente", e);
+            throw new BusinessException(
+                    "Error al consultar usuarios por cliente");
+        }
+    }
 
-			Query q = s.createQuery(borrarCliente);
+    public static boolean borrarCliente(int id_cliente) throws BusinessException {
+        boolean result = false;
+        Session s = UtilesHibernate.getSession();
 
-			q.setInteger("id", id_cliente);
+        try {
 
-			q.executeUpdate();
+            String borrarCliente = "DELETE FROM Cliente WHERE idCli = :id";
 
-			result = true;
+            Query q = s.createQuery(borrarCliente);
 
-		} catch (Exception e) {
+            q.setInteger("id", id_cliente);
 
-			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
-					"Error al borrar cliente", e);
+            q.executeUpdate();
 
-			throw new BusinessException("Error al borrar cliente");
-		}
+            result = true;
 
-		return result;
-	}
-        
-        
-        	public static boolean update(Cliente c) throws BusinessException {
-		boolean result = false;
-		Session s = UtilesHibernate.getSession();
-		
-		try {
-			s.update(c);
-			result = true;
-			
+        } catch (Exception e) {
 
-		} catch (Exception e) {
-			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
-					"Error al actualizar cliente", e);
-			throw new BusinessException("Error al actualizar cliente");
-		}
-		
-		return result;
-	}
-                
+            Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
+                    "Error al borrar cliente", e);
+
+            throw new BusinessException("Error al borrar cliente");
+        }
+
+        return result;
+    }
+
+    public static boolean update(Cliente c) throws BusinessException {
+        boolean result = false;
+        Session s = UtilesHibernate.getSession();
+
+        try {
+            s.update(c);
+            result = true;
+
+        } catch (Exception e) {
+            Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
+                    "Error al actualizar cliente", e);
+            throw new BusinessException("Error al actualizar cliente");
+        }
+
+        return result;
+    }
+
 }

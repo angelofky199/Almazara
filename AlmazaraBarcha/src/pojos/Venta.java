@@ -1,5 +1,5 @@
 package pojos;
-// Generated 13-sep-2016 20:37:20 by Hibernate Tools 4.3.1
+// Generated 15-sep-2016 21:42:28 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,7 +28,7 @@ import javax.persistence.TemporalType;
 public class Venta  implements java.io.Serializable {
 
 
-     private int idVenta;
+     private Integer idVenta;
      private Cliente cliente;
      private Usuario usuario;
      private Date fecha;
@@ -42,8 +44,7 @@ public class Venta  implements java.io.Serializable {
     }
 
 	
-    public Venta(int idVenta, Cliente cliente, Usuario usuario, Date fecha, boolean factura, boolean regalo, boolean otro, float totalVenta, float litrosDeclarables) {
-        this.idVenta = idVenta;
+    public Venta(Cliente cliente, Usuario usuario, Date fecha, boolean factura, boolean regalo, boolean otro, float totalVenta, float litrosDeclarables) {
         this.cliente = cliente;
         this.usuario = usuario;
         this.fecha = fecha;
@@ -53,8 +54,7 @@ public class Venta  implements java.io.Serializable {
         this.totalVenta = totalVenta;
         this.litrosDeclarables = litrosDeclarables;
     }
-    public Venta(int idVenta, Cliente cliente, Usuario usuario, Date fecha, boolean factura, boolean regalo, boolean otro, float totalVenta, String observaciones, float litrosDeclarables, Set ventaHasProductos) {
-       this.idVenta = idVenta;
+    public Venta(Cliente cliente, Usuario usuario, Date fecha, boolean factura, boolean regalo, boolean otro, float totalVenta, String observaciones, float litrosDeclarables, Set ventaHasProductos) {
        this.cliente = cliente;
        this.usuario = usuario;
        this.fecha = fecha;
@@ -67,15 +67,15 @@ public class Venta  implements java.io.Serializable {
        this.ventaHasProductos = ventaHasProductos;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="idVenta", unique=true, nullable=false)
-    public int getIdVenta() {
+    public Integer getIdVenta() {
         return this.idVenta;
     }
     
-    public void setIdVenta(int idVenta) {
+    public void setIdVenta(Integer idVenta) {
         this.idVenta = idVenta;
     }
 

@@ -1,10 +1,12 @@
 package pojos;
-// Generated 13-sep-2016 20:37:20 by Hibernate Tools 4.3.1
+// Generated 15-sep-2016 21:42:28 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +22,7 @@ import javax.persistence.Table;
 public class Compra  implements java.io.Serializable {
 
 
-     private int idCompra;
+     private Integer idCompra;
      private Cliente cliente;
      private Usuario usuario;
      private float kgOliva;
@@ -36,8 +38,7 @@ public class Compra  implements java.io.Serializable {
     }
 
 	
-    public Compra(int idCompra, Cliente cliente, Usuario usuario, float kgOliva, float precioKg, float totalCompra, boolean pagado, boolean declara, boolean factura, float maquilaReflejada) {
-        this.idCompra = idCompra;
+    public Compra(Cliente cliente, Usuario usuario, float kgOliva, float precioKg, float totalCompra, boolean pagado, boolean declara, boolean factura, float maquilaReflejada) {
         this.cliente = cliente;
         this.usuario = usuario;
         this.kgOliva = kgOliva;
@@ -48,8 +49,7 @@ public class Compra  implements java.io.Serializable {
         this.factura = factura;
         this.maquilaReflejada = maquilaReflejada;
     }
-    public Compra(int idCompra, Cliente cliente, Usuario usuario, float kgOliva, float precioKg, float totalCompra, boolean pagado, boolean declara, boolean factura, float maquilaReflejada, String observaciones) {
-       this.idCompra = idCompra;
+    public Compra(Cliente cliente, Usuario usuario, float kgOliva, float precioKg, float totalCompra, boolean pagado, boolean declara, boolean factura, float maquilaReflejada, String observaciones) {
        this.cliente = cliente;
        this.usuario = usuario;
        this.kgOliva = kgOliva;
@@ -62,15 +62,15 @@ public class Compra  implements java.io.Serializable {
        this.observaciones = observaciones;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="idCompra", unique=true, nullable=false)
-    public int getIdCompra() {
+    public Integer getIdCompra() {
         return this.idCompra;
     }
     
-    public void setIdCompra(int idCompra) {
+    public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
     }
 

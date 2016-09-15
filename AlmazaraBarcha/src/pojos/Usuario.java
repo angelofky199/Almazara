@@ -1,5 +1,5 @@
 package pojos;
-// Generated 13-sep-2016 20:37:20 by Hibernate Tools 4.3.1
+// Generated 15-sep-2016 21:42:28 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,7 +23,7 @@ import javax.persistence.Table;
 public class Usuario  implements java.io.Serializable {
 
 
-     private int idUsuario;
+     private Integer idUsuario;
      private String nombre;
      private String usuario;
      private String contrasenya;
@@ -34,14 +36,12 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(int idUsuario, String nombre, String usuario, String contrasenya) {
-        this.idUsuario = idUsuario;
+    public Usuario(String nombre, String usuario, String contrasenya) {
         this.nombre = nombre;
         this.usuario = usuario;
         this.contrasenya = contrasenya;
     }
-    public Usuario(int idUsuario, String nombre, String usuario, String contrasenya, Set molturacions, Set compras, Set ventas, Set cambios) {
-       this.idUsuario = idUsuario;
+    public Usuario(String nombre, String usuario, String contrasenya, Set molturacions, Set compras, Set ventas, Set cambios) {
        this.nombre = nombre;
        this.usuario = usuario;
        this.contrasenya = contrasenya;
@@ -51,15 +51,15 @@ public class Usuario  implements java.io.Serializable {
        this.cambios = cambios;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="idUsuario", unique=true, nullable=false)
-    public int getIdUsuario() {
+    public Integer getIdUsuario() {
         return this.idUsuario;
     }
     
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 

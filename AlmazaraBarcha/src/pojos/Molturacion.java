@@ -1,11 +1,13 @@
 package pojos;
-// Generated 13-sep-2016 20:37:20 by Hibernate Tools 4.3.1
+// Generated 15-sep-2016 21:42:28 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,7 +25,7 @@ import javax.persistence.TemporalType;
 public class Molturacion  implements java.io.Serializable {
 
 
-     private int idMolturacion;
+     private Integer idMolturacion;
      private Cliente cliente;
      private Usuario usuario;
      private float kgOvila;
@@ -41,8 +43,7 @@ public class Molturacion  implements java.io.Serializable {
     }
 
 	
-    public Molturacion(int idMolturacion, Cliente cliente, Usuario usuario, float kgOvila, float litrosAceiteProd, float kgOrujo, float ingresoMolturacion, Date fecha, boolean pagada, boolean declara, float kgReflejadosDeclaracion, float maquila) {
-        this.idMolturacion = idMolturacion;
+    public Molturacion(Cliente cliente, Usuario usuario, float kgOvila, float litrosAceiteProd, float kgOrujo, float ingresoMolturacion, Date fecha, boolean pagada, boolean declara, float kgReflejadosDeclaracion, float maquila) {
         this.cliente = cliente;
         this.usuario = usuario;
         this.kgOvila = kgOvila;
@@ -55,8 +56,7 @@ public class Molturacion  implements java.io.Serializable {
         this.kgReflejadosDeclaracion = kgReflejadosDeclaracion;
         this.maquila = maquila;
     }
-    public Molturacion(int idMolturacion, Cliente cliente, Usuario usuario, float kgOvila, float litrosAceiteProd, float kgOrujo, float ingresoMolturacion, Date fecha, boolean pagada, boolean declara, float kgReflejadosDeclaracion, float maquila, String observaciones) {
-       this.idMolturacion = idMolturacion;
+    public Molturacion(Cliente cliente, Usuario usuario, float kgOvila, float litrosAceiteProd, float kgOrujo, float ingresoMolturacion, Date fecha, boolean pagada, boolean declara, float kgReflejadosDeclaracion, float maquila, String observaciones) {
        this.cliente = cliente;
        this.usuario = usuario;
        this.kgOvila = kgOvila;
@@ -71,15 +71,15 @@ public class Molturacion  implements java.io.Serializable {
        this.observaciones = observaciones;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="idMolturacion", unique=true, nullable=false)
-    public int getIdMolturacion() {
+    public Integer getIdMolturacion() {
         return this.idMolturacion;
     }
     
-    public void setIdMolturacion(int idMolturacion) {
+    public void setIdMolturacion(Integer idMolturacion) {
         this.idMolturacion = idMolturacion;
     }
 
