@@ -14,8 +14,8 @@
         <many-to-one name="usuario" class="pojos.Usuario" fetch="select">
             <column name="Usuario_idUsuario" not-null="true" />
         </many-to-one>
-        <property name="kgOvila" type="float">
-            <column name="kgOvila" precision="12" scale="0" not-null="true" />
+        <property name="kgOliva" type="float">
+            <column name="kgOliva" precision="12" scale="0" not-null="true" />
         </property>
         <property name="litrosAceiteProd" type="float">
             <column name="litrosAceiteProd" precision="12" scale="0" not-null="true" />

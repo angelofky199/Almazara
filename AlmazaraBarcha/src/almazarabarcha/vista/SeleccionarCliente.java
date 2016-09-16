@@ -1,83 +1,91 @@
 package almazarabarcha.vista;
 
-import almazarabarcha.Modelo.Cliente;
 import almazarabarcha.Modelo.GestorAlmazara;
-import java.awt.Color;
+import capaDAO.DaoCliente;
+import excepciones.BusinessException;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import pojos.Cliente;
 
+public class SeleccionarCliente extends VistaGestor {
 
-public class SeleccionarCliente extends VistaGestor{
-    
     JPanel jpanel1;
+    List<Cliente> clientes = new ArrayList<>();
+
     public SeleccionarCliente(GestorAlmazara gestor, JPanel jpanel1) {
         this.jpanel1 = jpanel1;
         Cliente c;
         initComponents();
         this.filtro("");
         this.setBackground(estilos.getColorInterior());
+        filtro(textfield_buscar.getText());
     }
-   
 
     private SeleccionarCliente() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    private void filtro(String nombre_buscar){
-        int i;        
+
+    private void filtro(String nombre_buscar) {
+        try {
+            clientes = DaoCliente.getClientes();
+        } catch (BusinessException ex) {
+            Logger.getLogger(SeleccionarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int i;
         Object[] fila = new Object[4];
         DefaultTableModel modelo = (DefaultTableModel) tabla_filtro.getModel();
         ArrayList<Cliente> seleccionados = new ArrayList<>();
-        
-        
+
         int num_filas = modelo.getRowCount();
-        for(i = 0; i < num_filas; i++)
-                modelo.removeRow(0);
-        
-        if(nombre_buscar.isEmpty()){
-            for(i = 0; i < gestor.getClientes().size();i++ )
-            {
-                    fila[0] = gestor.getClientes().get(i).getNombre_cliente();
-                    fila[1] = gestor.getClientes().get(i).getDni();
-                    fila[2] = gestor.getClientes().get(i).getDireccion();
-                    fila[3] = gestor.getClientes().get(i).getTelefono();
-                    modelo.addRow(fila);
-            }
+        for (i = 0; i < num_filas; i++) {
+            modelo.removeRow(0);
         }
-        else{
+
+        if (nombre_buscar.isEmpty()) {
+            for (i = 0; i < clientes.size(); i++) {
+                fila[0] = clientes.get(i).getNombre();
+                fila[1] = clientes.get(i).getDni();
+                fila[2] = clientes.get(i).getDireccion();
+                fila[3] = clientes.get(i).getTelefono();
+                modelo.addRow(fila);
+            }
+        } else {
             seleccionados = contenidoEn(nombre_buscar);
-            
-            for(i = 0; i < seleccionados.size();i++ )
-            {
-                fila[0] = seleccionados.get(i).getNombre_cliente();
+
+            for (i = 0; i < seleccionados.size(); i++) {
+                fila[0] = seleccionados.get(i).getNombre();
                 fila[1] = seleccionados.get(i).getDni();
                 fila[2] = seleccionados.get(i).getDireccion();
                 fila[3] = seleccionados.get(i).getTelefono();
                 modelo.addRow(fila);
             }
         }
-        
-        
-        
+
         tabla_filtro.setModel(modelo);
     }
-    
-    public ArrayList<Cliente> contenidoEn(String nombre_buscar){
+
+    public ArrayList<Cliente> contenidoEn(String nombre_buscar) {
         int i, j;
         String nombre;
         ArrayList<Cliente> seleccionados;
         seleccionados = new ArrayList<>();
-        
-        for(i = 0; i < gestor.getClientes().size(); i++){
-            nombre = gestor.getClientes().get(i).getNombre_cliente();
-            if(nombre.length() >= nombre_buscar.length())
-                if(nombre.contains(nombre_buscar))
-                    seleccionados.add(gestor.getClientes().get(i));
+
+        for (i = 0; i < clientes.size(); i++) {
+            nombre = clientes.get(i).getNombre();
+            if (nombre.length() >= nombre_buscar.length()) {
+                if (nombre.contains(nombre_buscar)) {
+                    seleccionados.add(clientes.get(i));
+                }
+            }
         }
-        
+
         return seleccionados;
     }
 
@@ -213,30 +221,27 @@ public class SeleccionarCliente extends VistaGestor{
     private void button_seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seleccionarActionPerformed
         int fila = tabla_filtro.getSelectedRow();
         String mostrar = "";
-        if(fila > -1){
+        if (fila > -1) {
             mostrar += tabla_filtro.getValueAt(fila, 0) + "\n";
             mostrar += tabla_filtro.getValueAt(fila, 1) + "\n";
             mostrar += tabla_filtro.getValueAt(fila, 2) + "\n";
             mostrar += tabla_filtro.getValueAt(fila, 3) + "\n";
             mostrar += "............................" + "\n";
-            JOptionPane.showMessageDialog(null,"Se ha seleccionado el cliente correctamente");
-            
+            JOptionPane.showMessageDialog(null, "Se ha seleccionado el cliente correctamente");
+
             GestorOperaciones g = new GestorOperaciones();
             jpanel1.removeAll();
             g.getContentPane().setBackground(estilos.getColorInterior());
             jpanel1.add(g.getContentPane());
             jpanel1.repaint();
-            
-           
-            
+
             pos = gestor.buscarCliente((String) tabla_filtro.getValueAt(fila, 0));
-            
-        }else{
-            JOptionPane.showMessageDialog(null,"No se ha seleccionado ningún elemento");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún elemento");
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_button_seleccionarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -244,47 +249,48 @@ public class SeleccionarCliente extends VistaGestor{
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        
-        if (JOptionPane.showConfirmDialog(new JFrame(), "¿Está seguro que desea eliminar el cliente seleccionado?","", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
-        {
+
+        if (JOptionPane.showConfirmDialog(new JFrame(), "¿Está seguro que desea eliminar el cliente seleccionado?", "", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             int fila = tabla_filtro.getSelectedRow();
             boolean eliminado = false;
-            eliminado = gestor.eliminarCliente((String) tabla_filtro.getValueAt(fila, 0));
-        
-            if(eliminado)
-                JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente");
+            try {
+                eliminado = DaoCliente.borrarCliente((String) tabla_filtro.getValueAt(fila, 0));
+            } catch (BusinessException ex) {
+                Logger.getLogger(SeleccionarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if (eliminado) {
+                JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente");
+                
+            }
         }
-        
+
         filtro(textfield_buscar.getText());
-    
+
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void button_mostrar_operacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_mostrar_operacionesActionPerformed
         int fila = tabla_filtro.getSelectedRow();
         String nombre_cliente;
-        
-        if (fila != -1)
-        {
-            nombre_cliente = (String) tabla_filtro.getValueAt(fila, 0); 
+
+        if (fila != -1) {
+            nombre_cliente = (String) tabla_filtro.getValueAt(fila, 0);
             MostrarOperaciones go = new MostrarOperaciones(nombre_cliente);
-            
+
             jpanel1.removeAll();
             go.getContentPane().setBackground(estilos.getColorInterior());
             jpanel1.add(go.getContentPane());
             jpanel1.repaint();
-            
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún elemento");
         }
-        else    
-            JOptionPane.showMessageDialog(null,"No se ha seleccionado ningún elemento");
-        
+
     }//GEN-LAST:event_button_mostrar_operacionesActionPerformed
 
-    
-    
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

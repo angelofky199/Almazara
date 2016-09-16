@@ -28,7 +28,7 @@ public class Molturacion  implements java.io.Serializable {
      private Integer idMolturacion;
      private Cliente cliente;
      private Usuario usuario;
-     private float kgOvila;
+     private float kgOliva;
      private float litrosAceiteProd;
      private float kgOrujo;
      private float ingresoMolturacion;
@@ -43,10 +43,10 @@ public class Molturacion  implements java.io.Serializable {
     }
 
 	
-    public Molturacion(Cliente cliente, Usuario usuario, float kgOvila, float litrosAceiteProd, float kgOrujo, float ingresoMolturacion, Date fecha, boolean pagada, boolean declara, float kgReflejadosDeclaracion, float maquila) {
+    public Molturacion(Cliente cliente, Usuario usuario, float kgOliva, float litrosAceiteProd, float kgOrujo, float ingresoMolturacion, Date fecha, boolean pagada, boolean declara, float kgReflejadosDeclaracion, float maquila) {
         this.cliente = cliente;
         this.usuario = usuario;
-        this.kgOvila = kgOvila;
+        this.kgOliva = kgOliva;
         this.litrosAceiteProd = litrosAceiteProd;
         this.kgOrujo = kgOrujo;
         this.ingresoMolturacion = ingresoMolturacion;
@@ -56,10 +56,10 @@ public class Molturacion  implements java.io.Serializable {
         this.kgReflejadosDeclaracion = kgReflejadosDeclaracion;
         this.maquila = maquila;
     }
-    public Molturacion(Cliente cliente, Usuario usuario, float kgOvila, float litrosAceiteProd, float kgOrujo, float ingresoMolturacion, Date fecha, boolean pagada, boolean declara, float kgReflejadosDeclaracion, float maquila, String observaciones) {
+    public Molturacion(Cliente cliente, Usuario usuario, float kgOliva, float litrosAceiteProd, float kgOrujo, float ingresoMolturacion, Date fecha, boolean pagada, boolean declara, float kgReflejadosDeclaracion, float maquila, String observaciones) {
        this.cliente = cliente;
        this.usuario = usuario;
-       this.kgOvila = kgOvila;
+       this.kgOliva = kgOliva;
        this.litrosAceiteProd = litrosAceiteProd;
        this.kgOrujo = kgOrujo;
        this.ingresoMolturacion = ingresoMolturacion;
@@ -104,13 +104,13 @@ public class Molturacion  implements java.io.Serializable {
     }
 
     
-    @Column(name="kgOvila", nullable=false, precision=12, scale=0)
-    public float getKgOvila() {
-        return this.kgOvila;
+    @Column(name="kgOliva", nullable=false, precision=12, scale=0)
+    public float getKgOliva() {
+        return this.kgOliva;
     }
     
-    public void setKgOvila(float kgOvila) {
-        this.kgOvila = kgOvila;
+    public void setKgOliva(float kgOliva) {
+        this.kgOliva = kgOliva;
     }
 
     
