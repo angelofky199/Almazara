@@ -39,6 +39,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txt_user = new javax.swing.JTextField();
         txt_pass = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,6 +66,17 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(txt_pass);
         txt_pass.setBounds(222, 171, 198, 37);
 
+        jButton1.setText("Gestionar usuarios");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(450, 350, 130, 19);
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/almazarabarcha/estilos/almazara logo_bien.jpg"))); // NOI18N
         getContentPane().add(jLabel3);
         jLabel3.setBounds(-60, 0, 730, 680);
@@ -84,6 +96,11 @@ public class Login extends javax.swing.JFrame {
             
             
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       GestionUsuarios gu = new GestionUsuarios();
+       gu.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,6 +139,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
