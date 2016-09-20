@@ -184,14 +184,7 @@ public class MenuPrincipal extends VistaGestor {
     private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowStateChanged
-    public void CambiarVista(){
-        
-        GestorOperaciones g = new GestorOperaciones();
-        jPanel1.removeAll();
-        jPanel1.add(g.getContentPane());
-        jPanel1.repaint();
-        
-    }
+   
     
     /**
      * @param args the command line arguments

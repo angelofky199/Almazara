@@ -1,14 +1,11 @@
 package almazarabarcha.vista;
 
-import almazarabarcha.Modelo.Molturacion;
-import static almazarabarcha.vista.VistaGestor.gestor;
-import static almazarabarcha.vista.VistaGestor.pos;
 import java.awt.Color;
-import java.util.ArrayList;
+import pojos.Cliente;
 
 public class GestorOperaciones extends VistaGestor {
-
-    public GestorOperaciones() {
+        private Cliente cliente;
+    public GestorOperaciones(Cliente c) {
         initComponents();
         this.setLocation(250, 150);
         this.setBackground(estilos.getColorInterior());
@@ -17,6 +14,11 @@ public class GestorOperaciones extends VistaGestor {
         btn_comp.setFont(estilos.getFuenteBotones());
         btn_molt.setFont(estilos.getFuenteBotones());
         btn_vent.setFont(estilos.getFuenteBotones());
+        this.cliente = c;
+    }
+
+    private GestorOperaciones() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @SuppressWarnings("unchecked")
@@ -109,7 +111,7 @@ public class GestorOperaciones extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_moltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_moltActionPerformed
-        AñadirMolturacion m = new AñadirMolturacion();
+        AñadirMolturacion m = new AñadirMolturacion(cliente);
         jPanel1.removeAll();
         m.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(m.getContentPane());

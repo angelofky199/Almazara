@@ -2,6 +2,7 @@ package almazarabarcha.vista;
 
 import almazarabarcha.Modelo.GestorAlmazara;
 import capaDAO.DaoCliente;
+
 import excepciones.BusinessException;
 
 import java.util.ArrayList;
@@ -219,23 +220,29 @@ public class SeleccionarCliente extends VistaGestor {
     }//GEN-LAST:event_button_buscarActionPerformed
 
     private void button_seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seleccionarActionPerformed
+
         int fila = tabla_filtro.getSelectedRow();
         String mostrar = "";
         if (fila > -1) {
-            mostrar += tabla_filtro.getValueAt(fila, 0) + "\n";
-            mostrar += tabla_filtro.getValueAt(fila, 1) + "\n";
-            mostrar += tabla_filtro.getValueAt(fila, 2) + "\n";
-            mostrar += tabla_filtro.getValueAt(fila, 3) + "\n";
-            mostrar += "............................" + "\n";
-            JOptionPane.showMessageDialog(null, "Se ha seleccionado el cliente correctamente");
+            try {
+                mostrar += tabla_filtro.getValueAt(fila, 0) + "\n";
+                mostrar += tabla_filtro.getValueAt(fila, 1) + "\n";
+                mostrar += tabla_filtro.getValueAt(fila, 2) + "\n";
+                mostrar += tabla_filtro.getValueAt(fila, 3) + "\n";
+                mostrar += "............................" + "\n";
+                JOptionPane.showMessageDialog(null, "Se ha seleccionado el cliente correctamente");
 
-            GestorOperaciones g = new GestorOperaciones();
-            jpanel1.removeAll();
-            g.getContentPane().setBackground(estilos.getColorInterior());
-            jpanel1.add(g.getContentPane());
-            jpanel1.repaint();
+                Cliente c = DaoCliente.getCliente((String) tabla_filtro.getValueAt(fila, 0));
 
-            pos = gestor.buscarCliente((String) tabla_filtro.getValueAt(fila, 0));
+                GestorOperaciones g = new GestorOperaciones(c);
+                jpanel1.removeAll();
+                g.getContentPane().setBackground(estilos.getColorInterior());
+                jpanel1.add(g.getContentPane());
+                jpanel1.repaint();
+                
+            } catch (BusinessException ex) {
+                Logger.getLogger(SeleccionarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         } else {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún elemento");
@@ -261,7 +268,7 @@ public class SeleccionarCliente extends VistaGestor {
 
             if (eliminado) {
                 JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente");
-                
+
             }
         }
 

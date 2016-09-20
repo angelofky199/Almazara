@@ -44,9 +44,9 @@
                               </Group>
                               <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="check_factura" min="-2" max="-2" attributes="0"/>
                                   <Component id="check_pagado" min="-2" pref="80" max="-2" attributes="0"/>
                                   <Component id="check_subencionado" min="-2" max="-2" attributes="0"/>
+                                  <Component id="check_declara" min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="text_observaciones" min="-2" pref="907" max="-2" attributes="0"/>
@@ -75,7 +75,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="text_aceite_prod" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="label_aceite_producido" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="check_factura" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="check_declara" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -114,11 +114,6 @@
         <Property name="text" type="java.lang.String" value="Subencionado"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="check_factura">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Factura"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JCheckBox" name="check_pagado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pagado"/>
@@ -148,6 +143,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_totalActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="check_declara">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Declara"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
