@@ -5,8 +5,6 @@
  */
 package capaDAO;
 
-import almazarabarcha.Modelo.Molturacion;
-import almazarabarcha.Modelo.Venta;
 import excepciones.BusinessException;
 import hibernate.UtilesHibernate;
 import java.util.ArrayList;
@@ -16,14 +14,15 @@ import java.util.logging.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pojos.Cliente;
+import pojos.Venta;
 
 /**
  *
  * @author Usuario
  */
 public class DaoVenta {
-    
-     public static List<Venta> getVentas(Cliente c) throws BusinessException {
+
+    public static List<Venta> getVentas(Cliente c) throws BusinessException {
 
         Session s = UtilesHibernate.getSession();
 

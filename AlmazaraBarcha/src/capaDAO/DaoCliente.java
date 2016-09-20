@@ -9,10 +9,8 @@ import excepciones.BusinessException;
 import hibernate.UtilesHibernate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
+import java.util.logging.Level; 
 import java.util.logging.Logger;
-import org.hibernate.Query;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -51,17 +49,14 @@ public class DaoCliente {
 
     public static List<Cliente> getClientes() throws BusinessException {
         Session s = UtilesHibernate.getSession();
-        Transaction tx = s.beginTransaction();
+
         List<Cliente> lista = new ArrayList<>();
         String hql = "SELECT c FROM Cliente c";
 
         try {
             lista = (List<Cliente>) s.createQuery(hql).list();
 
-            tx.commit();
-
         } catch (Exception e) {
-            tx.rollback();
             Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
                     "Error al consultar la lista de los clientes", e);
             throw new BusinessException("Error al consultar lista de clientes");
@@ -72,7 +67,7 @@ public class DaoCliente {
 
     public static Cliente getCliente(String nombre) throws BusinessException {
         Session s = UtilesHibernate.getSession();
-        Transaction tx = s.beginTransaction();
+
         Cliente c = new Cliente();
 
         try {
@@ -80,10 +75,10 @@ public class DaoCliente {
 
             if (nombre != null) {
                 c = (Cliente) (s.createQuery(sql).setParameter("nombre", nombre)).uniqueResult();
-                tx.commit();
+
             }
         } catch (Exception e) {
-            tx.rollback();
+
             Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE,
                     "Error al consultar los cliente", e);
             throw new BusinessException(

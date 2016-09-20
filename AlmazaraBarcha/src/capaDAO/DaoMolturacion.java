@@ -5,7 +5,7 @@
  */
 package capaDAO;
 
-import almazarabarcha.Modelo.Molturacion;
+
 import excepciones.BusinessException;
 import hibernate.UtilesHibernate;
 import java.util.ArrayList;
@@ -15,6 +15,8 @@ import java.util.logging.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pojos.Cliente;
+import pojos.Molturacion;
+
 
 /**
  *

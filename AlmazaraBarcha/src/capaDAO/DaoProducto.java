@@ -5,7 +5,7 @@
  */
 package capaDAO;
 
-import almazarabarcha.Modelo.Molturacion;
+
 import excepciones.BusinessException;
 import hibernate.UtilesHibernate;
 import java.util.logging.Level;
