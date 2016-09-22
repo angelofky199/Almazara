@@ -5,9 +5,15 @@
  */
 package almazarabarcha.vista;
 
-import almazarabarcha.Modelo.Molturacion;
-import java.util.ArrayList;
+import capaDAO.DaoMolturacion;
+import excepciones.BusinessException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import pojos.Cliente;
+import pojos.Molturacion;
 
 /**
  *
@@ -18,27 +24,43 @@ public class GestionMolturaciones extends VistaGestor {
     /**
      * Creates new form GestionMolturaciones
      */
-    String nombre_cliente;
-    public GestionMolturaciones(String nombre) {
+    private Cliente c;
+    private List<Molturacion> molturacionesPagadas;
+    private List<Molturacion> molturacionesNoPagadas;
+    private JPanel jpanel;
+
+    public GestionMolturaciones(Cliente c, JPanel jpanel) {
         initComponents();
-        nombre_cliente = nombre;
+        this.jpanel = jpanel;
+        this.c = c;
+
+        try {
+            molturacionesNoPagadas = DaoMolturacion.getMolturacionesNoPagadas(c);
+            molturacionesPagadas = DaoMolturacion.getMolturacionesPagadas(c);
+        } catch (BusinessException ex) {
+            Logger.getLogger(GestionMolturaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        ArrayList<Molturacion> molturaciones = gestor.getMolturacionesActivasCliente(nombre_cliente);
-        Object[] fila = new Object[2];
+        DefaultTableModel modelo_no_pagados = (DefaultTableModel) tabla_no_pagados.getModel();
+        Object[] filaNoPagados = new Object[2];
+        for (Molturacion mnp : molturacionesNoPagadas) {
+            filaNoPagados[0] = mnp.getIdMolturacion();
+            filaNoPagados[1] = mnp.getFecha();
+            
+            modelo_no_pagados.addRow(filaNoPagados);   
+        }
+        
         DefaultTableModel modelo_pagados = (DefaultTableModel) tabla_pagados.getModel();
+        Object[] filaPagados = new Object[2];
+        for (Molturacion mp : molturacionesPagadas) {
+            filaPagados[0] = mp.getIdMolturacion();
+            filaPagados[1] = mp.getFecha();
+            
+            modelo_pagados.addRow(filaPagados);   
+        }
         
-        //for(int i = 0; i < molturaciones.size(); i++)
-        //{   
-            fila[0] = 1;
-            fila[1] = 2;
-            //if(!molturaciones.get(i).isPagado())
-                modelo_pagados.addRow(fila);
-            //else
-                //tabla_no_pagados.setValueAt(fecha, i, -2);
-        //}
-        
+        tabla_no_pagados.setModel(modelo_no_pagados);
         tabla_pagados.setModel(modelo_pagados);
-        
     }
 
     /**
@@ -159,8 +181,12 @@ public class GestionMolturaciones extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabla_no_pagadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_no_pagadosMouseClicked
-
-        System.out.println("Pagados fila -->" + tabla_no_pagados.getSelectedRow());
+        FinalizarMolturacion fm = new FinalizarMolturacion(molturacionesNoPagadas.get(tabla_no_pagados.getSelectedRow()));
+        jpanel.removeAll();
+        fm.getContentPane().setBackground(estilos.getColorInterior());
+        jpanel.add(fm.getContentPane());
+        jpanel.repaint();
+        
     }//GEN-LAST:event_tabla_no_pagadosMouseClicked
 
     private void tabla_pagadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_pagadosMouseClicked

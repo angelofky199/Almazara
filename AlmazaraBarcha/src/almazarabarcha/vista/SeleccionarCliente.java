@@ -237,12 +237,12 @@ public class SeleccionarCliente extends VistaGestor {
 
                 Cliente c = DaoCliente.getCliente((String) tabla_filtro.getValueAt(fila, 0));
 
-                GestorOperaciones g = new GestorOperaciones(c,u);
+                GestorOperaciones g = new GestorOperaciones(c, u);
                 jpanel1.removeAll();
                 g.getContentPane().setBackground(estilos.getColorInterior());
                 jpanel1.add(g.getContentPane());
                 jpanel1.repaint();
-                
+
             } catch (BusinessException ex) {
                 Logger.getLogger(SeleccionarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -281,16 +281,20 @@ public class SeleccionarCliente extends VistaGestor {
 
     private void button_mostrar_operacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_mostrar_operacionesActionPerformed
         int fila = tabla_filtro.getSelectedRow();
-        String nombre_cliente;
 
         if (fila != -1) {
-            nombre_cliente = (String) tabla_filtro.getValueAt(fila, 0);
-            MostrarOperaciones go = new MostrarOperaciones(nombre_cliente);
+            try {
+                Cliente c = DaoCliente.getCliente((String) tabla_filtro.getValueAt(fila, 0));
+                MostrarOperaciones go = new MostrarOperaciones(c);
 
-            jpanel1.removeAll();
-            go.getContentPane().setBackground(estilos.getColorInterior());
-            jpanel1.add(go.getContentPane());
-            jpanel1.repaint();
+                jpanel1.removeAll();
+                go.getContentPane().setBackground(estilos.getColorInterior());
+                jpanel1.add(go.getContentPane());
+                jpanel1.repaint();
+
+            } catch (BusinessException ex) {
+                Logger.getLogger(SeleccionarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         } else {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún elemento");

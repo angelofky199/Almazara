@@ -26,6 +26,7 @@ public class DaoCliente {
      * M�todo que, dado un Cliente, lo inserte.
      *
      * @param c
+     * @return 
      * @throws BusinessException
      */
     public static boolean insertar(Cliente c) throws BusinessException {

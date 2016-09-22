@@ -20,6 +20,9 @@
         <property name="litrosAceiteProd" type="float">
             <column name="litrosAceiteProd" precision="12" scale="0" not-null="true" />
         </property>
+        <property name="rendimiento" type="float">
+            <column name="rendimiento" precision="12" scale="0" not-null="false" />
+        </property>
         <property name="kgOrujo" type="float">
             <column name="kgOrujo" precision="12" scale="0" not-null="true" />
         </property>

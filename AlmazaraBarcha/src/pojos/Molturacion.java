@@ -33,6 +33,7 @@ public class Molturacion implements java.io.Serializable {
     private Usuario usuario;
     private float kgOliva;
     private float litrosAceiteProd;
+    private float rendimiento;
     private float kgOrujo;
     private float ingresoMolturacion;
     private Date fecha;
@@ -59,11 +60,12 @@ public class Molturacion implements java.io.Serializable {
         this.maquila = maquila;
     }
 
-    public Molturacion(Cliente cliente, Usuario usuario, float kgOliva, float litrosAceiteProd, float kgOrujo, float ingresoMolturacion, Date fecha, boolean pagada, boolean declara, float kgReflejadosDeclaracion, float maquila, String observaciones) {
+    public Molturacion(Cliente cliente, Usuario usuario, float kgOliva, float litrosAceiteProd,float rendimiento, float kgOrujo, float ingresoMolturacion, Date fecha, boolean pagada, boolean declara, float kgReflejadosDeclaracion, float maquila, String observaciones) {
         this.cliente = cliente;
         this.usuario = usuario;
         this.kgOliva = kgOliva;
         this.litrosAceiteProd = litrosAceiteProd;
+        this.rendimiento = rendimiento;
         this.kgOrujo = kgOrujo;
         this.ingresoMolturacion = ingresoMolturacion;
         this.fecha = fecha;
@@ -122,6 +124,15 @@ public class Molturacion implements java.io.Serializable {
 
     public void setLitrosAceiteProd(float litrosAceiteProd) {
         this.litrosAceiteProd = litrosAceiteProd;
+    }
+    
+    @Column(name = "rendimiento", nullable = true, precision = 12, scale = 0)
+    public float getRendimiento() {
+        return this.rendimiento;
+    }
+
+    public void setRendimiento(float rendimiento) {
+        this.rendimiento = rendimiento;
     }
 
     @Column(name = "kgOrujo", nullable = false, precision = 12, scale = 0)
@@ -212,20 +223,16 @@ public class Molturacion implements java.io.Serializable {
         return total;
     }
 
-    public float CalcularOrujo() {
-        return this.kgOliva * RENDIMIENTO_ORUJO_KG;
+    public void CalcularOrujo() {
+        this.kgOrujo = this.kgOliva * RENDIMIENTO_ORUJO_KG;
     }
 
-    public float CalcularMaquila() {
-        return this.kgOliva * RENDIMIENTO_MAQUILA_KG;
+    public void CalcularMaquila() {
+        this.maquila = this.kgOliva * RENDIMIENTO_MAQUILA_KG;
     }
     
-    public float CalcularRendimientoAceite() {
-        float rendimiento = 0;
-        
+    public void CalcularRendimientoAceite() {
         if(this.kgOliva > 0)
-            rendimiento = this.litrosAceiteProd / this.kgOliva;
-        
-        return rendimiento;
+            this.rendimiento = this.litrosAceiteProd / this.kgOliva;
     }
 }

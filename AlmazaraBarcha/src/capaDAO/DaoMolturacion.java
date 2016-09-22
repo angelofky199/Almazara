@@ -65,5 +65,65 @@ public class DaoMolturacion {
         return result;
 
     }
+    
+    public static boolean update(Molturacion m) throws BusinessException {
+        boolean result = false;
+        Session s = UtilesHibernate.getSession();
+        Transaction tx = s.beginTransaction();
+        try {
+            
+            s.update(m);
+            tx.commit();
+            result = true;
+
+        } catch (Exception e) {
+            tx.rollback();
+            Logger.getLogger(DaoMolturacion.class.getName()).log(Level.SEVERE,
+                    "Error al actualizar la molturacion", e);
+            throw new BusinessException("Error al actualizar la molturacion");
+        }
+
+        return result;
+    }
+
+    public static List<Molturacion> getMolturacionesNoPagadas(Cliente c) throws BusinessException {
+        Session s = UtilesHibernate.getSession();
+
+        List<Molturacion> lista = new ArrayList<>();
+        String hql = "SELECT m FROM Molturacion m WHERE m.Cliente_idCliente = "
+                + "(SELECT idCliente FROM Cliente WHERE nombre LIKE :nombre) AND m.Pagada = 0";
+
+        try {
+            lista = (List<Molturacion>) s.createQuery(hql).setParameter("nombre", c.getNombre()).list();
+
+        } catch (Exception e) {
+
+            Logger.getLogger(DaoMolturacion.class.getName()).log(Level.SEVERE,
+                    "Error al consultar la lista de molturaciones", e);
+            throw new BusinessException("Error al consultar lista de molturaciones");
+        }
+
+        return lista;
+    }
+
+    public static List<Molturacion> getMolturacionesPagadas(Cliente c) throws BusinessException {
+        Session s = UtilesHibernate.getSession();
+
+        List<Molturacion> lista = new ArrayList<>();
+        String hql = "SELECT m FROM Molturacion m WHERE m.Cliente_idCliente = "
+                + "(SELECT idCliente FROM Cliente WHERE nombre LIKE :nombre) AND m.Pagada = 1";
+
+        try {
+            lista = (List<Molturacion>) s.createQuery(hql).setParameter("nombre", c.getNombre()).list();
+
+        } catch (Exception e) {
+
+            Logger.getLogger(DaoMolturacion.class.getName()).log(Level.SEVERE,
+                    "Error al consultar la lista de molturaciones", e);
+            throw new BusinessException("Error al consultar lista de molturaciones");
+        }
+
+        return lista;
+    }
 
 }

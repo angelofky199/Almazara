@@ -1,15 +1,13 @@
 package almazarabarcha.vista;
 
-import almazarabarcha.Modelo.Molturacion;
-import static almazarabarcha.vista.VistaGestor.gestor;
-import static almazarabarcha.vista.VistaGestor.pos;
 import java.awt.Color;
-import java.util.ArrayList;
+import pojos.Cliente;
 
 public class MostrarOperaciones extends VistaGestor {
-        
-        String nombre_cliente;
-    public MostrarOperaciones(String nombre) {
+
+    private Cliente c;
+
+    public MostrarOperaciones(Cliente c) {
         initComponents();
         this.setLocation(250, 150);
         this.setBackground(estilos.getColorInterior());
@@ -18,7 +16,7 @@ public class MostrarOperaciones extends VistaGestor {
         btn_comp.setFont(estilos.getFuenteBotones());
         btn_molt.setFont(estilos.getFuenteBotones());
         btn_vent.setFont(estilos.getFuenteBotones());
-        nombre_cliente = nombre;
+        this.c = c;
     }
 
     @SuppressWarnings("unchecked")
@@ -110,7 +108,7 @@ public class MostrarOperaciones extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_moltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_moltActionPerformed
-        GestionMolturaciones gm = new GestionMolturaciones(nombre_cliente);
+        GestionMolturaciones gm = new GestionMolturaciones(c,jPanel1);
         jPanel1.removeAll();
         gm.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(gm.getContentPane());
@@ -119,8 +117,8 @@ public class MostrarOperaciones extends VistaGestor {
         btn_camb.setBackground(Color.LIGHT_GRAY);
         btn_comp.setBackground(Color.LIGHT_GRAY);
         btn_vent.setBackground(Color.LIGHT_GRAY);
-        
-        
+
+
     }//GEN-LAST:event_btn_moltActionPerformed
 
     private void btn_compActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_compActionPerformed
@@ -158,7 +156,7 @@ public class MostrarOperaciones extends VistaGestor {
         btn_comp.setBackground(Color.LIGHT_GRAY);
         btn_vent.setBackground(Color.LIGHT_GRAY);
     }//GEN-LAST:event_btn_cambActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
