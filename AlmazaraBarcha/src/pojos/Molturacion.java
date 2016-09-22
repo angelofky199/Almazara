@@ -219,5 +219,13 @@ public class Molturacion implements java.io.Serializable {
     public float CalcularMaquila() {
         return this.kgOliva * RENDIMIENTO_MAQUILA_KG;
     }
-
+    
+    public float CalcularRendimientoAceite() {
+        float rendimiento = 0;
+        
+        if(this.kgOliva > 0)
+            rendimiento = this.litrosAceiteProd / this.kgOliva;
+        
+        return rendimiento;
+    }
 }
