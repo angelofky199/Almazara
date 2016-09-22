@@ -3,6 +3,7 @@ package almazarabarcha.vista;
 import capaDAO.DaoMolturacion;
 import excepciones.BusinessException;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,17 +16,18 @@ public class AñadirMolturacion extends VistaGestor {
 
     private Cliente cliente;
     private Usuario u;
+    Molturacion m;
 
     public AñadirMolturacion(Cliente c, Usuario u) {
         initComponents();
-        label_aceite_producido.setFont(estilos.getFuenteEtiquetas());
         label_kg_oliva.setFont(estilos.getFuenteEtiquetas());
         label_observaciones.setFont(estilos.getFuenteEtiquetas());
         label_total_ingresos.setFont(estilos.getFuenteEtiquetas());
         btn_molturacion.setFont(estilos.getFuenteBotones());
         this.cliente = c;
         this.u = u;
-
+        m = new Molturacion();
+        btn_molturacion.setVisible(false);
     }
 
     private AñadirMolturacion() {
@@ -43,23 +45,16 @@ public class AñadirMolturacion extends VistaGestor {
 
         label_kg_oliva = new javax.swing.JLabel();
         text_kg_oliva = new javax.swing.JTextField();
-        label_aceite_producido = new javax.swing.JLabel();
-        text_aceite_prod = new javax.swing.JTextField();
-        check_pagado = new javax.swing.JCheckBox();
         btn_molturacion = new javax.swing.JButton();
         text_observaciones = new javax.swing.JTextField();
         label_observaciones = new javax.swing.JLabel();
         label_total_ingresos = new javax.swing.JLabel();
-        text_total = new javax.swing.JTextField();
-        check_declara = new javax.swing.JCheckBox();
+        lb_total = new javax.swing.JLabel();
+        btn_calcular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         label_kg_oliva.setText("KG Oliva");
-
-        label_aceite_producido.setText("Aceite producido");
-
-        check_pagado.setText("Pagado");
 
         btn_molturacion.setText("Añadir molturacion");
         btn_molturacion.addActionListener(new java.awt.event.ActionListener() {
@@ -70,15 +65,17 @@ public class AñadirMolturacion extends VistaGestor {
 
         label_observaciones.setText("Observaciones");
 
-        label_total_ingresos.setText("Total ingresos");
+        label_total_ingresos.setText("Total ingresos molturacion");
 
-        text_total.addActionListener(new java.awt.event.ActionListener() {
+        lb_total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_total.setText("0");
+
+        btn_calcular.setText("Calcular ingresos molturacion");
+        btn_calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_totalActionPerformed(evt);
+                btn_calcularActionPerformed(evt);
             }
         });
-
-        check_declara.setText("Declara");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,23 +86,19 @@ public class AñadirMolturacion extends VistaGestor {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(label_total_ingresos, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label_aceite_producido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(label_kg_oliva, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(label_total_ingresos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(text_total, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(text_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(text_aceite_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(98, 98, 98)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(check_pagado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(check_declara, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(text_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(89, 89, 89)
+                                        .addComponent(btn_calcular))
+                                    .addComponent(lb_total, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(470, 470, 470)
                         .addComponent(btn_molturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -117,22 +110,17 @@ public class AñadirMolturacion extends VistaGestor {
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_kg_oliva)
-                    .addComponent(text_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(text_aceite_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_aceite_producido)
-                    .addComponent(check_declara))
-                .addGap(18, 18, 18)
+                    .addComponent(text_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_total_ingresos)
-                    .addComponent(text_total, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(check_pagado))
-                .addGap(68, 68, 68)
+                    .addComponent(lb_total))
+                .addGap(87, 87, 87)
                 .addComponent(label_observaciones)
                 .addGap(18, 18, 18)
                 .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(btn_molturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -142,63 +130,58 @@ public class AñadirMolturacion extends VistaGestor {
 
     private void btn_molturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_molturacionActionPerformed
 
+        if (text_observaciones.getText().equals("")) {
+            text_observaciones.setText("");
+            m.setObservaciones("");
+        } else {
+            m.setObservaciones(text_observaciones.getText());
+        }
+
+        /*if (check_declara.isSelected()) {
+         m.setDeclara(true);
+         m.setKgReflejadosDeclaracion(kilos);
+         } else {
+         m.setDeclara(false);
+         m.setKgReflejadosDeclaracion(0);
+         }*/
+        if (cliente.isSubvencionado()) {
+            m.setMaquila(m.CalcularMaquila());
+        } else {
+            m.setMaquila(0);
+        }
+
+        m.setKgReflejadosDeclaracion(0);
+        m.setKgOrujo(0);
+        m.setLitrosAceiteProd(0);
+        m.setFecha(Date.valueOf(LocalDate.now()));
+        m.setCliente(cliente);
+        m.setUsuario(u);
+
+        try {
+            DaoMolturacion.insertar(m);
+        } catch (BusinessException ex) {
+            Logger.getLogger(AñadirMolturacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JOptionPane.showMessageDialog(null, "Se ha añadido la molturacion correctamente al cliente: " + cliente.getNombre());
+
+
+    }//GEN-LAST:event_btn_molturacionActionPerformed
+
+    private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
         if (text_kg_oliva.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos por completar");
 
         } else {
-            if (text_observaciones.getText().equals("")) {
-                text_observaciones.setText("");
-            }
-            if (text_aceite_prod.getText().equals("")) {
-                text_aceite_prod.setText("0");
-            }
-
-            Molturacion m = new Molturacion();
-
             float kilos = Float.parseFloat(text_kg_oliva.getText());
             m.setKgOliva(kilos);
-            float aceite_producido = Float.parseFloat(text_aceite_prod.getText());
-            m.setLitrosAceiteProd(aceite_producido);
-            m.setPagada(check_pagado.isSelected());
-
-            if (check_declara.isSelected()) {
-                m.setDeclara(true);
-                m.setKgReflejadosDeclaracion(kilos);
-            } else {
-                m.setDeclara(false);
-                m.setKgReflejadosDeclaracion(0);
-            }
-
-            if (cliente.isSubvencionado()) {
-                m.setMaquila(m.CalcularMaquila());
-            } else {
-                m.setMaquila(0);
-            }
-            m.setObservaciones(text_observaciones.getText());
-            m.setFecha(Date.valueOf(LocalDate.now()));
-            m.setCliente(cliente);
-            m.setUsuario(u);
-
-            
-           
-            float total = m.CalcularIngresoObtenidoMulturacion();
-            text_total.setText(String.valueOf(total));
-            
-            try {
-                DaoMolturacion.insertar(m);
-            } catch (BusinessException ex) {
-                Logger.getLogger(AñadirMolturacion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(null, "Se ha añadido la molturacion correctamente al cliente: " + cliente.getNombre());
-
+            m.setIngresoMolturacion(m.CalcularPrecioMulturacion());
+            DecimalFormat df = new DecimalFormat("0.00");
+            lb_total.setText(String.valueOf(df.format(m.getIngresoMolturacion()) + " €"));
+            btn_molturacion.setVisible(true);
         }
 
-    }//GEN-LAST:event_btn_molturacionActionPerformed
-
-    private void text_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_totalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_totalActionPerformed
+    }//GEN-LAST:event_btn_calcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,16 +221,13 @@ public class AñadirMolturacion extends VistaGestor {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_calcular;
     private javax.swing.JButton btn_molturacion;
-    private javax.swing.JCheckBox check_declara;
-    private javax.swing.JCheckBox check_pagado;
-    private javax.swing.JLabel label_aceite_producido;
     private javax.swing.JLabel label_kg_oliva;
     private javax.swing.JLabel label_observaciones;
     private javax.swing.JLabel label_total_ingresos;
-    private javax.swing.JTextField text_aceite_prod;
+    private javax.swing.JLabel lb_total;
     private javax.swing.JTextField text_kg_oliva;
     private javax.swing.JTextField text_observaciones;
-    private javax.swing.JTextField text_total;
     // End of variables declaration//GEN-END:variables
 }

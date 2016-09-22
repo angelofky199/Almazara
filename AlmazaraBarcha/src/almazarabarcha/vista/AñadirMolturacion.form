@@ -28,28 +28,23 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="label_total_ingresos" min="-2" pref="118" max="-2" attributes="0"/>
-                                      <Component id="label_aceite_producido" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="label_kg_oliva" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="text_total" min="-2" pref="134" max="-2" attributes="0"/>
-                                  <Component id="text_kg_oliva" min="-2" pref="134" max="-2" attributes="0"/>
-                                  <Component id="text_aceite_prod" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="check_pagado" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Component id="check_declara" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
                           <Component id="text_observaciones" min="-2" pref="907" max="-2" attributes="0"/>
                           <Component id="label_observaciones" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label_total_ingresos" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="label_kg_oliva" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="text_kg_oliva" min="-2" pref="134" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                                      <Component id="btn_calcular" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lb_total" min="-2" pref="77" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -68,24 +63,18 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="label_kg_oliva" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="text_kg_oliva" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btn_calcular" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="text_aceite_prod" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="label_aceite_producido" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="check_declara" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="label_total_ingresos" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="text_total" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="check_pagado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb_total" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
               <Component id="label_observaciones" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="text_observaciones" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
               <Component id="btn_molturacion" min="-2" pref="37" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
@@ -99,18 +88,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="text_kg_oliva">
-    </Component>
-    <Component class="javax.swing.JLabel" name="label_aceite_producido">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Aceite producido"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="text_aceite_prod">
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="check_pagado">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Pagado"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_molturacion">
       <Properties>
@@ -129,18 +106,24 @@
     </Component>
     <Component class="javax.swing.JLabel" name="label_total_ingresos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Total ingresos"/>
+        <Property name="text" type="java.lang.String" value="Total ingresos molturacion"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="text_total">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_totalActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="check_declara">
+    <Component class="javax.swing.JLabel" name="lb_total">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Declara"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_calcular">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Calcular ingresos molturacion"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_calcularActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

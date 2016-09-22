@@ -3,6 +3,7 @@ package pojos;
 
 import static almazarabarcha.Modelo.Molturacion.RENDIMIENTO_MAQUILA_KG;
 import static almazarabarcha.Modelo.Molturacion.RENDIMIENTO_ORUJO_KG;
+import java.text.DecimalFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -205,7 +206,10 @@ public class Molturacion implements java.io.Serializable {
     }
 
     public float CalcularPrecioMulturacion() {
-        return this.kgOliva * RENDIMIENTO_MULTURACION_ECONOMICO;
+        float total;
+        total = kgOliva * RENDIMIENTO_MULTURACION_ECONOMICO;
+
+        return total;
     }
 
     public float CalcularOrujo() {
