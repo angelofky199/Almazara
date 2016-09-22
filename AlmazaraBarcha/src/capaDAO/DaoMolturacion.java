@@ -90,8 +90,8 @@ public class DaoMolturacion {
         Session s = UtilesHibernate.getSession();
 
         List<Molturacion> lista = new ArrayList<>();
-        String hql = "SELECT m FROM Molturacion m WHERE m.Cliente_idCliente = "
-                + "(SELECT idCliente FROM Cliente WHERE nombre LIKE :nombre) AND m.Pagada = 0";
+        String hql = "SELECT m FROM Molturacion m WHERE Cliente_idCliente = "
+                + "(SELECT idCliente FROM Cliente c WHERE nombre LIKE :nombre) AND Pagada = 0";
 
         try {
             lista = (List<Molturacion>) s.createQuery(hql).setParameter("nombre", c.getNombre()).list();
@@ -110,8 +110,8 @@ public class DaoMolturacion {
         Session s = UtilesHibernate.getSession();
 
         List<Molturacion> lista = new ArrayList<>();
-        String hql = "SELECT m FROM Molturacion m WHERE m.Cliente_idCliente = "
-                + "(SELECT idCliente FROM Cliente WHERE nombre LIKE :nombre) AND m.Pagada = 1";
+        String hql = "SELECT m FROM Molturacion m WHERE Cliente_idCliente = "
+                + "(SELECT idCliente FROM Cliente c WHERE nombre LIKE :nombre) AND Pagada = 1";
 
         try {
             lista = (List<Molturacion>) s.createQuery(hql).setParameter("nombre", c.getNombre()).list();

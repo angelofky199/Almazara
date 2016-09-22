@@ -145,7 +145,7 @@ public class AñadirMolturacion extends VistaGestor {
          m.setKgReflejadosDeclaracion(0);
          }*/
         if (cliente.isSubvencionado()) {
-            m.setMaquila(m.CalcularMaquila());
+            m.CalcularMaquila();
         } else {
             m.setMaquila(0);
         }

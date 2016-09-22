@@ -90,10 +90,7 @@ public class GestionMolturaciones extends VistaGestor {
         tabla_no_pagados.setBackground(new java.awt.Color(255, 153, 153));
         tabla_no_pagados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Fecha", "ID"
