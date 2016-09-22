@@ -1,6 +1,8 @@
 package pojos;
 // Generated 15-sep-2016 21:42:28 by Hibernate Tools 4.3.1
 
+import static almazarabarcha.Modelo.Molturacion.RENDIMIENTO_MAQUILA_KG;
+import static almazarabarcha.Modelo.Molturacion.RENDIMIENTO_ORUJO_KG;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -204,6 +206,14 @@ public class Molturacion implements java.io.Serializable {
 
     public float CalcularPrecioMulturacion() {
         return this.kgOliva * RENDIMIENTO_MULTURACION_ECONOMICO;
+    }
+
+    public float CalcularOrujo() {
+        return this.kgOliva * RENDIMIENTO_ORUJO_KG;
+    }
+
+    public float CalcularMaquila() {
+        return this.kgOliva * RENDIMIENTO_MAQUILA_KG;
     }
 
 }

@@ -14,19 +14,22 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import pojos.Cliente;
+import pojos.Usuario;
 
 public class SeleccionarCliente extends VistaGestor {
 
     JPanel jpanel1;
-    List<Cliente> clientes = new ArrayList<>();
+    private List<Cliente> clientes = new ArrayList<>();
+    private Usuario u;
 
-    public SeleccionarCliente(GestorAlmazara gestor, JPanel jpanel1) {
+    public SeleccionarCliente(GestorAlmazara gestor, JPanel jpanel1, Usuario u) {
         this.jpanel1 = jpanel1;
         Cliente c;
         initComponents();
         this.filtro("");
         this.setBackground(estilos.getColorInterior());
         filtro(textfield_buscar.getText());
+        this.u = u;
     }
 
     private SeleccionarCliente() {
@@ -234,7 +237,7 @@ public class SeleccionarCliente extends VistaGestor {
 
                 Cliente c = DaoCliente.getCliente((String) tabla_filtro.getValueAt(fila, 0));
 
-                GestorOperaciones g = new GestorOperaciones(c);
+                GestorOperaciones g = new GestorOperaciones(c,u);
                 jpanel1.removeAll();
                 g.getContentPane().setBackground(estilos.getColorInterior());
                 jpanel1.add(g.getContentPane());

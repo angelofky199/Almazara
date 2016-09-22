@@ -91,5 +91,29 @@ public class DaoUsuario {
      return result;
     
     }
+    
+    public static Usuario getUsuario(String usuario) throws BusinessException {
+        Session s = UtilesHibernate.getSession();
+
+        Usuario u = new Usuario();
+
+        try {
+            String sql = "SELECT c FROM Usuario c WHERE c.usuario LIKE :usuario";
+
+            if (usuario != null) {
+                u = (Usuario) (s.createQuery(sql).setParameter("usuario", usuario)).uniqueResult();
+
+            }
+        } catch (Exception e) {
+
+            Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE,
+                    "Error al consultar los usuarios", e);
+            throw new BusinessException(
+                    "Error al consultar usuarios por usuario");
+
+        }
+
+        return u;
+    }
 }
 

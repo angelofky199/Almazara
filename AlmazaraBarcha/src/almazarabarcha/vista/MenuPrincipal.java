@@ -2,11 +2,13 @@ package almazarabarcha.vista;
 
 import hibernate.UtilesHibernate;
 import java.awt.Color;
+import pojos.Usuario;
 
 
 public class MenuPrincipal extends VistaGestor {
-    
-    public MenuPrincipal() {
+        private Usuario u;
+        
+    public MenuPrincipal(Usuario u) {
 
         
         initComponents();
@@ -33,6 +35,13 @@ public class MenuPrincipal extends VistaGestor {
         this.setIconImage(estilos.getImagenIcono());
         this.setTitle("Almazara Barcha");
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.u = u;
+        lb_nombreUser.setText(u.getNombre());
+        
+    }
+
+    private MenuPrincipal() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -53,6 +62,8 @@ public class MenuPrincipal extends VistaGestor {
         btn_salir = new javax.swing.JButton();
         boton_seleccionar_cliente = new javax.swing.JButton();
         boton_mostrar_totales = new javax.swing.JButton();
+        lb_usuario = new javax.swing.JLabel();
+        lb_nombreUser = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -115,6 +126,10 @@ public class MenuPrincipal extends VistaGestor {
             }
         });
 
+        lb_usuario.setText("Usuario:");
+
+        lb_nombreUser.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,12 +143,24 @@ public class MenuPrincipal extends VistaGestor {
                     .addComponent(btn_salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(label_titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1366, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lb_usuario)
+                .addGap(15, 15, 15)
+                .addComponent(lb_nombreUser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 1261, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(label_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_usuario)
+                            .addComponent(lb_nombreUser))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -165,7 +192,7 @@ public class MenuPrincipal extends VistaGestor {
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void boton_seleccionar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_seleccionar_clienteActionPerformed
-        SeleccionarCliente sc = new SeleccionarCliente(gestor,jPanel1);
+        SeleccionarCliente sc = new SeleccionarCliente(gestor,jPanel1,u);
         jPanel1.removeAll();
         sc.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(sc.getContentPane());
@@ -234,5 +261,7 @@ public class MenuPrincipal extends VistaGestor {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel label_titulo;
+    private javax.swing.JLabel lb_nombreUser;
+    private javax.swing.JLabel lb_usuario;
     // End of variables declaration//GEN-END:variables
 }

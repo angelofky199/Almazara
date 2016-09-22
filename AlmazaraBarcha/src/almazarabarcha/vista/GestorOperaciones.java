@@ -2,10 +2,12 @@ package almazarabarcha.vista;
 
 import java.awt.Color;
 import pojos.Cliente;
+import pojos.Usuario;
 
 public class GestorOperaciones extends VistaGestor {
         private Cliente cliente;
-    public GestorOperaciones(Cliente c) {
+        private Usuario u;
+    public GestorOperaciones(Cliente c, Usuario u) {
         initComponents();
         this.setLocation(250, 150);
         this.setBackground(estilos.getColorInterior());
@@ -15,6 +17,7 @@ public class GestorOperaciones extends VistaGestor {
         btn_molt.setFont(estilos.getFuenteBotones());
         btn_vent.setFont(estilos.getFuenteBotones());
         this.cliente = c;
+        this.u = u;
     }
 
     private GestorOperaciones() {
@@ -111,7 +114,7 @@ public class GestorOperaciones extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_moltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_moltActionPerformed
-        AñadirMolturacion m = new AñadirMolturacion(cliente);
+        AñadirMolturacion m = new AñadirMolturacion(cliente,u);
         jPanel1.removeAll();
         m.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(m.getContentPane());

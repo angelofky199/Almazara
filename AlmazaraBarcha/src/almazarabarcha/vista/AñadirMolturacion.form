@@ -45,7 +45,6 @@
                               <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="check_pagado" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Component id="check_subencionado" min="-2" max="-2" attributes="0"/>
                                   <Component id="check_declara" min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -69,7 +68,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="label_kg_oliva" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="text_kg_oliva" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="check_subencionado" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -108,11 +106,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="text_aceite_prod">
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="check_subencionado">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Subencionado"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="check_pagado">
       <Properties>

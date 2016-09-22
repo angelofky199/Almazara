@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import pojos.Usuario;
 
 /**
  *
@@ -93,10 +94,11 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        
+        Usuario u = new Usuario();
         try {
             if (DaoUsuario.isUsuario(txt_user.getText(), String.valueOf(txt_pass.getPassword()))) {
-                MenuPrincipal menu = new MenuPrincipal();
+                u = DaoUsuario.getUsuario(txt_user.getText());
+                MenuPrincipal menu = new MenuPrincipal(u);
                 menu.setVisible(true);
                 this.dispose();
             } else {
