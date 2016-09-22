@@ -7,6 +7,7 @@ package almazarabarcha.vista;
 
 import capaDAO.DaoUsuario;
 import excepciones.BusinessException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -85,11 +86,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
@@ -101,10 +98,16 @@ public class GestionUsuarios extends javax.swing.JFrame {
                             .addComponent(txt_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                             .addComponent(txt_usuario)
                             .addComponent(txt_pass)
-                            .addComponent(txt_repass))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txt_repass))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(106, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(106, 106, 106))
         );
@@ -148,8 +151,9 @@ public class GestionUsuarios extends javax.swing.JFrame {
             Usuario u = new Usuario();
             u.setNombre(txt_nombre.getText());
             u.setUsuario(txt_usuario.getText());
-            if(txt_pass.getPassword().equals(txt_repass.getPassword()) )
-                u.setContrasenya(txt_pass.getPassword().toString());
+          
+            if(String.valueOf(txt_pass.getPassword()).equals(String.valueOf(txt_repass.getPassword())))
+                u.setContrasenya(String.valueOf(txt_pass.getPassword()));
             else
                 JOptionPane.showMessageDialog(null, "Las contraseña introducida no es igual en ambos campos");
                 

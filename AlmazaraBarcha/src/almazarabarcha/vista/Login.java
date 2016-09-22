@@ -5,9 +5,17 @@
  */
 package almazarabarcha.vista;
 
+import capaDAO.DaoUsuario;
+import excepciones.BusinessException;
 import java.awt.Image;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -17,12 +25,12 @@ public class Login extends javax.swing.JFrame {
 
     ImageIcon imagenFondo;
     Image img;
-    
+
     public Login() {
         initComponents();
         this.setLocation(300, 150);
         this.setSize(650, 500);
-             
+
     }
 
     /**
@@ -85,21 +93,44 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        if("almazara".equals(txt_pass.getText()))
-        {
-            MenuPrincipal menu = new MenuPrincipal();
-            menu.setVisible(true);
-            this.dispose();
+        
+        try {
+            if (DaoUsuario.isUsuario(txt_user.getText(), String.valueOf(txt_pass.getPassword()))) {
+                MenuPrincipal menu = new MenuPrincipal();
+                menu.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "El nombre de usuario o la contraseña son incorrectos");
+            }
+        } catch (BusinessException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        else 
-            JOptionPane.showMessageDialog(null,"La constraseña es incorrecta");
-            
-            
+
+
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       GestionUsuarios gu = new GestionUsuarios();
-       gu.setVisible(true);
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel("Introduce contraseña de usuario:");
+        JPasswordField pass = new JPasswordField(25);
+        panel.add(label);
+        panel.add(pass);
+        String[] options = new String[]{"OK", "Cancel"};
+        int option = JOptionPane.showOptionDialog(null, panel, "Seguridad",
+                JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[1]);
+        if (option == 0) // pressing OK button
+        {
+            String password = String.valueOf(pass.getPassword());
+            try {
+                if (DaoUsuario.isAdmin(password)) {
+                    GestionUsuarios gu = new GestionUsuarios();
+                    gu.setVisible(true);
+                }
+            } catch (BusinessException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
