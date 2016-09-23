@@ -28,6 +28,7 @@ public class AñadirMolturacion extends VistaGestor {
         this.u = u;
         m = new Molturacion();
         btn_molturacion.setVisible(false);
+        lb_nombre_cliente.setText(c.getNombre());
     }
 
     private AñadirMolturacion() {
@@ -51,10 +52,15 @@ public class AñadirMolturacion extends VistaGestor {
         label_total_ingresos = new javax.swing.JLabel();
         lb_total = new javax.swing.JLabel();
         btn_calcular = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lb_nombre_cliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        label_kg_oliva.setText("KG Oliva");
+        label_kg_oliva.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_kg_oliva.setText("Kg Oliva");
+
+        text_kg_oliva.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         btn_molturacion.setText("Añadir molturacion");
         btn_molturacion.addActionListener(new java.awt.event.ActionListener() {
@@ -63,19 +69,28 @@ public class AñadirMolturacion extends VistaGestor {
             }
         });
 
+        label_observaciones.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         label_observaciones.setText("Observaciones");
 
+        label_total_ingresos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         label_total_ingresos.setText("Total ingresos molturacion");
 
         lb_total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lb_total.setText("0");
 
+        btn_calcular.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_calcular.setText("Calcular ingresos molturacion");
         btn_calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_calcularActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Cliente: ");
+
+        lb_nombre_cliente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_nombre_cliente.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,16 +104,20 @@ public class AñadirMolturacion extends VistaGestor {
                             .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_total_ingresos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lb_nombre_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label_total_ingresos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lb_total, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(text_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(89, 89, 89)
-                                        .addComponent(btn_calcular))
-                                    .addComponent(lb_total, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGap(84, 84, 84)
+                                        .addComponent(btn_calcular))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(470, 470, 470)
                         .addComponent(btn_molturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -107,20 +126,24 @@ public class AñadirMolturacion extends VistaGestor {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lb_nombre_cliente))
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_kg_oliva)
                     .addComponent(text_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_total_ingresos)
                     .addComponent(lb_total))
-                .addGap(87, 87, 87)
+                .addGap(64, 64, 64)
                 .addComponent(label_observaciones)
                 .addGap(18, 18, 18)
                 .addComponent(text_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(btn_molturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -223,9 +246,11 @@ public class AñadirMolturacion extends VistaGestor {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_calcular;
     private javax.swing.JButton btn_molturacion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel label_kg_oliva;
     private javax.swing.JLabel label_observaciones;
     private javax.swing.JLabel label_total_ingresos;
+    private javax.swing.JLabel lb_nombre_cliente;
     private javax.swing.JLabel lb_total;
     private javax.swing.JTextField text_kg_oliva;
     private javax.swing.JTextField text_observaciones;
