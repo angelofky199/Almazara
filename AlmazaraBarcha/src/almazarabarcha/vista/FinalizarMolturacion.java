@@ -344,7 +344,7 @@ public class FinalizarMolturacion extends javax.swing.JFrame {
             lb_maquila.setText(String.valueOf(m.getMaquila()));
             m.setDeclara(true);
             m.setKgReflejadosDeclaracion(m.getKgOliva());
-            JOptionPane.showMessageDialog(null, "Se ha finalizado la molturacion correctamente");
+            
         } else {
             lb_maquila.setText("0");
             m.setMaquila(0);
@@ -360,6 +360,7 @@ public class FinalizarMolturacion extends javax.swing.JFrame {
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         try {
             m.setPagada(true);
+            JOptionPane.showMessageDialog(null, "Se ha finalizado la molturacion correctamente");
             DaoMolturacion.update(m);
         } catch (BusinessException ex) {
             Logger.getLogger(FinalizarMolturacion.class.getName()).log(Level.SEVERE, null, ex);

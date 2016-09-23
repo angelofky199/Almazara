@@ -173,7 +173,9 @@ public class Compra  implements java.io.Serializable {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-
+    public void calcularTotalCompra(){
+        this.totalCompra = this.kgOliva * this.precioKg;
+    }
 
 
 

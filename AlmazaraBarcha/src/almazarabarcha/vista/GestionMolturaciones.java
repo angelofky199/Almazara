@@ -93,7 +93,7 @@ public class GestionMolturaciones extends VistaGestor {
 
             },
             new String [] {
-                "Fecha", "ID"
+                "ID", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -120,7 +120,7 @@ public class GestionMolturaciones extends VistaGestor {
 
             },
             new String [] {
-                "Fecha", "ID"
+                "ID", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {

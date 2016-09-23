@@ -127,7 +127,7 @@ public class GestorOperaciones extends VistaGestor {
     }//GEN-LAST:event_btn_moltActionPerformed
 
     private void btn_compActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_compActionPerformed
-        AñadirCompra c = new AñadirCompra();
+        AñadirCompra c = new AñadirCompra(cliente,u);
         jPanel1.removeAll();
         c.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(c.getContentPane());
