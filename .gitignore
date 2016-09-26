@@ -51,3 +51,8 @@ AlmazaraBarcha/nbproject/private/private.xml
 AlmazaraBarcha/nbproject/private/private.xml
 AlmazaraBarcha/nbproject/private/private.xml
 *.xml
+AlmazaraBarcha/nbproject/build-impl.xml
+*.properties
+AlmazaraBarcha/nbproject/genfiles.properties
+AlmazaraBarcha/nbproject/project.xml
+Utiles/nbproject/private/private.properties
