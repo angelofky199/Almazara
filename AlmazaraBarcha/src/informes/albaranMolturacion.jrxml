@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5d3be50-cb11-4113-a12e-7b6c2fe03fdc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="idMolturacion" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     molturacion.`kgOliva` AS molturacion_kgOliva,
+     molturacion.`ingresoMolturacion` AS molturacion_ingresoMolturacion,
+     molturacion.`fecha` AS molturacion_fecha,
+     molturacion.`Cliente_idCliente` AS molturacion_Cliente_idCliente,
+     usuario.`nombre` AS usuario_nombre,
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`dni` AS cliente_dni,
+     cliente.`direccion` AS cliente_direccion,
+     cliente.`telefono` AS cliente_telefono,
+     cliente.`poblacion` AS cliente_poblacion,
+     molturacion.`idMolturacion` AS molturacion_idMolturacion
+FROM
+     `usuario` usuario INNER JOIN `molturacion` molturacion ON usuario.`idUsuario` = molturacion.`Usuario_idUsuario`
+     INNER JOIN `cliente` cliente ON molturacion.`Cliente_idCliente` = cliente.`idCliente`
+WHERE
+     molturacion.`idMolturacion` = $P{idMolturacion}]]>
+	</queryString>
+	<field name="molturacion_kgOliva" class="java.lang.Float"/>
+	<field name="molturacion_ingresoMolturacion" class="java.lang.Float"/>
+	<field name="molturacion_fecha" class="java.sql.Timestamp"/>
+	<field name="molturacion_Cliente_idCliente" class="java.lang.Integer"/>
+	<field name="usuario_nombre" class="java.lang.String"/>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_dni" class="java.lang.String"/>
+	<field name="cliente_direccion" class="java.lang.String"/>
+	<field name="cliente_telefono" class="java.lang.String"/>
+	<field name="cliente_poblacion" class="java.lang.String"/>
+	<field name="molturacion_idMolturacion" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="167" splitType="Stretch">
+			<image>
+				<reportElement x="610" y="0" width="192" height="144" uuid="5495576b-97de-46e5-b9d7-39ed50177030"/>
+				<imageExpression><![CDATA["C:\\Ventura\\workspace Netbeans\\Almazara\\AlmazaraBarcha\\src\\recursos\\logoAlmazara.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="530" height="62" uuid="ad7468a0-73db-4b27-8b05-013430193c0b"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[ALMAZARA BARCHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="117" width="89" height="15" uuid="251a7c29-6df3-4b8c-90f4-7827b7e26833"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recepcionista:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="469" y="117" width="102" height="15" uuid="ea6c250f-6a6d-40e6-b768-eae4a81a128f"/>
+				<textFieldExpression><![CDATA[$F{usuario_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="72" width="100" height="20" uuid="e2aa7aec-f18c-41ec-82a6-da329eb92f03"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Calle la fuente Nº 10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="92" width="69" height="20" uuid="4dcddd3e-da14-4c80-a4a3-1e3188620d79"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[CP 46823]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="112" width="100" height="20" uuid="67998a6f-d38a-47df-a243-70ade91ef45f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Navarrés, España]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="72" width="183" height="20" uuid="f254c38c-486c-46bd-b561-2294d84f0130"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Tlf.  661 36 96 03]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="50" width="141" height="30" uuid="081f8185-d472-4f94-8218-695e9d2e90b7"/>
+				<textElement>
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Desde 1910]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="92" width="183" height="20" uuid="5e3800eb-a8e8-4d99-82a3-8f3eb886914a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[almazarabarcha@gmail.com]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="064b6c4d-ba81-4dc8-abca-7f87d7f44e5b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="80" height="15" forecolor="#736343" uuid="7fa49d8c-a97f-4951-961c-aedc112a6b91"/>
+				<text><![CDATA[molturacion_idMolturacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="80" y="0" width="80" height="15" forecolor="#736343" uuid="c197895d-fb75-48e4-99ee-c62417d2db12"/>
+				<text><![CDATA[molturacion_fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="160" y="0" width="80" height="15" forecolor="#736343" uuid="ee8a2cb4-d2ed-4f89-a610-dae2a8e7867f"/>
+				<text><![CDATA[molturacion_kgOliva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="240" y="0" width="80" height="15" forecolor="#736343" uuid="f9759429-695e-4dd9-8e62-4e92cd6dcb95"/>
+				<text><![CDATA[molturacion_ingresoMolturacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="320" y="0" width="80" height="15" forecolor="#736343" uuid="a847f44f-99bb-4400-91a4-23db71e8ba53"/>
+				<text><![CDATA[cliente_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="400" y="0" width="80" height="15" forecolor="#736343" uuid="7a350406-0dc0-47d7-9a8b-597c53b30bc1"/>
+				<text><![CDATA[cliente_dni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="480" y="0" width="80" height="15" forecolor="#736343" uuid="f2eaf932-9ff7-4817-b25b-08ce0f790d7a"/>
+				<text><![CDATA[cliente_direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="560" y="0" width="80" height="15" forecolor="#736343" uuid="2d938bc6-3ca9-4d17-9fc4-1d2a5bba086b"/>
+				<text><![CDATA[cliente_telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="640" y="0" width="80" height="15" forecolor="#736343" uuid="c43b20f6-fe36-40eb-98f4-8f7f4103d039"/>
+				<text><![CDATA[cliente_poblacion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="86" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="e1879178-ee92-4d9b-a900-79407a2a21dc"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="80" height="15" uuid="99f93f20-dfb3-4f48-a97d-32ca4a58c539"/>
+					<textFieldExpression><![CDATA[$F{molturacion_idMolturacion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="80" y="0" width="80" height="15" uuid="a17f4f83-72b2-43ad-9215-276d5e7edacc"/>
+					<textFieldExpression><![CDATA[$F{molturacion_fecha}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="160" y="0" width="80" height="15" uuid="da5d77e5-138b-4520-b2f2-00c993da2c53"/>
+					<textFieldExpression><![CDATA[$F{molturacion_kgOliva}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="240" y="0" width="80" height="15" uuid="8d79a139-57b3-4674-ac30-8a7a79b5f812"/>
+					<textFieldExpression><![CDATA[$F{molturacion_ingresoMolturacion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="320" y="0" width="80" height="15" uuid="93e15ac3-8189-41da-b681-e06d90a01fed"/>
+					<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="400" y="0" width="80" height="15" uuid="9276481b-70ec-46f2-aa4c-b873cd833bad"/>
+					<textFieldExpression><![CDATA[$F{cliente_dni}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="480" y="0" width="80" height="15" uuid="98aded33-dda3-4df3-9a27-56679ac1d831"/>
+					<textFieldExpression><![CDATA[$F{cliente_direccion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="560" y="0" width="80" height="15" uuid="daa66998-7fc3-4068-a731-4160f7414b8d"/>
+					<textFieldExpression><![CDATA[$F{cliente_telefono}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="640" y="0" width="80" height="15" uuid="a38d81c1-eaa7-42e2-9fca-1d25d443e2d6"/>
+					<textFieldExpression><![CDATA[$F{cliente_poblacion}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="83723e79-a010-4084-a119-d5511b846060"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="f646b739-6062-4322-b1ba-89b7b287e820"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="20c01635-cf79-4b9c-a8aa-030cd2a264df"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="fad3f700-97f8-4578-b20a-f23fb3a06b77"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="e5b52c76-0a28-4d7b-8faf-c652385fffcb"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

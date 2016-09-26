@@ -5,8 +5,11 @@ import excepciones.BusinessException;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javax.swing.JOptionPane;
 import pojos.Cliente;
 import pojos.Molturacion;
@@ -152,41 +155,43 @@ public class AñadirMolturacion extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_molturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_molturacionActionPerformed
-
-        if (text_observaciones.getText().equals("")) {
-            text_observaciones.setText("");
-            m.setObservaciones("");
-        } else {
-            m.setObservaciones(text_observaciones.getText());
-        }
-
-        /*if (check_declara.isSelected()) {
-         m.setDeclara(true);
-         m.setKgReflejadosDeclaracion(kilos);
-         } else {
-         m.setDeclara(false);
-         m.setKgReflejadosDeclaracion(0);
-         }*/
-        if (cliente.isSubvencionado()) {
-            m.CalcularMaquila();
-        } else {
-            m.setMaquila(0);
-        }
-
-        m.setKgReflejadosDeclaracion(0);
-        m.setKgOrujo(0);
-        m.setLitrosAceiteProd(0);
-        m.setFecha(Date.valueOf(LocalDate.now()));
-        m.setCliente(cliente);
-        m.setUsuario(u);
-
         try {
+            if (text_observaciones.getText().equals("")) {
+                text_observaciones.setText("");
+                m.setObservaciones("");
+            } else {
+                m.setObservaciones(text_observaciones.getText());
+            }
+
+            /*if (check_declara.isSelected()) {
+             m.setDeclara(true);
+             m.setKgReflejadosDeclaracion(kilos);
+             } else {
+             m.setDeclara(false);
+             m.setKgReflejadosDeclaracion(0);
+             }*/
+            if (cliente.isSubvencionado()) {
+                m.CalcularMaquila();
+            } else {
+                m.setMaquila(0);
+            }
+
+            m.setKgReflejadosDeclaracion(0);
+            m.setKgOrujo(0);
+            m.setLitrosAceiteProd(0);
+            m.setFecha(Date.valueOf(LocalDate.now()));
+            m.setCliente(cliente);
+            m.setUsuario(u);
+
             DaoMolturacion.insertar(m);
+
+            JOptionPane.showMessageDialog(null, "Se ha añadido la molturacion correctamente al cliente: " + cliente.getNombre());
+
+            GeneraAlbaranConParametros((Molturacion) DaoMolturacion.getMolturacion(cliente, m.getFecha(), m.getKgOliva()));
+            
         } catch (BusinessException ex) {
             Logger.getLogger(AñadirMolturacion.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        JOptionPane.showMessageDialog(null, "Se ha añadido la molturacion correctamente al cliente: " + cliente.getNombre());
 
 
     }//GEN-LAST:event_btn_molturacionActionPerformed
@@ -242,6 +247,22 @@ public class AñadirMolturacion extends VistaGestor {
             }
         });
     }
+
+    public void GeneraAlbaranConParametros(Molturacion m) {
+
+        HashMap parameters = new HashMap<>();
+        parameters.put("idMolturacion", m.getIdMolturacion());
+        try {
+            JasperPrint print = JasperFillManager.fillReport(
+                    "informes/ciclistas_equipo.jasper", parameters,
+                    gesCiclistas.getCon());
+            JasperExportManager.exportReportToPdfFile(print,
+                    "informes/CiclistasPorEquipo.pdf");
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_calcular;

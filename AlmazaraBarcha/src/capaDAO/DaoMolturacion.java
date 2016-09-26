@@ -9,6 +9,7 @@ package capaDAO;
 import excepciones.BusinessException;
 import hibernate.UtilesHibernate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,6 +44,27 @@ public class DaoMolturacion {
         }
 
         return lista;
+
+    }
+    
+    public static Molturacion getMolturacion(Cliente c,Date fecha, float kgOliva) throws BusinessException {
+
+        Session s = UtilesHibernate.getSession();
+
+        Molturacion m;
+        String hql = "SELECT m FROM Molturacion m WHERE m.Cliente_idCliente = :idcliente AND m.fecha = :fecha AND m.kgOliva = :kgOliva";
+
+        try {
+            m = (Molturacion) s.createQuery(hql).setParameter("idcliente", c.getIdCliente()).setParameter("fecha", fecha).setParameter("kgOliva", kgOliva).uniqueResult();
+
+        } catch (Exception e) {
+
+            Logger.getLogger(DaoMolturacion.class.getName()).log(Level.SEVERE,
+                    "Error al consultar la molturacion", e);
+            throw new BusinessException("Error al consultar molturacion");
+        }
+
+        return m;
 
     }
 
