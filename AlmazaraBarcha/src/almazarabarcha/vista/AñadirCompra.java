@@ -57,6 +57,7 @@ public class AñadirCompra extends VistaGestor {
         btn_calcular = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lb_nombre_cliente = new javax.swing.JLabel();
+        check_pagado = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,6 +99,8 @@ public class AñadirCompra extends VistaGestor {
         lb_nombre_cliente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lb_nombre_cliente.setText("jLabel2");
 
+        check_pagado.setText("Pagado");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,7 +129,9 @@ public class AñadirCompra extends VistaGestor {
                                         .addComponent(text_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(label_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(136, 136, 136)
-                            .addComponent(btn_calcular))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btn_calcular)
+                                .addComponent(check_pagado)))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -152,7 +157,8 @@ public class AñadirCompra extends VistaGestor {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_total, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_total))
+                    .addComponent(label_total)
+                    .addComponent(check_pagado))
                 .addGap(18, 18, 18)
                 .addComponent(label_observaciones)
                 .addGap(18, 18, 18)
@@ -170,7 +176,17 @@ public class AñadirCompra extends VistaGestor {
         compra.setCliente(c);
         compra.setUsuario(u);
         compra.setObservaciones(text_observaciones.getText());
-
+        
+        if(c.isSubvencionado())
+            compra.CalcularMaquilaReflejar();
+        else
+            compra.setMaquilaReflejada(0);
+        
+        if(check_pagado.isSelected())
+            compra.setPagado(true);
+        else
+            compra.setPagado(false);
+        
         try {
             DaoCompra.insertar(compra);
             JOptionPane.showMessageDialog(null, "Se ha añadido la molturacion correctamente al cliente: " + c.getNombre());
@@ -242,6 +258,7 @@ public class AñadirCompra extends VistaGestor {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_añadir;
     private javax.swing.JButton btn_calcular;
+    private javax.swing.JCheckBox check_pagado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel label_kg_oliva;
     private javax.swing.JLabel label_observaciones;

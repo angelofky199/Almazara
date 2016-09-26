@@ -176,7 +176,21 @@ public class Compra  implements java.io.Serializable {
     public void calcularTotalCompra(){
         this.totalCompra = this.kgOliva * this.precioKg;
     }
-
+    public void CalcularMaquilaReflejar(){
+        
+        if(factura)
+        {
+            maquilaReflejada = (float) (kgOliva * 0.15);
+        }
+        else if(declara)
+        {
+            maquilaReflejada = (float) (kgOliva * 0.04);
+        }
+        else
+            maquilaReflejada = 0;
+        
+        this.setMaquilaReflejada(maquilaReflejada);
+    }
 
 
 }

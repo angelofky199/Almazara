@@ -61,14 +61,11 @@
                           <Component id="check_pagado" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="check_factura" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="check_factura" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="check_paga" min="-2" pref="79" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="75" max="32767" attributes="0"/>
@@ -109,7 +106,6 @@
                   <Component id="label_rendimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="text_rendimiento" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="check_pagado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -168,11 +164,6 @@
         <Property name="text" type="java.lang.String" value="Pagado"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Subencionado"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JCheckBox" name="check_paga">
       <Properties>
         <Property name="text" type="java.lang.String" value="Paga"/>
@@ -206,6 +197,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="text_maquila">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_maquilaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

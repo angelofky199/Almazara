@@ -151,7 +151,7 @@ public class GestorOperaciones extends VistaGestor {
     }//GEN-LAST:event_btn_ventActionPerformed
 
     private void btn_cambActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cambActionPerformed
-        AñadirCambio c = new AñadirCambio();
+        AñadirCambio c = new AñadirCambio(cliente, u);
         jPanel1.removeAll();
         c.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(c.getContentPane());

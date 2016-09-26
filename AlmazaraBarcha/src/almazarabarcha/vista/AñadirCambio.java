@@ -1,14 +1,22 @@
 package almazarabarcha.vista;
 
-import almazarabarcha.Modelo.Cambio;
-import static almazarabarcha.vista.VistaGestor.gestor;
-import static almazarabarcha.vista.VistaGestor.pos;
+import capaDAO.DaoCambio;
+import excepciones.BusinessException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import static javax.swing.JOptionPane.showMessageDialog;
+import pojos.Cambio;
+import pojos.Cliente;
+import pojos.Usuario;
 
 public class AñadirCambio extends VistaGestor {
 
-    public AñadirCambio() {
+    Cliente c;
+    Usuario u;
+    Cambio cambio;
+
+    public AñadirCambio(Cliente c, Usuario u) {
         initComponents();
         this.setBackground(estilos.getColorInterior());
         label_kg_oliva.setFont(estilos.getFuenteEtiquetas());
@@ -18,6 +26,12 @@ public class AñadirCambio extends VistaGestor {
         label_aceite_retirado.setFont(estilos.getFuenteEtiquetas());
         label_observaciones.setFont(estilos.getFuenteEtiquetas());
         btn_añadir_cambio.setFont(estilos.getFuenteBotones());
+        this.c = c;
+        this.u = u;
+    }
+
+    private AñadirCambio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @SuppressWarnings("unchecked")
@@ -33,7 +47,6 @@ public class AñadirCambio extends VistaGestor {
         text_kg_oliva = new javax.swing.JTextField();
         check_factura = new javax.swing.JCheckBox();
         check_pagado = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
         check_paga = new javax.swing.JCheckBox();
         check_retira = new javax.swing.JCheckBox();
         label_litros_cambio = new javax.swing.JLabel();
@@ -62,8 +75,6 @@ public class AñadirCambio extends VistaGestor {
 
         check_pagado.setText("Pagado");
 
-        jCheckBox5.setText("Subencionado");
-
         check_paga.setText("Paga");
 
         check_retira.setText("Retira");
@@ -79,6 +90,12 @@ public class AñadirCambio extends VistaGestor {
         label_aceite_retirado.setText("Litros aceite retirado");
 
         label_maquila.setText("Maquila");
+
+        text_maquila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_maquilaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,11 +131,9 @@ public class AñadirCambio extends VistaGestor {
                             .addComponent(check_retira)
                             .addComponent(check_pagado))
                         .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(check_factura)
-                            .addComponent(jCheckBox5)))
+                        .addComponent(check_factura))
                     .addComponent(check_paga, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(254, 254, 254))
+                .addGap(284, 284, 284))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,8 +165,7 @@ public class AñadirCambio extends VistaGestor {
                     .addComponent(label_aceite_retirado)
                     .addComponent(label_rendimiento)
                     .addComponent(text_rendimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(check_pagado)
-                    .addComponent(jCheckBox5))
+                    .addComponent(check_pagado))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_maquila, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,49 +184,59 @@ public class AñadirCambio extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_añadir_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadir_cambioActionPerformed
-            
-        if(text_kg_oliva.getText().equals("") || text_rendimiento.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Faltan campos por completar");
-        if(text_observaciones.getText().equals(""))
+
+        if (text_kg_oliva.getText().equals("") || text_rendimiento.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Faltan campos por completar");
+        }
+        if (text_observaciones.getText().equals("")) {
             text_observaciones.setText("");
-        
-        
-        Cambio ca = new Cambio();
-
-        float kilos = Float.parseFloat(text_kg_oliva.getText());
-        ca.setKg_oliva(kilos);
-
-        float rend = Float.parseFloat(text_rendimiento.getText());
-        ca.setRendimiento(rend);
-        
-        if(text_maquila.getText().equals(""))
-            text_maquila.setText(null);
-        else
-        {
-            float maquila = Float.parseFloat(text_maquila.getText());
-            ca.setRentabilidad_maquila(maquila/100);
         }
 
-        float litros_retira = ca.CalcularLitrosParaRetirar();
+        float kilos = Float.parseFloat(text_kg_oliva.getText());
+        cambio.setKgOliva(kilos);
+
+        float rend = Float.parseFloat(text_rendimiento.getText());
+        cambio.setRendimiento(rend);
+
+        if (text_maquila.getText().equals("")) {
+            cambio.setMaquila(0);
+
+        } else {
+            float maquila = Float.parseFloat(text_maquila.getText());
+            cambio.setPorcentajeMaquila(maquila);
+        }
+
+        float litros_retira = cambio.CalcularLitrosParaRetirar();
         text_litros_retirado.setText(String.valueOf(litros_retira));
+        cambio.setLitrosRetirados(litros_retira);
 
-        float litros_cambio = ca.CalcularLitrosAceiteParaCambio();
+        float litros_cambio = cambio.CalcularLitrosAceiteParaCambio();
         text_litros_cambio.setText(String.valueOf(litros_cambio));
+        cambio.setLitrosCambio(litros_cambio);
 
-        ca.setFactura(check_factura.isSelected());
-        ca.setPaga(check_paga.isSelected());
-        ca.setObservaciones(text_observaciones.getText());
+        //cambio.setFactura(check_factura.isSelected());
+        cambio.setPaga(check_paga.isSelected());
+        cambio.setObservaciones(text_observaciones.getText());
+        
+        cambio.setCliente(c);
+        cambio.setUsuario(u);
 
+        try {
+            DaoCambio.insertar(cambio);
+        } catch (BusinessException ex) {
+            Logger.getLogger(AñadirCambio.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        String nombre = gestor.getClientes().get(pos).getNombre_cliente();
-        gestor.addCambio(ca, nombre);
-            
-        JOptionPane.showMessageDialog(null,"Se ha añadido la molturacion correctamente al cliente: " + nombre);
+        JOptionPane.showMessageDialog(null, "Se ha añadido el cambio correctamente al cliente: " + c.getNombre());
     }//GEN-LAST:event_btn_añadir_cambioActionPerformed
 
     private void text_litros_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_litros_cambioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_text_litros_cambioActionPerformed
+
+    private void text_maquilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_maquilaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_maquilaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,7 +280,6 @@ public class AñadirCambio extends VistaGestor {
     private javax.swing.JCheckBox check_paga;
     private javax.swing.JCheckBox check_pagado;
     private javax.swing.JCheckBox check_retira;
-    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JLabel label_aceite_retirado;
     private javax.swing.JLabel label_kg_oliva;
     private javax.swing.JLabel label_litros_cambio;

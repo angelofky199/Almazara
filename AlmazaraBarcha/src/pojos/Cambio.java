@@ -20,7 +20,10 @@ import javax.persistence.Table;
     ,catalog="almazaradb"
 )
 public class Cambio  implements java.io.Serializable {
-
+    
+    private static final float RENTABILIDAD_CAMBIO = (float)0.01;           //Lo mismo que dividir entre 100
+    private static final float RENDIMIENTO_MULTURACION_ECONOMICO = (float)0.15;    //€
+    private static final float RENDIMIENTO_MAQUILA_KG = (float)0.04;  
 
      private Integer idCambio;
      private Cliente cliente;
@@ -263,9 +266,78 @@ public class Cambio  implements java.io.Serializable {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
+    
+    
+    /********************Cálculos***************************/
+    /**
+     * Los litros estimados para realizar el cambio
+     * @return litros para cambio
+     */
+    
+     public float CalcularLitrosAceiteParaCambio(){
+        return rendimiento * (float) (kgOliva * RENTABILIDAD_CAMBIO);
+    }
+    
+    /**
+     * Calcula el valor ganado en maquila
+     * @return devuelve la maquila que se quedan
+     */
+    public float CalcularMaquila(){
+        return kgOliva*RENDIMIENTO_MAQUILA_KG;
+    }
+    
+    /**
+     * Calcula el aceite que puede retirar
+     * @return devuelve lo que queda del aceite restando la maquila que se quedan
+     */
+    public float CalcularLitrosParaRetirar(){      
+        return CalcularLitrosAceiteParaCambio() - CalcularMaquila();
+    }
+  
 
-
-
+    /**
+     * Si se quedan un rendimiento de maquila superior a 0 no se cobra la multuración
+     * @return precio de la multuración
+     */
+    public float CalcularPrecioMulturacion(){
+        float precio;
+        
+        if(porcentajeMaquila > 0)
+            precio = 0;
+        else
+            precio = kgOliva*RENDIMIENTO_MULTURACION_ECONOMICO;
+        
+        return precio;
+    }
+    
+    /**
+     * Calcula el aceite que retira el cliente, si se da el caso
+     * @return aceite retirado
+     */
+    public float CalcularAceiteRealRetirado(){
+        if(retira)
+            return CalcularLitrosParaRetirar();
+        else
+            return 0;
+    }
+    
+    /**
+     * Calcula los kg molturados a reflejar
+     * @return kg de oliva molturados a reflejar
+     */
+    public float CalcularKgMolturadosReflejar(){
+     
+            return kgOliva;
+    }
+    
+    /**
+     * Calcula kg de maquila a reflejar
+     * @return kg de maquila a reflejar
+     */
+    public float CalcularMaquilaReflejar(){
+        return CalcularKgMolturadosReflejar()*RENDIMIENTO_MAQUILA_KG;
+    }
+    
 
 }
 
