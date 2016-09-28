@@ -262,8 +262,10 @@ public class AñadirMolturacion extends VistaGestor {
         HashMap parameters = new HashMap<>();
         parameters.put("idMolturacion", m.getIdMolturacion());
         try {
+            String dir = "src/informes/albaranMolturacion.jrxml";
+            JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
             JasperPrint mostrarReporte = JasperFillManager.fillReport(
-                    "informes/albaranMolturacion.jrxml", parameters,
+                    reporteJasper, parameters,
                     ga.getCon());
             JasperViewer.viewReport(mostrarReporte);
         } catch (JRException e) {
