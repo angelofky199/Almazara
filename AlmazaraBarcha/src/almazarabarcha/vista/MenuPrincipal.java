@@ -1,23 +1,26 @@
 package almazarabarcha.vista;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import pojos.Usuario;
 
-
 public class MenuPrincipal extends VistaGestor {
-        private Usuario u;
-        
-    public MenuPrincipal(Usuario u) {
 
-        
+    private Usuario u;
+
+    public MenuPrincipal(Usuario u) throws IOException {
+
         initComponents();
         //gestor = new GestorAlmazara();
         //this.setSize(1000, 700);
+        this.getGraphics().drawImage(ImageIO.read(new File("src/recursos/fondo.jpg")), 0, 0, this);
         label_titulo.setOpaque(true);
         label_titulo.setForeground(estilos.getColorFuenteTítulo());
         label_titulo.setBackground(estilos.getColorTítulo());
         label_titulo.setFont(estilos.getFuenteTitulo());
-        
+
         boton_addClientes.setFont(estilos.getFuenteBotones());
         boton_seleccionar_cliente.setFont(estilos.getFuenteBotones());
         boton_mostrar_totales.setFont(estilos.getFuenteBotones());
@@ -27,16 +30,16 @@ public class MenuPrincipal extends VistaGestor {
         btn_salir.setBackground(estilos.getColorDanger());
         btn_salir.setForeground(Color.white);
         btn_salir.setFont(estilos.getFuenteBotones());
-        
-        this.getContentPane().setBackground(estilos.getColorExterior());
+
+        //this.getContentPane().setBackground(Color.red);
         jPanel1.setBackground(estilos.getColorInterior());
-    
+
         this.setIconImage(estilos.getImagenIcono());
         this.setTitle("Almazara Barcha");
         this.setExtendedState(MAXIMIZED_BOTH);
         this.u = u;
         lb_nombreUser.setText(u.getNombre());
-        
+
     }
 
     private MenuPrincipal() {
@@ -97,7 +100,7 @@ public class MenuPrincipal extends VistaGestor {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1154, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,37 +146,36 @@ public class MenuPrincipal extends VistaGestor {
                             .addComponent(boton_mostrar_totales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(26, 26, 26)
                         .addComponent(lb_usuario)
-                        .addGap(15, 15, 15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lb_nombreUser)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 1154, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 1144, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lb_usuario)
-                            .addComponent(lb_nombreUser))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_nombreUser)
+                    .addComponent(lb_usuario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(boton_addClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(boton_seleccionar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
+                        .addGap(18, 18, 18)
                         .addComponent(boton_mostrar_totales, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -185,7 +187,7 @@ public class MenuPrincipal extends VistaGestor {
         c.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(c.getContentPane());
         jPanel1.repaint();
-        
+
     }//GEN-LAST:event_boton_addClientesActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
@@ -193,7 +195,7 @@ public class MenuPrincipal extends VistaGestor {
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void boton_seleccionar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_seleccionar_clienteActionPerformed
-        SeleccionarCliente sc = new SeleccionarCliente(gestor,jPanel1,u);
+        SeleccionarCliente sc = new SeleccionarCliente(gestor, jPanel1, u);
         jPanel1.removeAll();
         sc.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(sc.getContentPane());
@@ -212,8 +214,7 @@ public class MenuPrincipal extends VistaGestor {
     private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowStateChanged
-   
-    
+
     /**
      * @param args the command line arguments
      */
@@ -246,11 +247,11 @@ public class MenuPrincipal extends VistaGestor {
             public void run() {
                 new MenuPrincipal().setVisible(true);
                 //new MenuPrincipal().setSize(1000, 600);
-                
+
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_addClientes;
@@ -265,4 +266,5 @@ public class MenuPrincipal extends VistaGestor {
     private javax.swing.JLabel lb_nombreUser;
     private javax.swing.JLabel lb_usuario;
     // End of variables declaration//GEN-END:variables
+
 }
