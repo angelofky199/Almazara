@@ -30,7 +30,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocation(300, 150);
-        this.setSize(650, 500);
+        this.setSize(650, 440);
+        
 
     }
 
@@ -52,6 +53,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         btn_login.setText("Iniciar Sesion");
@@ -76,7 +78,6 @@ public class Login extends javax.swing.JFrame {
         txt_pass.setBounds(222, 171, 198, 37);
 
         jButton1.setText("Gestionar usuarios");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +85,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(450, 350, 130, 19);
+        jButton1.setBounds(250, 370, 140, 30);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/almazarabarcha/estilos/almazara logo_bien.jpg"))); // NOI18N
         getContentPane().add(jLabel3);
