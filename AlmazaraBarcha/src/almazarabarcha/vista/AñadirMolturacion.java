@@ -187,7 +187,7 @@ public class AñadirMolturacion extends VistaGestor {
 
             JOptionPane.showMessageDialog(null, "Se ha añadido la molturacion correctamente al cliente: " + cliente.getNombre());
 
-            //GeneraAlbaranConParametros((Molturacion) DaoMolturacion.getMolturacion(cliente, m.getFecha(), m.getKgOliva()));
+            GeneraAlbaranConParametros((Molturacion) DaoMolturacion.getMolturacion(cliente, m.getFecha(), m.getKgOliva()));
             
         } catch (BusinessException ex) {
             Logger.getLogger(AñadirMolturacion.class.getName()).log(Level.SEVERE, null, ex);
@@ -248,7 +248,7 @@ public class AñadirMolturacion extends VistaGestor {
         });
     }
 
-    /*public void GeneraAlbaranConParametros(Molturacion m) {
+    public void GeneraAlbaranConParametros(Molturacion m) {
 
         HashMap parameters = new HashMap<>();
         parameters.put("idMolturacion", m.getIdMolturacion());
@@ -261,7 +261,7 @@ public class AñadirMolturacion extends VistaGestor {
         } catch (JRException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
