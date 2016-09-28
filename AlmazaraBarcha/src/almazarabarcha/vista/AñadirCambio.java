@@ -25,6 +25,7 @@ public class AñadirCambio extends VistaGestor {
         label_aceite_retirado.setFont(estilos.getFuenteEtiquetas());
         label_observaciones.setFont(estilos.getFuenteEtiquetas());
         btn_añadir_cambio.setFont(estilos.getFuenteBotones());
+        text_maquila.setText("0");
         this.c = c;
         this.u = u;
         cambio = new Cambio();
@@ -55,6 +56,8 @@ public class AñadirCambio extends VistaGestor {
         text_litros_retirado = new javax.swing.JTextField();
         label_maquila = new javax.swing.JLabel();
         text_maquila = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        text_precio_molturacion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,7 +70,7 @@ public class AñadirCambio extends VistaGestor {
             }
         });
 
-        label_kg_oliva.setText("KG oliva");
+        label_kg_oliva.setText("Kg oliva");
 
         label_rendimiento.setText("Rendimiento");
 
@@ -97,6 +100,8 @@ public class AñadirCambio extends VistaGestor {
             }
         });
 
+        jLabel1.setText("Precio molturación");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,12 +123,18 @@ public class AñadirCambio extends VistaGestor {
                             .addComponent(text_maquila, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(label_aceite_retirado, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                    .addComponent(label_litros_cambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(text_litros_cambio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(text_litros_retirado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(label_aceite_retirado, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                            .addComponent(label_litros_cambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(text_litros_cambio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(text_litros_retirado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(text_precio_molturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -170,7 +181,9 @@ public class AñadirCambio extends VistaGestor {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_maquila, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_maquila)
-                    .addComponent(check_paga))
+                    .addComponent(check_paga)
+                    .addComponent(jLabel1)
+                    .addComponent(text_precio_molturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(label_observaciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -187,43 +200,51 @@ public class AñadirCambio extends VistaGestor {
 
         if (text_kg_oliva.getText().equals("") || text_rendimiento.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos por completar");
-        }
-        else
-        {
+        } else {
             float kilos = Float.parseFloat(text_kg_oliva.getText());
             cambio.setKgOliva(kilos);
-            
 
             float rend = Float.parseFloat(text_rendimiento.getText());
             cambio.setRendimiento(rend);
         }
-        
+
         if (text_observaciones.getText().equals("")) {
             text_observaciones.setText("");
         }
 
-        
-
-        if (text_maquila.getText().equals("")) {
+        if (text_maquila.getText().equals("0")) {
             cambio.setMaquila(0);
 
         } else {
             float maquila = Float.parseFloat(text_maquila.getText());
             cambio.setPorcentajeMaquila(maquila);
         }
-
-        float litros_retira = cambio.CalcularLitrosParaRetirar();
-        text_litros_retirado.setText(String.valueOf(litros_retira));
-        cambio.setLitrosRetirados(litros_retira);
-
+        
+        float precio_molt = cambio.CalcularPrecioMulturacion();
+        cambio.setPrecioMolturacion(precio_molt);
+        text_precio_molturacion.setText(String.valueOf(precio_molt));
+            
         float litros_cambio = cambio.CalcularLitrosAceiteParaCambio();
         text_litros_cambio.setText(String.valueOf(litros_cambio));
         cambio.setLitrosCambio(litros_cambio);
 
+        if (Float.parseFloat(text_maquila.getText()) > 0) {
+            float litros_retira = cambio.CalcularLitrosParaRetirar();
+            text_litros_retirado.setText(String.valueOf(litros_retira));
+            cambio.setLitrosRetirados(litros_retira);
+            
+        }
+        else{
+            text_litros_retirado.setText(String.valueOf(litros_cambio));
+            cambio.setLitrosRetirados(litros_cambio);
+            cambio.CalcularPrecioMulturacion();
+        }
+        
+        
         //cambio.setFactura(check_factura.isSelected());
         cambio.setPaga(check_paga.isSelected());
         cambio.setObservaciones(text_observaciones.getText());
-        
+
         cambio.setCliente(c);
         cambio.setUsuario(u);
 
@@ -286,6 +307,7 @@ public class AñadirCambio extends VistaGestor {
     private javax.swing.JCheckBox check_paga;
     private javax.swing.JCheckBox check_pagado;
     private javax.swing.JCheckBox check_retira;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel label_aceite_retirado;
     private javax.swing.JLabel label_kg_oliva;
     private javax.swing.JLabel label_litros_cambio;
@@ -297,6 +319,7 @@ public class AñadirCambio extends VistaGestor {
     private javax.swing.JTextField text_litros_retirado;
     private javax.swing.JTextField text_maquila;
     private javax.swing.JTextField text_observaciones;
+    private javax.swing.JTextField text_precio_molturacion;
     private javax.swing.JTextField text_rendimiento;
     // End of variables declaration//GEN-END:variables
 }
