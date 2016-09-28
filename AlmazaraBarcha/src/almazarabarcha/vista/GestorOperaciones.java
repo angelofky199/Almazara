@@ -1,12 +1,17 @@
 package almazarabarcha.vista;
 
+import excepciones.BusinessException;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pojos.Cliente;
 import pojos.Usuario;
 
 public class GestorOperaciones extends VistaGestor {
-        private Cliente cliente;
-        private Usuario u;
+
+    private Cliente cliente;
+    private Usuario u;
+
     public GestorOperaciones(Cliente c, Usuario u) {
         initComponents();
         this.setLocation(250, 150);
@@ -114,20 +119,27 @@ public class GestorOperaciones extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_moltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_moltActionPerformed
-        AñadirMolturacion m = new AñadirMolturacion(cliente,u);
-        jPanel1.removeAll();
-        m.getContentPane().setBackground(estilos.getColorInterior());
-        jPanel1.add(m.getContentPane());
-        jPanel1.repaint();
-        btn_molt.setBackground(Color.YELLOW);
-        btn_camb.setBackground(Color.LIGHT_GRAY);
-        btn_comp.setBackground(Color.LIGHT_GRAY);
-        btn_vent.setBackground(Color.LIGHT_GRAY);
-        
+        AñadirMolturacion m;
+        try {
+
+            m = new AñadirMolturacion(cliente, u);
+            jPanel1.removeAll();
+            m.getContentPane().setBackground(estilos.getColorInterior());
+            jPanel1.add(m.getContentPane());
+            jPanel1.repaint();
+            btn_molt.setBackground(Color.YELLOW);
+            btn_camb.setBackground(Color.LIGHT_GRAY);
+            btn_comp.setBackground(Color.LIGHT_GRAY);
+            btn_vent.setBackground(Color.LIGHT_GRAY);
+        } catch (BusinessException ex) {
+            Logger.getLogger(GestorOperaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_btn_moltActionPerformed
 
     private void btn_compActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_compActionPerformed
-        AñadirCompra c = new AñadirCompra(cliente,u);
+        AñadirCompra c = new AñadirCompra(cliente, u);
         jPanel1.removeAll();
         c.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(c.getContentPane());
@@ -161,7 +173,7 @@ public class GestorOperaciones extends VistaGestor {
         btn_comp.setBackground(Color.LIGHT_GRAY);
         btn_vent.setBackground(Color.LIGHT_GRAY);
     }//GEN-LAST:event_btn_cambActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */

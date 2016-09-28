@@ -45,13 +45,22 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="label_aceite_retirado" pref="163" max="32767" attributes="0"/>
-                  <Component id="label_litros_cambio" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="text_litros_cambio" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
-                  <Component id="text_litros_retirado" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="label_aceite_retirado" pref="163" max="32767" attributes="0"/>
+                          <Component id="label_litros_cambio" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="text_litros_cambio" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                          <Component id="text_litros_retirado" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="text_precio_molturacion" min="-2" pref="133" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -112,6 +121,8 @@
                   <Component id="text_maquila" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="label_maquila" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="check_paga" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="text_precio_molturacion" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="71" max="32767" attributes="0"/>
               <Component id="label_observaciones" min="-2" max="-2" attributes="0"/>
@@ -142,7 +153,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="label_kg_oliva">
       <Properties>
-        <Property name="text" type="java.lang.String" value="KG oliva"/>
+        <Property name="text" type="java.lang.String" value="Kg oliva"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="label_rendimiento">
@@ -200,6 +211,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_maquilaActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Precio molturaci&#xf3;n"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="text_precio_molturacion">
     </Component>
   </SubComponents>
 </Form>
