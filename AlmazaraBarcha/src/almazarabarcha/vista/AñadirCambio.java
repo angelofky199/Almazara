@@ -5,7 +5,6 @@ import excepciones.BusinessException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.showMessageDialog;
 import pojos.Cambio;
 import pojos.Cliente;
 import pojos.Usuario;
@@ -28,6 +27,7 @@ public class AñadirCambio extends VistaGestor {
         btn_añadir_cambio.setFont(estilos.getFuenteBotones());
         this.c = c;
         this.u = u;
+        cambio = new Cambio();
     }
 
     private AñadirCambio() {
@@ -188,15 +188,21 @@ public class AñadirCambio extends VistaGestor {
         if (text_kg_oliva.getText().equals("") || text_rendimiento.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos por completar");
         }
+        else
+        {
+            float kilos = Float.parseFloat(text_kg_oliva.getText());
+            cambio.setKgOliva(kilos);
+            
+
+            float rend = Float.parseFloat(text_rendimiento.getText());
+            cambio.setRendimiento(rend);
+        }
+        
         if (text_observaciones.getText().equals("")) {
             text_observaciones.setText("");
         }
 
-        float kilos = Float.parseFloat(text_kg_oliva.getText());
-        cambio.setKgOliva(kilos);
-
-        float rend = Float.parseFloat(text_rendimiento.getText());
-        cambio.setRendimiento(rend);
+        
 
         if (text_maquila.getText().equals("")) {
             cambio.setMaquila(0);

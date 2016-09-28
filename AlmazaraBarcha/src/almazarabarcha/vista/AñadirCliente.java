@@ -38,6 +38,7 @@ public class AñadirCliente extends VistaGestor {
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         btn_añadirCliente = new javax.swing.JButton();
+        check_subencionado = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +54,15 @@ public class AñadirCliente extends VistaGestor {
 
         label_telefono.setText("Telefono");
 
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -65,6 +75,9 @@ public class AñadirCliente extends VistaGestor {
                 btn_añadirClienteActionPerformed(evt);
             }
         });
+
+        check_subencionado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        check_subencionado.setText("Subencionado");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,9 +99,6 @@ public class AñadirCliente extends VistaGestor {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(label_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(label_poblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(510, 510, 510)
-                        .addComponent(btn_añadirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(label_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,12 +107,18 @@ public class AñadirCliente extends VistaGestor {
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE)
-                                .addComponent(jTextField3)))))
+                                .addComponent(jTextField3))
+                            .addComponent(check_subencionado))))
                 .addContainerGap(98, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(label_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(330, 330, 330))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(label_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(330, 330, 330))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_añadirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(505, 505, 505))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,9 +148,11 @@ public class AñadirCliente extends VistaGestor {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_telefono))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(check_subencionado)
+                .addGap(17, 17, 17)
                 .addComponent(btn_añadirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -148,25 +166,23 @@ public class AñadirCliente extends VistaGestor {
 
         try {
             boolean ok = false;
-            
+
             Cliente c = new Cliente();
             c.setDni(this.jTextField1.getText());
             c.setNombre(this.jTextField2.getText());
             c.setDireccion(this.jTextField3.getText());
             c.setPoblacion(this.jTextField4.getText());
             c.setTelefono(this.jTextField5.getText());
-            
+            c.setSubvencionado(check_subencionado.isSelected());
             
             ok = DaoCliente.insertar(c);
-            
-            
-            
+
             if (!ok) {
                 JOptionPane.showMessageDialog(null, "Ya existe un cliente con ese nombre");
             } else {
                 JOptionPane.showMessageDialog(null, "El cliente se ha añadido correctamente");
             }
-            
+
             jTextField1.setText(null);
             jTextField2.setText(null);
             jTextField3.setText(null);
@@ -216,6 +232,7 @@ public class AñadirCliente extends VistaGestor {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_añadirCliente;
+    private javax.swing.JCheckBox check_subencionado;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
