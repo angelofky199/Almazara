@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package capaDAO;
 
 import excepciones.BusinessException;
@@ -16,10 +11,6 @@ import org.hibernate.Transaction;
 
 import pojos.Cliente;
 
-/**
- *
- * @author Usuario
- */
 public class DaoCliente {
 
     /**

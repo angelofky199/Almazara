@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/GitHub/Almazara/AlmazaraBarcha/src/pojos/Cliente.java</file>
-            <file>file:/C:/Users/Usuario/Documents/GitHub/Almazara/AlmazaraBarcha/src/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/Usuario/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/vista/AñadirCliente.java</file>
-            <file>file:/C:/Users/Usuario/Documents/GitHub/Almazara/AlmazaraBarcha/src/capaDAO/DaoCliente.java</file>
-            <file>file:/C:/Users/Usuario/Documents/GitHub/Almazara/AlmazaraBarcha/src/pojos/Cambio.java</file>
+            <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/vista/GestionCambio.java</file>
+            <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/vista/Login.java</file>
+            <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/vista/AñadirMolturacion.java</file>
         </group>
     </open-files>
 </project-private>

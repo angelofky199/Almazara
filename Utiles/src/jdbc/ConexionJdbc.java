@@ -16,6 +16,10 @@ public class ConexionJdbc {
 	/**
 	 * Constructor: Crea el objeto conocido el driver,url,usr y pwd, que se almacenan
 	 * en atributos privados 
+     * @param driver
+     * @param url
+     * @param usr
+     * @param pwd
 	 */
 	public ConexionJdbc (String driver, String url, String usr, String pwd){ 
 	this.driver= driver; 
@@ -24,7 +28,7 @@ public class ConexionJdbc {
 	this.pwd= pwd; 
 	 } 
 	/**
-	 * Constructor: Crea el objeto conocido el nombre del fichero de configuración y lo almacena
+	 * Constructor: Crea el objeto conocido el nombre del fichero de configuraciï¿½n y lo almacena
 	 * en un atributo privado.
 	 */
 	public ConexionJdbc (String ficheroPropiedades){ 
@@ -32,10 +36,10 @@ public class ConexionJdbc {
 	 } 
 	/**
 	 * Conecta con la base de datos.
-	 * Si el atributo ficheroConfiguracion tiene valor (no nulo), lo utilizará para conectar.
+	 * Si el atributo ficheroConfiguracion tiene valor (no nulo), lo utilizarï¿½ para conectar.
 	 * En caso de que ficheroConfiguracion sea nulo, conecta utilizando driver,url, usry pwd.
-	 * Una vez establecida la conexión, ésta se almacena en el atributo con
-	 * Para conectar hará uso de los métodos de UtilesJdbc implementados anteriormente
+	 * Una vez establecida la conexiï¿½n, ï¿½sta se almacena en el atributo con
+	 * Para conectar harï¿½ uso de los mï¿½todos de UtilesJdbc implementados anteriormente
 	 */
 	public void conectar() { 
 		if(ficheroConfiguracion != null){
@@ -45,15 +49,16 @@ public class ConexionJdbc {
 		}
 	 } 
 	/**
-	 * Cierra la conexión almacenada en el atributo con
-	 * Para desconectar hará uso de los métodos de UtilesJdbc implementadosa nteriormente
+	 * Cierra la conexiï¿½n almacenada en el atributo con
+	 * Para desconectar harï¿½ uso de los mï¿½todos de UtilesJdbc implementadosa nteriormente
 	 */
 	public void desconectar(){ 
 		UtilesJdbc.cerrar(con);
 	  //Completar 
 	 } 
 	/**
-	 * Método consultor. Devuelve el atributo con
+	 * Mï¿½todo consultor. Devuelve el atributo con
+     * @return 
 	 */
 	public static Connection getConnection(){ 
 		return con;
