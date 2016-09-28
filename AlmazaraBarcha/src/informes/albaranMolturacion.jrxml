@@ -63,14 +63,14 @@ WHERE
 				<text><![CDATA[ALMAZARA BARCHA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="380" y="117" width="89" height="15" uuid="251a7c29-6df3-4b8c-90f4-7827b7e26833"/>
+				<reportElement x="430" y="117" width="89" height="15" uuid="251a7c29-6df3-4b8c-90f4-7827b7e26833"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Recepcionista:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement style="Detail" x="469" y="117" width="102" height="15" uuid="ea6c250f-6a6d-40e6-b768-eae4a81a128f"/>
+				<reportElement style="Detail" x="519" y="117" width="91" height="15" uuid="ea6c250f-6a6d-40e6-b768-eae4a81a128f"/>
 				<textFieldExpression><![CDATA[$F{usuario_nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>

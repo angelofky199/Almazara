@@ -1,5 +1,6 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.GestorAlmazara;
 import capaDAO.DaoMolturacion;
 import excepciones.BusinessException;
 import java.sql.Date;
@@ -8,9 +9,14 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 import pojos.Cliente;
 import pojos.Molturacion;
 import pojos.Usuario;
@@ -19,10 +25,12 @@ public class AñadirMolturacion extends VistaGestor {
 
     private Cliente cliente;
     private Usuario u;
-    Molturacion m;
+    private Molturacion m;
+    private GestorAlmazara ga;
 
-    public AñadirMolturacion(Cliente c, Usuario u) {
+    public AñadirMolturacion(Cliente c, Usuario u) throws BusinessException {
         initComponents();
+        ga = new GestorAlmazara();
         label_kg_oliva.setFont(estilos.getFuenteEtiquetas());
         label_observaciones.setFont(estilos.getFuenteEtiquetas());
         label_total_ingresos.setFont(estilos.getFuenteEtiquetas());
@@ -32,6 +40,7 @@ public class AñadirMolturacion extends VistaGestor {
         m = new Molturacion();
         btn_molturacion.setVisible(false);
         lb_nombre_cliente.setText(c.getNombre());
+        ga.conectar("root", "");
     }
 
     private AñadirMolturacion() {
@@ -188,7 +197,7 @@ public class AñadirMolturacion extends VistaGestor {
             JOptionPane.showMessageDialog(null, "Se ha añadido la molturacion correctamente al cliente: " + cliente.getNombre());
 
             GeneraAlbaranConParametros((Molturacion) DaoMolturacion.getMolturacion(cliente, m.getFecha(), m.getKgOliva()));
-            
+
         } catch (BusinessException ex) {
             Logger.getLogger(AñadirMolturacion.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -253,11 +262,10 @@ public class AñadirMolturacion extends VistaGestor {
         HashMap parameters = new HashMap<>();
         parameters.put("idMolturacion", m.getIdMolturacion());
         try {
-            JasperPrint print = JasperFillManager.fillReport(
-                    "informes/ciclistas_equipo.jasper", parameters,
-                    gesCiclistas.getCon());
-            JasperExportManager.exportReportToPdfFile(print,
-                    "informes/CiclistasPorEquipo.pdf");
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(
+                    "informes/albaranMolturacion.jrxml", parameters,
+                    ga.getCon());
+            JasperViewer.viewReport(mostrarReporte);
         } catch (JRException e) {
             e.printStackTrace();
         }

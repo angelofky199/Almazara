@@ -52,7 +52,7 @@ public class DaoMolturacion {
         Session s = UtilesHibernate.getSession();
 
         Molturacion m;
-        String hql = "SELECT m FROM Molturacion m WHERE m.Cliente_idCliente = :idcliente AND m.fecha = :fecha AND m.kgOliva = :kgOliva";
+        String hql = "SELECT m FROM Molturacion m WHERE Cliente_idCliente = :idcliente AND fecha = :fecha AND kgOliva = :kgOliva";
 
         try {
             m = (Molturacion) s.createQuery(hql).setParameter("idcliente", c.getIdCliente()).setParameter("fecha", fecha).setParameter("kgOliva", kgOliva).uniqueResult();

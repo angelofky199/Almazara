@@ -312,9 +312,9 @@ public class AñadirVenta extends VistaGestor {
         txt_total_envases.setText(String.valueOf(venta.getPrecioTotal_envases()));
         txt_total.setText(String.valueOf(venta.getTotalPrecio()));
         
-        gestor.getClientes().get(pos).addVenta(venta);
+        //gestor.getClientes().get(pos).addVenta(venta);
         
-        System.out.println(gestor.getClientes().get(pos).getVentas().get(0).toString());
+        //System.out.println(gestor.getClientes().get(pos).getVentas().get(0).toString());
     }//GEN-LAST:event_btn_ventaActionPerformed
 
     private void check_regalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_regalarActionPerformed
