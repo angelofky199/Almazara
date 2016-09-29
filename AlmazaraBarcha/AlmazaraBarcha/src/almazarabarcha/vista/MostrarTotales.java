@@ -13,6 +13,10 @@ public class MostrarTotales extends JFrame {
         label_total_molturacion.setFont(estilos.getFuenteEtiquetas());
         label_total_ventas.setFont(estilos.getFuenteEtiquetas());
     }
+    
+    public void setTotalCambios(){
+    
+    }
 
 
     @SuppressWarnings("unchecked")

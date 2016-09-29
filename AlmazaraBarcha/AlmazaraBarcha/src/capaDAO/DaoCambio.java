@@ -52,6 +52,28 @@ public class DaoCambio {
         }
 
         return result;
+    }
+    
+     public static List<Cambio> getTodosCambios() throws BusinessException {
+
+        Session s = UtilesHibernate.getSession();
+
+        List<Cambio> lista = new ArrayList<>();
+        String hql = "SELECT idCambio, kgOliva, fecha FROM Cambio c";
+
+        try {
+            lista = (List<Cambio>) s.createQuery(hql).list();
+
+        } catch (Exception e) {
+
+            Logger.getLogger(DaoMolturacion.class.getName()).log(Level.SEVERE,
+                    "Error al consultar la lista de cambios", e);
+            throw new BusinessException("Error al consultar lista de cambios");
+        }
+
+        return lista;
 
     }
+    
+    
 }
