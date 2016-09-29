@@ -5,9 +5,10 @@
         <group>
             <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/vista/SeleccionarCliente.java</file>
             <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/vista/MostrarOperaciones.java</file>
+            <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/vista/AñadirVenta.java</file>
             <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/pojos/Molturacion.java</file>
+            <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/Modelo/Venta.java</file>
             <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/capaDAO/DaoMolturacion.java</file>
-            <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/Modelo/Molturacion.java</file>
             <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/vista/AñadirMolturacion.java</file>
             <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/capaDAO/DaoCliente.java</file>
             <file>file:/C:/Users/jose/Documents/GitHub/Almazara/AlmazaraBarcha/src/almazarabarcha/vista/GestionMolturaciones.java</file>
