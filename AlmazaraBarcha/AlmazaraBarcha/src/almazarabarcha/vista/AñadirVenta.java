@@ -25,7 +25,7 @@ public class AñadirVenta extends JFrame {
         label_litros2.setFont(estilos.getFuenteEtiquetas());
         label_litros3.setFont(estilos.getFuenteEtiquetas());
         btn_venta.setFont(estilos.getFuenteBotones());
-       
+        txt_total.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")

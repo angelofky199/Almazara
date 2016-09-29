@@ -27,7 +27,6 @@ public class DaoCliente {
         try {
             s.save(c);
             result = true;
-
             tx.commit();
         } catch (Exception e) {
             tx.rollback();

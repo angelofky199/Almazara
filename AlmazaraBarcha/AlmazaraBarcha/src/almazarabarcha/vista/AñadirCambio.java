@@ -1,8 +1,10 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.Validador;
 import almazarabarcha.estilos.Estilos;
 import capaDAO.DaoCambio;
 import excepciones.BusinessException;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -26,10 +28,15 @@ public class AñadirCambio extends JFrame {
         label_aceite_retirado.setFont(estilos.getFuenteEtiquetas());
         label_observaciones.setFont(estilos.getFuenteEtiquetas());
         btn_añadir_cambio.setFont(estilos.getFuenteBotones());
-        text_maquila.setText("0");
+        text_maquila.setText("");
         this.c = c;
         this.u = u;
         cambio = new Cambio();
+        text_litros_cambio.setEnabled(false);
+        text_litros_retirado.setEnabled(false);
+        btn_Maquila.setBackground(Color.green);
+        btn_Dinero.setBackground(Color.darkGray);
+        text_precio_molturacion.setEnabled(false);
     }
 
     private AñadirCambio() {
@@ -40,6 +47,7 @@ public class AñadirCambio extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         text_observaciones = new javax.swing.JTextField();
         label_observaciones = new javax.swing.JLabel();
         btn_añadir_cambio = new javax.swing.JButton();
@@ -59,6 +67,20 @@ public class AñadirCambio extends JFrame {
         text_maquila = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         text_precio_molturacion = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        btn_Maquila = new javax.swing.JButton();
+        btn_Dinero = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,49 +125,26 @@ public class AñadirCambio extends JFrame {
 
         jLabel1.setText("Precio molturación");
 
+        btn_Maquila.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_Maquila.setText("Maquila");
+        btn_Maquila.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_MaquilaMouseClicked(evt);
+            }
+        });
+
+        btn_Dinero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_Dinero.setText("Dinero");
+        btn_Dinero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_DineroMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(label_rendimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(label_kg_oliva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label_maquila, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(text_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(text_rendimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(text_maquila, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(label_aceite_retirado, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                            .addComponent(label_litros_cambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(text_litros_cambio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(text_litros_retirado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(text_precio_molturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(77, 77, 77)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(check_retira)
-                            .addComponent(check_pagado))
-                        .addGap(47, 47, 47)
-                        .addComponent(check_factura))
-                    .addComponent(check_paga, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(284, 284, 284))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,14 +155,69 @@ public class AñadirCambio extends JFrame {
                         .addComponent(label_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1010, 1010, 1010))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(470, 470, 470)
-                .addComponent(btn_añadir_cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(470, 470, 470)
+                        .addComponent(btn_añadir_cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_Maquila, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_Dinero, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(label_rendimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(label_kg_oliva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(label_maquila, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(text_kg_oliva, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(text_rendimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_maquila, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(label_aceite_retirado, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                                    .addComponent(label_litros_cambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(text_litros_cambio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_litros_retirado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(text_precio_molturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(77, 77, 77)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(check_retira)
+                                    .addComponent(check_pagado))
+                                .addGap(47, 47, 47)
+                                .addComponent(check_factura))
+                            .addComponent(check_paga, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(284, 284, 284))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Maquila, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Dinero, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_litros_cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_litros_cambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -178,7 +232,9 @@ public class AñadirCambio extends JFrame {
                     .addComponent(label_rendimiento)
                     .addComponent(text_rendimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(check_pagado))
-                .addGap(18, 18, 18)
+                .addGap(2, 2, 2)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_maquila, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_maquila)
@@ -198,64 +254,81 @@ public class AñadirCambio extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_añadir_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadir_cambioActionPerformed
+        String kg_oliva, rendimiento, maquila;
+        Validador validador = new Validador();
+        String error = "Campos con valores no válidos:\n";
+        boolean ok = true;
+        float precio_molt, litros_cambio, litros_retira;
 
-        if (text_kg_oliva.getText().equals("") || text_rendimiento.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Faltan campos por completar");
-        } else {
-            float kilos = Float.parseFloat(text_kg_oliva.getText());
-            cambio.setKgOliva(kilos);
-
-            float rend = Float.parseFloat(text_rendimiento.getText());
-            cambio.setRendimiento(rend);
-        }
-
-        if (text_observaciones.getText().equals("")) {
-            text_observaciones.setText("");
-        }
-
-        if (text_maquila.getText().equals("0")) {
-            cambio.setMaquila(0);
-
-        } else {
-            float maquila = Float.parseFloat(text_maquila.getText());
-            cambio.setPorcentajeMaquila(maquila);
-        }
+        kg_oliva = validador.corregirNumeros(text_kg_oliva.getText());
+        rendimiento = validador.corregirNumeros(text_rendimiento.getText());
+        maquila = validador.corregirNumeros(text_maquila.getText());
         
-        float precio_molt = cambio.CalcularPrecioMulturacion();
-        cambio.setPrecioMolturacion(precio_molt);
-        text_precio_molturacion.setText(String.valueOf(precio_molt));
+        if(!validador.validarNumeroDecimal(kg_oliva)){
+            error += "Kg Oliva\n";
+            ok = false;
+        }
             
-        float litros_cambio = cambio.CalcularLitrosAceiteParaCambio();
-        text_litros_cambio.setText(String.valueOf(litros_cambio));
-        cambio.setLitrosCambio(litros_cambio);
+        if(!validador.validarNumeroDecimal(rendimiento)){
+            error += "Rendimiento\n";
+            ok = false;
+        }
 
-        if (Float.parseFloat(text_maquila.getText()) > 0) {
-            float litros_retira = cambio.CalcularLitrosParaRetirar();
-            text_litros_retirado.setText(String.valueOf(litros_retira));
-            cambio.setLitrosRetirados(litros_retira);
+        if(validador.validarNumeroDecimal(maquila)){
+            error += "Maquila\n";
+            ok = false;
+        }
+        
+        if(!ok){
+            JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            cambio.setKgOliva(Float.parseFloat(kg_oliva));
+            cambio.setRendimiento(Float.parseFloat(rendimiento));
+            cambio.setPorcentajeMaquila(Float.parseFloat(maquila));
+            cambio.setObservaciones(text_observaciones.getText());
             
-        }
-        else{
-            text_litros_retirado.setText(String.valueOf(litros_cambio));
-            cambio.setLitrosRetirados(litros_cambio);
-            cambio.CalcularPrecioMulturacion();
-        }
-        
-        
-        //cambio.setFactura(check_factura.isSelected());
-        cambio.setPaga(check_paga.isSelected());
-        cambio.setObservaciones(text_observaciones.getText());
+            //calcular precio molturación
+            precio_molt = cambio.CalcularPrecioMulturacion();
+            cambio.setPrecioMolturacion(precio_molt);
+            text_precio_molturacion.setText(String.valueOf(precio_molt));
+            
+            //calcular litros para cambio
+            litros_cambio = cambio.CalcularLitrosAceiteParaCambio();
+            text_litros_cambio.setText(String.valueOf(litros_cambio));
+            cambio.setLitrosCambio(litros_cambio);
+            
+            //***Está de momento, ha sido copy paste***
+            if (Float.parseFloat(text_maquila.getText()) > 0) {
+                litros_retira = cambio.CalcularLitrosParaRetirar();
+                text_litros_retirado.setText(String.valueOf(litros_retira));
+                cambio.setLitrosRetirados(litros_retira);
+            }
+            else{
+                text_litros_retirado.setText(String.valueOf(litros_cambio));
+                cambio.setLitrosRetirados(litros_cambio);
+                cambio.CalcularPrecioMulturacion();
+            }
+            
+            //***Está de momento, ha sido copy paste***
+            if (text_maquila.getText().equals("0")) {
+                cambio.setMaquila(0);
+            
+                //cambio.setFactura(check_factura.isSelected());
+                cambio.setPaga(check_paga.isSelected());
+                cambio.setObservaciones(text_observaciones.getText());
 
-        cambio.setCliente(c);
-        cambio.setUsuario(u);
+                cambio.setCliente(c);
+                cambio.setUsuario(u);
 
-        try {
-            DaoCambio.insertar(cambio);
-        } catch (BusinessException ex) {
-            Logger.getLogger(AñadirCambio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                try {
+                    DaoCambio.insertar(cambio);
+                } catch (BusinessException ex) {
+                    Logger.getLogger(AñadirCambio.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-        JOptionPane.showMessageDialog(null, "Se ha añadido el cambio correctamente al cliente: " + c.getNombre());
+                JOptionPane.showMessageDialog(null, "Se ha añadido el cambio correctamente al cliente: " + c.getNombre());
+            }
+        }  
     }//GEN-LAST:event_btn_añadir_cambioActionPerformed
 
     private void text_litros_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_litros_cambioActionPerformed
@@ -266,14 +339,32 @@ public class AñadirCambio extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_text_maquilaActionPerformed
 
+    private void btn_MaquilaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MaquilaMouseClicked
+        btn_Maquila.setBackground(Color.green);
+        btn_Dinero.setBackground(Color.darkGray);
+        text_maquila.setEnabled(true);
+        text_maquila.setText("");
+    }//GEN-LAST:event_btn_MaquilaMouseClicked
+
+    private void btn_DineroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DineroMouseClicked
+        btn_Maquila.setBackground(Color.darkGray);
+        btn_Dinero.setBackground(Color.green);
+        text_maquila.setText("0");
+        text_maquila.setEnabled(false);
+    }//GEN-LAST:event_btn_DineroMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Dinero;
+    private javax.swing.JButton btn_Maquila;
     private javax.swing.JButton btn_añadir_cambio;
     private javax.swing.JCheckBox check_factura;
     private javax.swing.JCheckBox check_paga;
     private javax.swing.JCheckBox check_pagado;
     private javax.swing.JCheckBox check_retira;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel label_aceite_retirado;
     private javax.swing.JLabel label_kg_oliva;
     private javax.swing.JLabel label_litros_cambio;

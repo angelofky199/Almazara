@@ -1,5 +1,6 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.Validador;
 import almazarabarcha.estilos.Estilos;
 import capaDAO.DaoCompra;
 import excepciones.BusinessException;
@@ -11,6 +12,7 @@ import pojos.Cliente;
 import pojos.Compra;
 import pojos.Usuario;
 
+//Tener en cuenta: Las compras no tienen subencionado
 public class AñadirCompra extends JFrame {
     private final Estilos estilos = new Estilos();
     Cliente c;
@@ -29,6 +31,7 @@ public class AñadirCompra extends JFrame {
         compra = new Compra();
         btn_añadir.setVisible(false);
         lb_nombre_cliente.setText(c.getNombre());
+        text_total.setEnabled(false);
     }
 
     private AñadirCompra() {
@@ -171,30 +174,49 @@ public class AñadirCompra extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadirActionPerformed
-
-        compra.setCliente(c);
-        compra.setUsuario(u);
-        compra.setObservaciones(text_observaciones.getText());
+        Validador validador = new Validador();
+        String kg_oliva;
+        String precio_kg;
+        String error = "Campos con valores no válidos:\n";
+        boolean ok = true;
         
-        if(c.isSubvencionado())
-            compra.CalcularMaquilaReflejar();
-        else
-            compra.setMaquilaReflejada(0);
+        kg_oliva = validador.corregirNumeros(text_kg_oliva.getText());
+        precio_kg = validador.corregirNumeros(text_precio_kg.getText());
         
-        if(check_pagado.isSelected())
-            compra.setPagado(true);
-        else
-            compra.setPagado(false);
-        
-        try {
-            DaoCompra.insertar(compra);
-            JOptionPane.showMessageDialog(null, "Se ha añadido la molturacion correctamente al cliente: " + c.getNombre());
-        } catch (BusinessException ex) {
-            Logger.getLogger(AñadirCompra.class.getName()).log(Level.SEVERE, null, ex);
+        if(validador.validarNumeroDecimal(kg_oliva)){
+            error += "Kg Oliva\n";
+            ok = false;
         }
-        //compra.setFecha(Date.valueOf(LocalDate.now()));
+            
+        if(validador.validarNumeroDecimal(precio_kg)){
+            error += "Precio Kg Oliva\n";
+            ok = false;
+        }
+        
+        if(!ok){
+            JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            compra.setCliente(c);
+            compra.setUsuario(u);
+            compra.setObservaciones(text_observaciones.getText());
 
+            if(check_pagado.isSelected())
+                compra.setPagado(true);
+            else
+                compra.setPagado(false);
+            
+            compra.setKgOliva(Float.parseFloat(kg_oliva));
+            compra.setPrecioKg(Float.parseFloat(precio_kg));
 
+            try {
+                DaoCompra.insertar(compra);
+                JOptionPane.showMessageDialog(null, "Se ha añadido la molturacion correctamente al cliente: " + c.getNombre());
+            } catch (BusinessException ex) {
+                Logger.getLogger(AñadirCompra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_añadirActionPerformed
 
     private void text_kg_olivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_kg_olivaActionPerformed

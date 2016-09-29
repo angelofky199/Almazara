@@ -1,5 +1,6 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.Modelo.Validador;
 import almazarabarcha.estilos.Estilos;
 import capaDAO.DaoCliente;
 import excepciones.BusinessException;
@@ -10,8 +11,9 @@ import javax.swing.JOptionPane;
 import pojos.Cliente;
 
 public class AñadirCliente extends JFrame {
-    private Estilos estilos;
-    
+
+    private final Estilos estilos;
+
     public AñadirCliente() {
         estilos = new Estilos();
         initComponents();
@@ -166,35 +168,53 @@ public class AñadirCliente extends JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void btn_añadirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadirClienteActionPerformed
+        Validador validador = new Validador();
+        boolean ok_insercion = false;
+        boolean ok_dni;
+        boolean ok_telefono;
 
-        try {
-            boolean ok = false;
+        Cliente c = new Cliente();
+        c.setDni(validador.corregirNumeros(this.jTextField1.getText()));
+        c.setNombre(this.jTextField2.getText());
+        c.setDireccion(this.jTextField3.getText());
+        c.setPoblacion(this.jTextField4.getText());
+        c.setTelefono(validador.corregirNumeros(this.jTextField5.getText()));
+        c.setSubvencionado(check_subencionado.isSelected());
 
-            Cliente c = new Cliente();
-            c.setDni(this.jTextField1.getText());
-            c.setNombre(this.jTextField2.getText());
-            c.setDireccion(this.jTextField3.getText());
-            c.setPoblacion(this.jTextField4.getText());
-            c.setTelefono(this.jTextField5.getText());
-            c.setSubvencionado(check_subencionado.isSelected());
+        ok_dni = validador.validarNIF(c.getDni()) || c.getDni().isEmpty();
+        ok_telefono = validador.validarTelefono(c.getTelefono()) || c.getTelefono().isEmpty();
+
+        if (ok_dni && ok_telefono) {
+            if (!c.getNombre().isEmpty()) {
+                try {
+                    ok_insercion = DaoCliente.insertar(c);
+                } catch (BusinessException ex) {
+                    Logger.getLogger(AñadirCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                if (!ok_insercion)
+                    JOptionPane.showMessageDialog(null, "Ya existe un cliente con ese nombre", "Error", JOptionPane.ERROR_MESSAGE);
+                else
+                    JOptionPane.showMessageDialog(null, "El cliente se ha añadido correctamente");
+            } else 
+                JOptionPane.showMessageDialog(null, "El campo nombre es obligatorio", "Campo nombre vacío", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String mal_insertado = "Hay errores en: \n";
+
+            if (!ok_dni) 
+                mal_insertado += "DNI: 8 dígitos y 1 letra\n";
             
-            ok = DaoCliente.insertar(c);
-
-            if (!ok) {
-                JOptionPane.showMessageDialog(null, "Ya existe un cliente con ese nombre");
-            } else {
-                JOptionPane.showMessageDialog(null, "El cliente se ha añadido correctamente");
-            }
-
-            jTextField1.setText(null);
-            jTextField2.setText(null);
-            jTextField3.setText(null);
-            jTextField4.setText(null);
-            jTextField5.setText(null);
-        } catch (BusinessException ex) {
-            Logger.getLogger(AñadirCliente.class.getName()).log(Level.SEVERE, null, ex);
+            if (!ok_telefono) 
+                mal_insertado += "Teléfono: 9 dígitos";
+            
+            JOptionPane.showMessageDialog(null, mal_insertado, "Error en inserción", JOptionPane.ERROR_MESSAGE);
         }
 
+        jTextField1.setText(null);
+        jTextField2.setText(null);
+        jTextField3.setText(null);
+        jTextField4.setText(null);
+        jTextField5.setText(null);
     }//GEN-LAST:event_btn_añadirClienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
