@@ -1,7 +1,11 @@
 package almazarabarcha.vista;
 
-public class MostrarTotales extends VistaGestor {
+import almazarabarcha.estilos.Estilos;
+import javax.swing.JFrame;
 
+public class MostrarTotales extends JFrame {
+    private final Estilos estilos = new Estilos();
+    
     public MostrarTotales() {
         initComponents();
         label_total_cambio.setFont(estilos.getFuenteEtiquetas());

@@ -53,7 +53,8 @@ public class Estilos{
     }
     
     public Color getColorInterior(){
-        return new Color(1,1,1,0.8f);
+        return new Color(255,255,255);
+        //return new Color(255,255,255);
     }
     
     public Color getColorBotones(){

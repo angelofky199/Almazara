@@ -1,6 +1,8 @@
 package almazarabarcha.vista;
 
-public class GestionCompra extends VistaGestor {
+import javax.swing.JFrame;
+
+public class GestionCompra extends JFrame {
 
     /**
      * Creates new form GestionMolturaciones

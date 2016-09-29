@@ -1,14 +1,16 @@
 package almazarabarcha.vista;
 
-public class modificarCliente extends VistaGestor {
-    
+import almazarabarcha.estilos.Estilos;
+import javax.swing.JFrame;
+
+public class modificarCliente extends JFrame {
     int opcion;
+    private final Estilos estilos = new Estilos();
     
     public modificarCliente() {
         initComponents();
         this.setBackground(estilos.getColorInterior());
     }
-    
     
     public modificarCliente(int opt) {
         initComponents();

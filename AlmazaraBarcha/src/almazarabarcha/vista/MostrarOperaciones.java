@@ -1,16 +1,20 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.estilos.Estilos;
 import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import pojos.Cliente;
 
-public class MostrarOperaciones extends VistaGestor {
+public class MostrarOperaciones extends JFrame {
 
     private Cliente c;
-
-    public MostrarOperaciones(Cliente c) {
+    private final Estilos estilos = new Estilos();
+    
+    public MostrarOperaciones(JPanel jPanel1, Cliente c) {
+        this.jPanel1 = jPanel1;
         initComponents();
-        this.setLocation(250, 150);
-        this.setBackground(estilos.getColorInterior());
+        //this.setLocation(250, 150);
         jPanel1.setBackground(estilos.getColorInterior());
         btn_camb.setFont(estilos.getFuenteBotones());
         btn_comp.setFont(estilos.getFuenteBotones());

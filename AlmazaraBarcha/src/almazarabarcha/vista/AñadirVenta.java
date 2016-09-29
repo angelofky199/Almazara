@@ -1,9 +1,12 @@
 package almazarabarcha.vista;
 
 import almazarabarcha.Modelo.Venta;
+import almazarabarcha.estilos.Estilos;
+import javax.swing.JFrame;
 
-public class AñadirVenta extends VistaGestor {
-
+public class AñadirVenta extends JFrame {
+    private final Estilos estilos = new Estilos();
+    
     public AñadirVenta() {
         initComponents();
         label_10l.setFont(estilos.getFuenteEtiquetas());

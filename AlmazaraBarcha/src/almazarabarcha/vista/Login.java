@@ -20,8 +20,6 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        this.setLocation(300, 150);
-        this.setSize(650, 440);
     }
 
     /**
@@ -38,7 +36,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txt_user = new javax.swing.JTextField();
         txt_pass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btn_gestionar_usuarios = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,15 +64,15 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(txt_pass);
         txt_pass.setBounds(222, 171, 198, 37);
 
-        jButton1.setText("Gestionar usuarios");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_gestionar_usuarios.setText("Gestionar usuarios");
+        btn_gestionar_usuarios.setBorderPainted(false);
+        btn_gestionar_usuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_gestionar_usuariosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(250, 370, 140, 30);
+        getContentPane().add(btn_gestionar_usuarios);
+        btn_gestionar_usuarios.setBounds(250, 370, 140, 30);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/almazarabarcha/estilos/almazara logo_bien.jpg"))); // NOI18N
         getContentPane().add(jLabel3);
@@ -84,7 +82,8 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        Usuario u = new Usuario();
+        Usuario u;
+        
         try {
             if (DaoUsuario.isUsuario(txt_user.getText(), String.valueOf(txt_pass.getPassword()))) {
                 u = DaoUsuario.getUsuario(txt_user.getText());
@@ -97,11 +96,9 @@ public class Login extends javax.swing.JFrame {
         } catch (BusinessException | IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }//GEN-LAST:event_btn_loginActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_gestionar_usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gestionar_usuariosActionPerformed
         JPanel panel = new JPanel();
         JLabel label = new JLabel("Introduce contraseña de usuario:");
         JPasswordField pass = new JPasswordField(25);
@@ -111,6 +108,7 @@ public class Login extends javax.swing.JFrame {
         int option = JOptionPane.showOptionDialog(null, panel, "Seguridad",
                 JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, options, options[1]);
+        
         if (option == 0) // pressing OK button
         {
             String password = String.valueOf(pass.getPassword());
@@ -123,17 +121,12 @@ public class Login extends javax.swing.JFrame {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_gestionar_usuariosActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -141,26 +134,22 @@ public class Login extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
+            Login l;
+            l = new Login();
+            l.setVisible(true);
+            l.setLocation(300, 150);
+            l.setSize(650, 440);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_gestionar_usuarios;
     private javax.swing.JButton btn_login;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

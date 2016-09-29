@@ -1,14 +1,16 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.estilos.Estilos;
 import excepciones.BusinessException;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import pojos.Cliente;
 import pojos.Usuario;
 
-public class GestorOperaciones extends VistaGestor {
-
+public class GestorOperaciones extends JFrame {
+    private final Estilos estilos = new Estilos();
     private Cliente cliente;
     private Usuario u;
 

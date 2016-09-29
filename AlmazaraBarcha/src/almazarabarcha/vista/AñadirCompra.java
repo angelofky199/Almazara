@@ -1,16 +1,18 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.estilos.Estilos;
 import capaDAO.DaoCompra;
 import excepciones.BusinessException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pojos.Cliente;
 import pojos.Compra;
 import pojos.Usuario;
 
-public class AñadirCompra extends VistaGestor {
-
+public class AñadirCompra extends JFrame {
+    private final Estilos estilos = new Estilos();
     Cliente c;
     Usuario u;
     Compra compra;

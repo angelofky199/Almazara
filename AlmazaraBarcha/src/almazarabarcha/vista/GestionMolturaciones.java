@@ -1,10 +1,12 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.estilos.Estilos;
 import capaDAO.DaoMolturacion;
 import excepciones.BusinessException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import pojos.Cliente;
@@ -14,7 +16,7 @@ import pojos.Molturacion;
  *
  * @author jose
  */
-public class GestionMolturaciones extends VistaGestor {
+public class GestionMolturaciones extends JFrame {
 
     /**
      * Creates new form GestionMolturaciones
@@ -23,8 +25,9 @@ public class GestionMolturaciones extends VistaGestor {
     private List<Molturacion> molturacionesPagadas;
     private List<Molturacion> molturacionesNoPagadas;
     private JPanel jpanel;
-
+    private Estilos estilos;
     public GestionMolturaciones(Cliente c, JPanel jpanel) {
+        estilos = new Estilos();
         initComponents();
         this.jpanel = jpanel;
         this.c = c;

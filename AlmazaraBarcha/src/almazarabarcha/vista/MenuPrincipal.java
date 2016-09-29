@@ -1,17 +1,21 @@
 package almazarabarcha.vista;
 
+import almazarabarcha.estilos.Estilos;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import pojos.Usuario;
 
-public class MenuPrincipal extends VistaGestor {
-
+public class MenuPrincipal extends JFrame {
     private Usuario u;
-
+    private Estilos estilos;
+    
     public MenuPrincipal(Usuario u) throws IOException {
-
+        jPanel1 = new JPanel();
+        estilos = new Estilos();
         initComponents();
         //gestor = new GestorAlmazara();
         //this.setSize(1000, 700);
@@ -30,8 +34,6 @@ public class MenuPrincipal extends VistaGestor {
         btn_salir.setBackground(estilos.getColorDanger());
         btn_salir.setForeground(Color.white);
         btn_salir.setFont(estilos.getFuenteBotones());
-
-        //this.getContentPane().setBackground(Color.red);
         jPanel1.setBackground(estilos.getColorInterior());
 
         this.setIconImage(estilos.getImagenIcono());
@@ -39,7 +41,6 @@ public class MenuPrincipal extends VistaGestor {
         this.setExtendedState(MAXIMIZED_BOTH);
         this.u = u;
         lb_nombreUser.setText(u.getNombre());
-
     }
 
     private MenuPrincipal() {
@@ -182,10 +183,12 @@ public class MenuPrincipal extends VistaGestor {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_addClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_addClientesActionPerformed
-        AñadirCliente c = new AñadirCliente();
+        
         jPanel1.removeAll();
+        AñadirCliente c = new AñadirCliente();
         c.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(c.getContentPane());
+        
         jPanel1.repaint();
 
     }//GEN-LAST:event_boton_addClientesActionPerformed
@@ -195,8 +198,8 @@ public class MenuPrincipal extends VistaGestor {
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void boton_seleccionar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_seleccionar_clienteActionPerformed
-        SeleccionarCliente sc = new SeleccionarCliente(gestor, jPanel1, u);
         jPanel1.removeAll();
+        SeleccionarCliente sc = new SeleccionarCliente(jPanel1,u);
         sc.getContentPane().setBackground(estilos.getColorInterior());
         jPanel1.add(sc.getContentPane());
         jPanel1.repaint();
