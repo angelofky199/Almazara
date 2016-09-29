@@ -68,3 +68,5 @@ Utiles/nbproject/genfiles.properties
 *.properties
 Utiles/nbproject/build-impl.xml
 *.xml
+Utiles/nbproject/build-impl.xml
+*.properties
