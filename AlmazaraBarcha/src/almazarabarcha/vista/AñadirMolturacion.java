@@ -1,7 +1,6 @@
 package almazarabarcha.vista;
 
 import almazarabarcha.Modelo.GestorAlmazara;
-import almazarabarcha.estilos.Estilos;
 import capaDAO.DaoMolturacion;
 import excepciones.BusinessException;
 import java.sql.Date;
@@ -10,7 +9,6 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -22,8 +20,8 @@ import pojos.Cliente;
 import pojos.Molturacion;
 import pojos.Usuario;
 
-public class AñadirMolturacion extends JFrame {
-    private Estilos estilos = new Estilos();
+public class AñadirMolturacion extends VistaGestor {
+
     private Cliente cliente;
     private Usuario u;
     private Molturacion m;

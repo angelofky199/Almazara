@@ -17,7 +17,6 @@ public class FinalizarMolturacion extends javax.swing.JFrame {
 
     /**
      * Creates new form FinalizarMolturacion
-     * @param m
      */
     public FinalizarMolturacion(Molturacion m) {
         initComponents();

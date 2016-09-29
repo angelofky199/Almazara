@@ -1,6 +1,9 @@
 package pojos;
 // Generated 15-sep-2016 21:42:28 by Hibernate Tools 4.3.1
 
+import static almazarabarcha.Modelo.Molturacion.RENDIMIENTO_MAQUILA_KG;
+import static almazarabarcha.Modelo.Molturacion.RENDIMIENTO_ORUJO_KG;
+import java.text.DecimalFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;

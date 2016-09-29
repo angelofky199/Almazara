@@ -1,19 +1,15 @@
 package almazarabarcha.vista;
 
-import almazarabarcha.estilos.Estilos;
 import capaDAO.DaoCliente;
 import excepciones.BusinessException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pojos.Cliente;
 
-public class AñadirCliente extends JFrame {
-    private Estilos estilos;
-    
+public class AñadirCliente extends VistaGestor {
+
     public AñadirCliente() {
-        estilos = new Estilos();
         initComponents();
         //this.setBackground(estilos.getColorInterior());
         label_direccion.setFont(estilos.getFuenteEtiquetas());

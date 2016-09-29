@@ -5,9 +5,7 @@
  */
 package almazarabarcha.vista;
 
-import javax.swing.JFrame;
-
-public class GestionVenta extends JFrame {
+public class GestionVenta extends VistaGestor {
 
     public GestionVenta() {
         initComponents();

@@ -1,6 +1,6 @@
 package almazarabarcha.vista;
 
-import almazarabarcha.estilos.Estilos;
+import almazarabarcha.Modelo.GestorAlmazara;
 import capaDAO.DaoCliente;
 
 import excepciones.BusinessException;
@@ -16,13 +16,13 @@ import javax.swing.table.DefaultTableModel;
 import pojos.Cliente;
 import pojos.Usuario;
 
-public class SeleccionarCliente extends JFrame {
-    private final Estilos estilos = new Estilos();
+public class SeleccionarCliente extends VistaGestor {
+
     JPanel jpanel1;
     private List<Cliente> clientes = new ArrayList<>();
     private Usuario u;
 
-    public SeleccionarCliente(JPanel jpanel1, Usuario u) {
+    public SeleccionarCliente(GestorAlmazara gestor, JPanel jpanel1, Usuario u) {
         this.jpanel1 = jpanel1;
         Cliente c;
         initComponents();
@@ -44,7 +44,7 @@ public class SeleccionarCliente extends JFrame {
         int i;
         Object[] fila = new Object[4];
         DefaultTableModel modelo = (DefaultTableModel) tabla_filtro.getModel();
-        ArrayList<Cliente> seleccionados;
+        ArrayList<Cliente> seleccionados = new ArrayList<>();
 
         int num_filas = modelo.getRowCount();
         for (i = 0; i < num_filas; i++) {
@@ -222,9 +222,9 @@ public class SeleccionarCliente extends JFrame {
     }//GEN-LAST:event_button_buscarActionPerformed
 
     private void button_seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_seleccionarActionPerformed
+
         int fila = tabla_filtro.getSelectedRow();
         String mostrar = "";
-        
         if (fila > -1) {
             try {
                 mostrar += tabla_filtro.getValueAt(fila, 0) + "\n";
@@ -238,7 +238,6 @@ public class SeleccionarCliente extends JFrame {
 
                 GestorOperaciones g = new GestorOperaciones(c, u);
                 jpanel1.removeAll();
-                
                 g.getContentPane().setBackground(estilos.getColorInterior());
                 jpanel1.add(g.getContentPane());
                 jpanel1.repaint();
@@ -285,8 +284,9 @@ public class SeleccionarCliente extends JFrame {
         if (fila != -1) {
             try {
                 Cliente c = DaoCliente.getCliente((String) tabla_filtro.getValueAt(fila, 0));
+                MostrarOperaciones go = new MostrarOperaciones(c);
+
                 jpanel1.removeAll();
-                MostrarOperaciones go = new MostrarOperaciones(jpanel1,c);
                 go.getContentPane().setBackground(estilos.getColorInterior());
                 jpanel1.add(go.getContentPane());
                 jpanel1.repaint();
