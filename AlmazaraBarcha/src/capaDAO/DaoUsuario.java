@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package capaDAO;
 
 import excepciones.BusinessException;
@@ -6,8 +11,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pojos.Cliente;
 import pojos.Usuario;
+import pojos.Venta;
 
+/**
+ *
+ * @author Usuario
+ */
 public class DaoUsuario {
 
     public static boolean insertar(Usuario u) throws BusinessException {
@@ -17,6 +28,7 @@ public class DaoUsuario {
         try {
             s.save(u);
             result = true;
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
@@ -65,6 +77,7 @@ public class DaoUsuario {
                 if ((s.createQuery(sql).setParameter("nombre", nombre).setParameter("contrasenya", contrasenya)).uniqueResult() != null) {
                     result = true;
                 }
+
             }
         } catch (Exception e) {
 
@@ -72,6 +85,7 @@ public class DaoUsuario {
                     "Error al consultar los cliente", e);
             throw new BusinessException(
                     "Error al consultar usuarios por cliente");
+
         }
 
      return result;

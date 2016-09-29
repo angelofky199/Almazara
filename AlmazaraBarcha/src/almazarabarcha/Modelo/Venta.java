@@ -189,8 +189,9 @@ public class Venta {
     @Override
     @SuppressWarnings("empty-statement")
     public String toString(){
-        int i;
-      
+            int i;
+        
+                
         String saco = new String();
         
         saco += "Tipos Aceite\n...................\n";
@@ -202,6 +203,9 @@ public class Venta {
         for(i = 0; i < tiposenvases.size(); i++){
             saco += "\t" + tiposenvases.get(i).getCapacidad() + "->" + tiposenvases.get(i).getCantidad() + "\n";
         }
+        
+        
+        
         
         return "Venta{" + "factura_realizada=" + factura_realizada + ", observaciones=" + observaciones  + ", regalar_envases=" + regalar_envases + ", id=" + id + '}' + "\n" + saco;
     }

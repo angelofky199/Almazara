@@ -14,6 +14,8 @@ public class Cliente {
     private ArrayList<Compra> compras;
     private ArrayList<Molturacion> molturaciones;
     private ArrayList<Venta> ventas;
+    
+    
 
     public Cliente(String nombre_cliente, String dni, String direccion, String poblacion, String telefono) {
         this.nombre_cliente = nombre_cliente;
@@ -25,7 +27,9 @@ public class Cliente {
         cambios = new ArrayList<>();
         compras = new ArrayList<>();
         molturaciones = new ArrayList<>();
-        ventas = new ArrayList<>();   
+        ventas = new ArrayList<>();
+        
+        
     }
     
     public Cliente() {
@@ -399,4 +403,6 @@ public class Cliente {
             
         return ok;
     }
+    
+    
 }

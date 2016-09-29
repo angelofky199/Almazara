@@ -1,9 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package almazarabarcha.vista;
 
 import capaDAO.DaoUsuario;
 import excepciones.BusinessException;
 import java.awt.Image;
-import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -13,6 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import pojos.Usuario;
 
+/**
+ *
+ * @author Usuario
+ */
 public class Login extends javax.swing.JFrame {
 
     ImageIcon imagenFondo;
@@ -22,6 +31,8 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocation(300, 150);
         this.setSize(650, 440);
+        
+
     }
 
     /**
@@ -94,7 +105,7 @@ public class Login extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "El nombre de usuario o la contraseña son incorrectos");
             }
-        } catch (BusinessException | IOException ex) {
+        } catch (BusinessException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -153,8 +164,10 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
         });
     }
 
