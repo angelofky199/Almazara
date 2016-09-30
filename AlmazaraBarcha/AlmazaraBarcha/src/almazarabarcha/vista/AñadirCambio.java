@@ -14,6 +14,7 @@ import pojos.Cliente;
 import pojos.Usuario;
 
 public class AñadirCambio extends JFrame {
+
     private final Estilos estilos = new Estilos();
     Cliente c;
     Usuario u;
@@ -34,8 +35,6 @@ public class AñadirCambio extends JFrame {
         cambio = new Cambio();
         text_litros_cambio.setEnabled(false);
         text_litros_retirado.setEnabled(false);
-        btn_Maquila.setBackground(Color.green);
-        btn_Dinero.setBackground(Color.darkGray);
         text_precio_molturacion.setEnabled(false);
     }
 
@@ -48,6 +47,7 @@ public class AñadirCambio extends JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         text_observaciones = new javax.swing.JTextField();
         label_observaciones = new javax.swing.JLabel();
         btn_añadir_cambio = new javax.swing.JButton();
@@ -68,8 +68,8 @@ public class AñadirCambio extends JFrame {
         jLabel1 = new javax.swing.JLabel();
         text_precio_molturacion = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        btn_Maquila = new javax.swing.JButton();
-        btn_Dinero = new javax.swing.JButton();
+        radio_maquila = new javax.swing.JRadioButton();
+        radio_molt = new javax.swing.JRadioButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,19 +125,26 @@ public class AñadirCambio extends JFrame {
 
         jLabel1.setText("Precio molturación");
 
-        btn_Maquila.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_Maquila.setText("Maquila");
-        btn_Maquila.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_MaquilaMouseClicked(evt);
+        text_precio_molturacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_precio_molturacionActionPerformed(evt);
             }
         });
 
-        btn_Dinero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_Dinero.setText("Dinero");
-        btn_Dinero.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_DineroMouseClicked(evt);
+        buttonGroup1.add(radio_maquila);
+        radio_maquila.setText("Maquila");
+        radio_maquila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_maquilaActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(radio_molt);
+        radio_molt.setSelected(true);
+        radio_molt.setText("Pagar molturacion");
+        radio_molt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_moltActionPerformed(evt);
             }
         });
 
@@ -166,11 +173,6 @@ public class AñadirCambio extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_Maquila, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Dinero, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(label_rendimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
@@ -208,16 +210,21 @@ public class AñadirCambio extends JFrame {
                                 .addGap(47, 47, 47)
                                 .addComponent(check_factura))
                             .addComponent(check_paga, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(284, 284, 284))))
+                        .addGap(284, 284, 284))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(radio_maquila)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radio_molt)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Maquila, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Dinero, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(radio_maquila)
+                    .addComponent(radio_molt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_litros_cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_litros_cambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -263,56 +270,55 @@ public class AñadirCambio extends JFrame {
         kg_oliva = validador.corregirNumeros(text_kg_oliva.getText());
         rendimiento = validador.corregirNumeros(text_rendimiento.getText());
         maquila = validador.corregirNumeros(text_maquila.getText());
-        
-        if(!validador.validarNumeroDecimal(kg_oliva)){
+
+        if (!validador.validarNumeroDecimal(kg_oliva)) {
             error += "Kg Oliva\n";
             ok = false;
         }
-            
-        if(!validador.validarNumeroDecimal(rendimiento)){
+
+        if (!validador.validarNumeroDecimal(rendimiento)) {
             error += "Rendimiento\n";
             ok = false;
         }
 
-        if(validador.validarNumeroDecimal(maquila)){
+        if (validador.validarNumeroDecimal(maquila)) {
             error += "Maquila\n";
             ok = false;
         }
-        
-        if(!ok){
+
+        if (!ok) {
             JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
-        }else{
+        } else {
             cambio.setKgOliva(Float.parseFloat(kg_oliva));
             cambio.setRendimiento(Float.parseFloat(rendimiento));
             cambio.setPorcentajeMaquila(Float.parseFloat(maquila));
             cambio.setObservaciones(text_observaciones.getText());
-            
+
             //calcular precio molturación
             precio_molt = cambio.CalcularPrecioMulturacion();
             cambio.setPrecioMolturacion(precio_molt);
             text_precio_molturacion.setText(String.valueOf(precio_molt));
-            
+
             //calcular litros para cambio
             litros_cambio = cambio.CalcularLitrosAceiteParaCambio();
             text_litros_cambio.setText(String.valueOf(litros_cambio));
             cambio.setLitrosCambio(litros_cambio);
-            
+
             //***Está de momento, ha sido copy paste***
             if (Float.parseFloat(text_maquila.getText()) > 0) {
                 litros_retira = cambio.CalcularLitrosParaRetirar();
                 text_litros_retirado.setText(String.valueOf(litros_retira));
                 cambio.setLitrosRetirados(litros_retira);
-            }
-            else{
+            } else {
                 text_litros_retirado.setText(String.valueOf(litros_cambio));
                 cambio.setLitrosRetirados(litros_cambio);
                 cambio.CalcularPrecioMulturacion();
             }
-            
+
             //***Está de momento, ha sido copy paste***
             if (text_maquila.getText().equals("0")) {
                 cambio.setMaquila(0);
-            
+
                 //cambio.setFactura(check_factura.isSelected());
                 cambio.setPaga(check_paga.isSelected());
                 cambio.setObservaciones(text_observaciones.getText());
@@ -328,7 +334,7 @@ public class AñadirCambio extends JFrame {
 
                 JOptionPane.showMessageDialog(null, "Se ha añadido el cambio correctamente al cliente: " + c.getNombre());
             }
-        }  
+        }
     }//GEN-LAST:event_btn_añadir_cambioActionPerformed
 
     private void text_litros_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_litros_cambioActionPerformed
@@ -339,25 +345,23 @@ public class AñadirCambio extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_text_maquilaActionPerformed
 
-    private void btn_MaquilaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MaquilaMouseClicked
-        btn_Maquila.setBackground(Color.green);
-        btn_Dinero.setBackground(Color.darkGray);
-        text_maquila.setEnabled(true);
-        text_maquila.setText("");
-    }//GEN-LAST:event_btn_MaquilaMouseClicked
+    private void radio_moltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_moltActionPerformed
 
-    private void btn_DineroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DineroMouseClicked
-        btn_Maquila.setBackground(Color.darkGray);
-        btn_Dinero.setBackground(Color.green);
-        text_maquila.setText("0");
         text_maquila.setEnabled(false);
-    }//GEN-LAST:event_btn_DineroMouseClicked
+    }//GEN-LAST:event_radio_moltActionPerformed
+
+    private void radio_maquilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_maquilaActionPerformed
+        text_maquila.setEnabled(true);
+    }//GEN-LAST:event_radio_maquilaActionPerformed
+
+    private void text_precio_molturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_precio_molturacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_precio_molturacionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Dinero;
-    private javax.swing.JButton btn_Maquila;
     private javax.swing.JButton btn_añadir_cambio;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox check_factura;
     private javax.swing.JCheckBox check_paga;
     private javax.swing.JCheckBox check_pagado;
@@ -371,6 +375,8 @@ public class AñadirCambio extends JFrame {
     private javax.swing.JLabel label_maquila;
     private javax.swing.JLabel label_observaciones;
     private javax.swing.JLabel label_rendimiento;
+    private javax.swing.JRadioButton radio_maquila;
+    private javax.swing.JRadioButton radio_molt;
     private javax.swing.JTextField text_kg_oliva;
     private javax.swing.JTextField text_litros_cambio;
     private javax.swing.JTextField text_litros_retirado;
