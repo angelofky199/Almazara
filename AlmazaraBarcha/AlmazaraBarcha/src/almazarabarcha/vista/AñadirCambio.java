@@ -4,7 +4,6 @@ import almazarabarcha.Modelo.Validador;
 import almazarabarcha.estilos.Estilos;
 import capaDAO.DaoCambio;
 import excepciones.BusinessException;
-import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -305,6 +304,9 @@ public class AñadirCambio extends JFrame {
             cambio.setLitrosCambio(litros_cambio);
 
             //***Está de momento, ha sido copy paste***
+            
+            
+            
             if (Float.parseFloat(text_maquila.getText()) > 0) {
                 litros_retira = cambio.CalcularLitrosParaRetirar();
                 text_litros_retirado.setText(String.valueOf(litros_retira));
@@ -318,8 +320,6 @@ public class AñadirCambio extends JFrame {
             //***Está de momento, ha sido copy paste***
             if (text_maquila.getText().equals("0")) {
                 cambio.setMaquila(0);
-
-                //cambio.setFactura(check_factura.isSelected());
                 cambio.setPaga(check_paga.isSelected());
                 cambio.setObservaciones(text_observaciones.getText());
 
